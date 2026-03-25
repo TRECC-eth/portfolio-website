@@ -12,27 +12,48 @@
 }
 
 @layer utilities {
-  /* PURE CSS METALLIC CHROME EFFECT (No Images) */
-  .text-chrome {
+  /* PORTFOLIO METALLIC FADE EFFECT */
+  .text-metallic {
     background: linear-gradient(
-      to bottom,
-      #ffffff 0%,       /* Bright highlight at the very top */
-      #cfcfcf 25%,      /* Soft silver */
-      #7a7d84 48%,      /* Darker grey right above the horizon */
-      #ffffff 50%,      /* Sharp reflection line (the horizon) */
-      #50545a 75%,      /* Deep steel grey */
-      #1f2124 100%      /* Very dark bottom edge */
+      180deg,
+      #ffffff 0%,
+      #d4d4d4 50%,
+      #8c8c8c 78%,
+      #2e2e2e 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    /* Optional: A tiny drop shadow to lift the metal off the background */
-    filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 2px 10px rgba(255, 255, 255, 0.05));
+  }
+
+  .display-text {
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    line-height: 1.05;
+  }
+
+  /* PURE CSS METALLIC CHROME EFFECT (No Images) */
+  .text-chrome {
+    font-family: 'Cochin', 'Playfair Display', serif;
+    background: linear-gradient(
+      to bottom,
+      #f5f7fa 0%,
+      #c3cbdc 45%,
+      #7a828e 50%,
+      #b0b8c6 55%,
+      #e2e6ee 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter: drop-shadow(0 0 3px rgba(180, 190, 210, 0.5));
   }
 
   .bg-steel {
-    background: linear-gradient(145deg, #e6e6e6 0%, #a0a5aa 50%, #606468 100%);
+    background: linear-gradient(145deg, #f0f2f5 0%, #b0b5bd 50%, #767b82 100%);
   }
 
   .border-chrome {

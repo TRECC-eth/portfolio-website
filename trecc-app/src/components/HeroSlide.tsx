@@ -18,7 +18,7 @@ export default function HeroSlide() {
             minWidth: 200.00,
             scale: 1.00,
             scaleMobile: 1.00,
-            color: 0xd7d7b6, // The silver topography lines
+            color: 0xc4c7cc, // More silvery topography lines
             backgroundColor: 0x0 // Pure black background
           })
         );
@@ -40,7 +40,7 @@ export default function HeroSlide() {
       <div className="relative z-10 max-w-6xl text-center w-full pointer-events-none">
         
         {/* 👇 UPDATED H1 TAG: Forced into exactly 2 blocks and scaled to fit 👇 */}
-        <h1 className="text-chrome font-['Montserrat'] font-extrabold tracking-tight mb-8 text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.1]">
+        <h1 className="text-chrome font-medium tracking-tight leading-tight mb-8 text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem]">
           <span className="block">The Credit Layer</span>
           <span className="block">For Machine Economies</span>
         </h1>
