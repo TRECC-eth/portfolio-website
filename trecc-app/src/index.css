@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#030303] text-[#EDEDED] antialiased selection:bg-white/20 overflow-x-hidden;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer utilities {
+  /* PURE CSS METALLIC CHROME EFFECT (No Images) */
+  .text-chrome {
+    background: linear-gradient(
+      to bottom,
+      #ffffff 0%,       /* Bright highlight at the very top */
+      #cfcfcf 25%,      /* Soft silver */
+      #7a7d84 48%,      /* Darker grey right above the horizon */
+      #ffffff 50%,      /* Sharp reflection line (the horizon) */
+      #50545a 75%,      /* Deep steel grey */
+      #1f2124 100%      /* Very dark bottom edge */
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    /* Optional: A tiny drop shadow to lift the metal off the background */
+    filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.5));
+  }
+
+  .bg-steel {
+    background: linear-gradient(145deg, #e6e6e6 0%, #a0a5aa 50%, #606468 100%);
+  }
+
+  .border-chrome {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .hyper-card {
+    @apply bg-[#0A0A0A] border-chrome rounded-2xl transition-all duration-300 hover:border-white/20;
+  }
+}
