@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
 
 const Block = ({
-  x, y, z, w, h, depth, label, active, highlight = false, textFace = "top"
+  x, y, z, w, h, depth, label, active, highlight = false, textFace = "top", className = ""
 }: {
   x: number, y: number, z: number, w: number, h: number, depth: number,
-  label: string, active: boolean, highlight?: boolean, textFace?: "top" | "right" | "left"
+  label: string, active: boolean, highlight?: boolean, textFace?: "top" | "right" | "left", className?: string
 }) => {
   // Define stronger 3D lighting states mapped to the reference images
   // Using variations of #d7d7b6 (approx 215, 215, 182)
@@ -46,13 +46,13 @@ const Block = ({
         style={{ border: `1px solid ${borderColor}`, backgroundColor: topFaceColor, transform: `translateZ(${depth}px)` }}
       >
         {label && textFace === "top" && (
-          <span className={`${labelColor} text-[10px] md:text-[11px] font-mono tracking-wider -rotate-45`}>{label}</span>
+          <span className={`${labelColor} text-[10px] md:text-[11px] font-mono tracking-wider -rotate-45 ${className}`}>{label}</span>
         )}
       </div>
 
       {/* Front-Right (X-axis) Face */}
       <div
-        className="absolute origin-top flex items-center justify-center overflow-hidden transition-colors duration-700 backdrop-blur-md"
+        className="absolute origin-top flex items-center justify-center overflow-visible transition-colors duration-700 backdrop-blur-md"
         style={{
           width: w, height: depth, top: "100%", left: 0,
           border: `1px solid ${borderColor}`, backgroundColor: rightFaceColor,
@@ -60,7 +60,7 @@ const Block = ({
         }}
       >
         {label && textFace === "right" && (
-          <span className={`block -rotate-90 ${labelColor} text-[9px] md:text-[10px] tracking-[0.2em] font-mono whitespace-nowrap`}>
+          <span className={`block -rotate-90 origin-center ${labelColor} text-[9px] md:text-[10px] tracking-[0.2em] font-mono whitespace-nowrap ${className}`} style={{ minWidth: depth, textAlign: 'center' }}>
             {label}
           </span>
         )}
@@ -68,7 +68,7 @@ const Block = ({
 
       {/* Front-Left (Y-axis) Face */}
       <div
-        className="absolute origin-right flex items-center justify-center overflow-hidden transition-colors duration-700 backdrop-blur-md"
+        className="absolute origin-right flex items-center justify-center overflow-visible transition-colors duration-700 backdrop-blur-md"
         style={{
           width: depth, height: h, top: 0, right: "100%",
           border: `1px solid ${borderColor}`, backgroundColor: leftFaceColor,
@@ -76,7 +76,7 @@ const Block = ({
         }}
       >
         {label && textFace === "left" && (
-          <span className={`block ${labelColor} text-[9px] md:text-[10px] tracking-[0.2em] font-mono whitespace-nowrap`}>
+          <span className={`block origin-center ${labelColor} text-[10px] md:text-[11px] tracking-[0.2em] font-mono whitespace-nowrap ${className}`} style={{ minWidth: h, textAlign: 'center' }}>
             {label}
           </span>
         )}
@@ -139,7 +139,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
             <div className="relative w-[320px] h-[320px]" style={{ transform: "rotateX(60deg) rotateZ(-45deg)", transformStyle: "preserve-3d" }}>
 
               {/* BASE LAYER */}
-              <Block x={0} y={0} z={0} w={320} h={320} depth={20} label="TRECC Protocol" active={vaultActive} textFace="left" />
+              <Block className="rotate-90" x={0} y={0} z={0} w={320} h={320} depth={20} label="TRECC Protocol" active={vaultActive} textFace="left" />
 
               {/* VAULTS LAYER (Middle Base) */}
               <Block x={20} y={20} z={30} w={120} h={120} depth={30} label="Liquidity Vault" active={vaultActive} textFace="top" />
