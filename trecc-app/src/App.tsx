@@ -9,7 +9,7 @@ export default function App() {
   // Swapped "Slide" for "Step" because we now have more steps than physical slides
   const [currentStep, setCurrentStep] = useState(0);
   const isAnimating = useRef(false);
-  const totalSteps = 6; 
+  const totalSteps = 8;
 
   /*
     STEP MAPPING:
@@ -17,14 +17,16 @@ export default function App() {
     1 = Dashboard (Base empty state)
     2 = Dashboard (Red Bearish Line draws in)
     3 = Dashboard (Green Bullish Bars shoot up)
-    4 = Architecture (3D Stack)
-    5 = Ecosystem/Footer
+    4 = Architecture (Bottom Layer Explanacion)
+    5 = Architecture (Middle Layer Explanation)
+    6 = Architecture (Top Layer Explanation)
+    7 = Ecosystem/Footer
   */
 
   useEffect(() => {
     // Handle Desktop Mouse Wheel
     const handleWheel = (e: WheelEvent) => {
-      e.preventDefault(); 
+      e.preventDefault();
       if (isAnimating.current || Math.abs(e.deltaY) < 30) return;
 
       if (e.deltaY > 0 && currentStep < totalSteps - 1) {
@@ -56,7 +58,7 @@ export default function App() {
       setCurrentStep((prev) => prev + direction);
       setTimeout(() => {
         isAnimating.current = false;
-      }, 1200); 
+      }, 1200);
     };
 
     window.addEventListener("wheel", handleWheel, { passive: false });
@@ -70,12 +72,12 @@ export default function App() {
     };
   }, [currentStep]);
 
-  // MAGIC LOGIC: This translates the 6 steps into 4 physical screen positions
+  // MAGIC LOGIC: This translates the 8 steps into 4 physical screen positions
   let yOffset = 0;
   if (currentStep === 0) yOffset = 0; // Hero
   else if (currentStep >= 1 && currentStep <= 3) yOffset = 100; // Locks on Dashboard for 3 scrolls!
-  else if (currentStep === 4) yOffset = 200; // Architecture
-  else if (currentStep >= 5) yOffset = 300; // Footer
+  else if (currentStep >= 4 && currentStep <= 6) yOffset = 200; // Locks on Architecture for 3 scrolls!
+  else if (currentStep >= 7) yOffset = 300; // Footer
 
   return (
     <div className="fixed inset-0 w-full h-screen bg-[#030303] text-white overflow-hidden font-sans">
@@ -85,17 +87,19 @@ export default function App() {
         className="w-full h-full flex flex-col"
         // Uses the yOffset calculated above instead of just multiplying the step
         animate={{ y: `-${yOffset}vh` }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} 
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="h-screen w-full shrink-0"><HeroSlide /></div>
-        
+
         {/* We pass the currentStep down so the Dashboard knows what to animate */}
         <div className="h-screen w-full shrink-0">
           <DashboardSlide step={currentStep} />
         </div>
-        
-        <div className="h-screen w-full shrink-0"><ArchitectureSlide /></div>
-        
+
+        <div className="h-screen w-full shrink-0">
+          <ArchitectureSlide step={currentStep} />
+        </div>
+
         <div className="h-screen w-full shrink-0 flex flex-col items-center justify-center bg-white text-black rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.5)] z-50">
           <h2 className="text-5xl font-light tracking-tight mb-4">Ecosystem First.</h2>
           <p className="text-gray-500">The next section of your platform.</p>
