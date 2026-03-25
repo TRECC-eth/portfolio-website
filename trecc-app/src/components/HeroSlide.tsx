@@ -19,7 +19,8 @@ export default function HeroSlide() {
             scale: 1.00,
             scaleMobile: 1.00,
             color: 0xd7d7b6, // The silver topography lines
-            backgroundColor: 0x0 // Pure black background
+            backgroundColor: 0x0, // Pure black background
+            speed: 15.0 // Increased speed
           })
         );
       } catch (error) {
@@ -34,9 +35,9 @@ export default function HeroSlide() {
 
   return (
     <div className="h-full w-full flex flex-col items-center justify-center px-6 relative overflow-hidden bg-black">
-      <div 
+      <div
         ref={vantaRef}
-        className="absolute inset-0 z-0 opacity-40 pointer-events-none"
+        className="absolute inset-0 z-0 opacity-60 pointer-events-none"
       />
       <div className="relative z-10 max-w-6xl text-center w-full pointer-events-none">
 
