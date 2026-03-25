@@ -139,21 +139,21 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
             <div className="relative w-[320px] h-[320px]" style={{ transform: "rotateX(60deg) rotateZ(-45deg)", transformStyle: "preserve-3d" }}>
 
               {/* BASE LAYER */}
-            <Block x={0} y={0} z={0} w={320} h={320} depth={20} label="TRECC Protocol" active={vaultActive} textFace="left" />
+              <Block x={0} y={0} z={0} w={320} h={320} depth={20} label="TRECC Protocol" active={vaultActive} textFace="left" />
 
-            {/* VAULTS LAYER (Middle Base) */}
-            <Block x={20} y={20} z={30} w={120} h={120} depth={30} label="Liquidity Vault" active={vaultActive} textFace="top" />
-            <Block x={20} y={160} z={30} w={120} h={140} depth={30} label="Identity Registry" active={vaultActive} textFace="top" />
-            <Block x={160} y={20} z={30} w={140} h={280} depth={30} label="Risk Engine" active={vaultActive} textFace="top" />
+              {/* VAULTS LAYER (Middle Base) */}
+              <Block x={20} y={20} z={30} w={120} h={120} depth={30} label="Liquidity Vault" active={vaultActive} textFace="top" />
+              <Block x={20} y={160} z={30} w={120} h={140} depth={30} label="Identity Registry" active={vaultActive} textFace="top" />
+              <Block x={160} y={20} z={30} w={140} h={280} depth={30} label="Risk Engine" active={vaultActive} textFace="top" />
 
-            {/* AUTONOMOUS AGENTS (Pillars) */}
-            <Block x={40} y={180} z={70} w={50} h={70} depth={80} label="MPC Wallet" active={agentsActive} textFace="right" />
-            <Block x={180} y={40} z={70} w={50} h={70} depth={100} label="Risk Sentinel" active={agentsActive} textFace="right" />
-            <Block x={240} y={160} z={70} w={40} h={40} depth={70} label="AI Logic" active={agentsActive} textFace="left" />
+              {/* AUTONOMOUS AGENTS (Pillars) */}
+              <Block x={40} y={180} z={70} w={50} h={70} depth={80} label="MPC Wallet" active={agentsActive} textFace="right" />
+              <Block x={180} y={40} z={70} w={50} h={70} depth={100} label="Risk Sentinel" active={agentsActive} textFace="right" />
+              <Block x={240} y={160} z={70} w={40} h={40} depth={70} label="AI Logic" active={agentsActive} textFace="left" />
 
-            {/* YIELD / APPS (Highlight Pillars) */}
-            <Block x={40} y={40} z={70} w={60} h={60} depth={140} label="Agent UI" active={yieldActive} highlight={yieldActive} textFace="right" />
-            <Block x={180} y={180} z={70} w={60} h={60} depth={160} label="Lender UI" active={yieldActive} highlight={yieldActive} textFace="left" />
+              {/* YIELD / APPS (Highlight Pillars) */}
+              <Block x={40} y={40} z={70} w={60} h={60} depth={140} label="Agent UI" active={yieldActive} highlight={yieldActive} textFace="right" />
+              <Block x={180} y={180} z={70} w={60} h={60} depth={160} label="Lender UI" active={yieldActive} highlight={yieldActive} textFace="left" />
               {/* Connection Line connecting the highlight to the text (Decorative) */}
               <motion.div
                 animate={{ opacity: yieldActive ? 1 : 0 }}
