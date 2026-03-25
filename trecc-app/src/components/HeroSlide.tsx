@@ -18,7 +18,7 @@ export default function HeroSlide() {
             minWidth: 200.00,
             scale: 1.00,
             scaleMobile: 1.00,
-            color: 0xc4c7cc, // More silvery topography lines
+            color: 0xd7d7b6, // The silver topography lines
             backgroundColor: 0x0 // Pure black background
           })
         );
@@ -33,23 +33,24 @@ export default function HeroSlide() {
   }, [vantaEffect]);
 
   return (
-    <div 
-      ref={vantaRef} 
-      className="h-full w-full flex flex-col items-center justify-center px-6 relative overflow-hidden"
-    >
+    <div className="h-full w-full flex flex-col items-center justify-center px-6 relative overflow-hidden bg-black">
+      <div 
+        ref={vantaRef}
+        className="absolute inset-0 z-0 opacity-40 pointer-events-none"
+      />
       <div className="relative z-10 max-w-6xl text-center w-full pointer-events-none">
-        
+
         {/* 👇 UPDATED H1 TAG: Forced into exactly 2 blocks and scaled to fit 👇 */}
-        <h1 className="text-chrome font-medium tracking-tight leading-tight mb-8 text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem]">
+        <h1 className="text-chrome font-['Montserrat'] font-medium tracking-tight leading-tight mb-8 text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem]">
           <span className="block">The Credit Layer</span>
           <span className="block">For Machine Economies</span>
         </h1>
-        
+
         <p className="text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light text-[#8A8D93] leading-relaxed">
           Establish secure connection to the prime brokerage infrastructure.
           Provide liquidity, or mint an autonomous agent to execute operations.
         </p>
-        
+
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pointer-events-auto">
           <button className="bg-steel text-black px-8 py-4 rounded-full font-semibold text-sm hover:brightness-110 transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)]">
             Provide Liquidity

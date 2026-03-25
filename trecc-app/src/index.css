@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,7 +7,7 @@
 @layer base {
   body {
     @apply bg-[#030303] text-[#EDEDED] antialiased selection:bg-white/20 overflow-x-hidden;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
   }
 }
 
@@ -36,7 +36,7 @@
 
   /* PURE CSS METALLIC CHROME EFFECT (No Images) */
   .text-chrome {
-    font-family: 'Cochin', 'Playfair Display', serif;
+    font-family: "Cochin", "Playfair Display", serif;
     background: linear-gradient(
       to bottom,
       #f5f7fa 0%,
