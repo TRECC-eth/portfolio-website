@@ -37,9 +37,9 @@ const Block = ({
       className="absolute"
       animate={{
         opacity: active ? 1 : 0.0,
-        z: active ? z : z - 50,
+        z: active ? z : 0,
       }}
-      transition={{ duration: 0.01, ease: "easeOut" }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       style={{
         left: x, top: y, width: w, height: h, transformStyle: "preserve-3d"
       }}
@@ -51,7 +51,7 @@ const Block = ({
           border: `1px solid ${borderColor}`,
           backgroundColor: topFaceColor,
         }}
-        transition={{ duration: 0.01 }}
+        transition={{ duration: 0.1, ease: [0.22, 1, 0.36, 1] }}
         style={{ z: depth, transformStyle: "preserve-3d" }}
       >
         {label && textFace === "top" && (
@@ -66,7 +66,7 @@ const Block = ({
           border: `1px solid ${borderColor}`,
           backgroundColor: rightFaceColor,
         }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.1, ease: [0.22, 1, 0.36, 1] }}
         style={{ width: w, height: depth, top: "100%", left: 0, z: depth, rotateX: "-90deg" }}
       >
         {label && textFace === "right" && (
@@ -83,7 +83,7 @@ const Block = ({
           border: `1px solid ${borderColor}`,
           backgroundColor: leftFaceColor,
         }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         style={{ height: h, width: depth, top: 0, right: "100%", z: depth, rotateY: "-90deg" }}
       >
         {label && textFace === "left" && (

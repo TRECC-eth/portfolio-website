@@ -17,9 +17,9 @@ export default function App() {
     1 = Dashboard (Base empty state)
     2 = Dashboard (Red Bearish Line draws in)
     3 = Dashboard (Green Bullish Bars shoot up)
-    4 = Architecture (Bottom Layer Explanacion)
-    5 = Architecture (Middle Layer Explanation)
-    6 = Architecture (Top Layer Explanation)
+    4 = Architecture (Bottom Layer Explanacion, Instantly loaded)
+    5 = Architecture (Agents Layer Explanation)
+    6 = Architecture (Yield Layer Explanation)
     7 = Ecosystem/Footer
   */
 
@@ -55,7 +55,12 @@ export default function App() {
 
     const changeStep = (direction: number) => {
       isAnimating.current = true;
-      setCurrentStep((prev) => prev + direction);
+      setCurrentStep((prev) => {
+        // Skip step 4 when scrolling down from 3 so the vaults load instantly when transitioning from Dashboard to Architecture
+        if (prev === 3 && direction === 1) return 4;
+        
+        return prev + direction;
+      });
       setTimeout(() => {
         isAnimating.current = false;
       }, 500);
@@ -72,7 +77,6 @@ export default function App() {
     };
   }, [currentStep]);
 
-  // MAGIC LOGIC: This translates the 8 steps into 4 physical screen positions
   let yOffset = 0;
   if (currentStep === 0) yOffset = 0; // Hero
   else if (currentStep >= 1 && currentStep <= 3) yOffset = 100; // Locks on Dashboard for 3 scrolls!
