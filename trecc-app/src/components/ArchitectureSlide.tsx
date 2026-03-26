@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useRef } from "react";
 
 const Block = ({
@@ -105,20 +105,6 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
   const stepText = step <= 4 ? "vaults" : step === 5 ? "agents" : "yield";
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const rotateX = useTransform(scrollYProgress, [0, 1], [50, 70]);
-  const rotateZ = useTransform(scrollYProgress, [0, 1], [-35, -55]);
-  const translateY = useTransform(scrollYProgress, [0, 1], [100, -100]);
-
-  // Use a softer staggered scroll-driven depth
-  const baseDepth = 1;
-  const vaultDepth = useTransform(scrollYProgress, [0, 0.3], [baseDepth, 30]);
-  const agentsDepth = useTransform(scrollYProgress, [0.3, 0.6], [baseDepth, 100]);
-  const yieldDepth = useTransform(scrollYProgress, [0.6, 1], [baseDepth, 160]);
 
   return (
     <div ref={containerRef} className="h-full w-full bg-[#030303] flex flex-col items-center justify-center relative overflow-hidden">
