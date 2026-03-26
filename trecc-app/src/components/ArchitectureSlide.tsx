@@ -17,18 +17,18 @@ const Block = ({
 
   // Top Face (Lightest)
   const topFaceColor = active
-    ? (highlight ? "rgba(215, 215, 182, 0.85)" : "rgba(180, 180, 150, 0.25)")
-    : "rgba(150, 150, 130, 0.05)";
+    ? (highlight ? "rgba(180, 180, 150, 1)" : "rgba(47, 47, 40, 1)")
+    : "rgba(15, 15, 13, 1)";
 
   // Right Face (Darkest shadow to create depth)
   const rightFaceColor = active
-    ? (highlight ? "rgba(180, 180, 150, 0.75)" : "rgba(80, 80, 70, 0.4)")
-    : "rgba(50, 50, 45, 0.15)";
+    ? (highlight ? "rgba(150, 150, 130, 1)" : "rgba(22, 22, 19, 1)")
+    : "rgba(7, 7, 6, 1)";
 
   // Left Face (Mid-tone shadow)
   const leftFaceColor = active
-    ? (highlight ? "rgba(195, 195, 165, 0.65)" : "rgba(100, 100, 85, 0.3)")
-    : "rgba(65, 65, 55, 0.1)";
+    ? (highlight ? "rgba(165, 165, 140, 1)" : "rgba(32, 32, 28, 1)")
+    : "rgba(11, 11, 9, 1)";
 
   const labelColor = highlight ? "text-[#030303] font-bold" : "text-white/80";
 
@@ -46,31 +46,31 @@ const Block = ({
     >
       {/* Top Face */}
       <motion.div
-        className="absolute inset-0 flex items-center justify-center backdrop-blur-sm"
+        className="absolute inset-0 flex items-center justify-center"
         animate={{
           border: `1px solid ${borderColor}`,
           backgroundColor: topFaceColor,
         }}
-        transition={{ duration: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
         style={{ z: depth, transformStyle: "preserve-3d" }}
       >
         {label && textFace === "top" && (
-          <span className={`${labelColor} text-[10px] md:text-[11px] font-mono tracking-wider -rotate-45 ${className}`}>{label}</span>
+          <span className={`${labelColor} text-[8px] md:text-[9px] font-mono tracking-wider -rotate-45 ${className}`}>{label}</span>
         )}
       </motion.div>
 
       {/* Front-Right (X-axis) Face */}
       <motion.div
-        className="absolute origin-top flex items-center justify-center overflow-hidden backdrop-blur-md"
+        className="absolute origin-top flex items-center justify-center overflow-hidden"
         animate={{
           border: `1px solid ${borderColor}`,
           backgroundColor: rightFaceColor,
         }}
-        transition={{ duration: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
         style={{ width: w, height: depth, top: "100%", left: 0, z: depth, rotateX: "-90deg" }}
       >
         {label && textFace === "right" && (
-          <span className={`block origin-center ${labelColor} text-[9px] md:text-[10px] tracking-[0.2em] font-mono whitespace-nowrap ${className}`} style={{ minWidth: depth, textAlign: 'center', transform: 'rotate(-90deg)' }}>
+          <span className={`block origin-center ${labelColor} text-[7px] md:text-[8px] tracking-[0.15em] font-mono whitespace-nowrap ${className}`} style={{ minWidth: depth, textAlign: 'center', transform: 'rotate(-90deg)' }}>
             {label}
           </span>
         )}
@@ -78,7 +78,7 @@ const Block = ({
 
       {/* Front-Left (Y-axis) Face */}
       <motion.div
-        className="absolute origin-right flex items-center justify-center overflow-hidden backdrop-blur-md"
+        className="absolute origin-right flex items-center justify-center overflow-hidden"
         animate={{
           border: `1px solid ${borderColor}`,
           backgroundColor: leftFaceColor,
@@ -87,7 +87,7 @@ const Block = ({
         style={{ height: h, width: depth, top: 0, right: "100%", z: depth, rotateY: "-90deg" }}
       >
         {label && textFace === "left" && (
-          <span className={`block origin-center ${labelColor} text-[10px] md:text-[11px] tracking-[0.2em] font-mono whitespace-nowrap ${className}`} style={{ minWidth: h, textAlign: 'center' }}>
+          <span className={`block origin-center ${labelColor} text-[8px] md:text-[9px] tracking-[0.15em] font-mono whitespace-nowrap ${className}`} style={{ minWidth: h, textAlign: 'center' }}>
             {label}
           </span>
         )}

@@ -57,7 +57,6 @@ export default function DashboardSlide({ step }: DashboardProps) {
   // Authentic Binance/TradingView Colors
   const GREEN = "#0ECB81"; 
   const RED = "#F6465D";   
-  const STEEL = "#8A8D93"; 
 
   // Dynamic PnL Logic
   let vaultPnl = "+$0.00";
