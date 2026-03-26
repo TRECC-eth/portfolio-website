@@ -58,7 +58,7 @@ export default function App() {
       setCurrentStep((prev) => prev + direction);
       setTimeout(() => {
         isAnimating.current = false;
-      }, 1200);
+      }, 500);
     };
 
     window.addEventListener("wheel", handleWheel, { passive: false });
@@ -87,7 +87,7 @@ export default function App() {
         className="w-full h-full flex flex-col"
         // Uses the yOffset calculated above instead of just multiplying the step
         animate={{ y: `-${yOffset}vh` }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="h-screen w-full shrink-0"><HeroSlide /></div>
 

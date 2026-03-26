@@ -1,4 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const Block = ({
   x, y, z, w, h, depth, label, active, highlight = false, textFace = "top", className = ""
@@ -34,53 +35,63 @@ const Block = ({
   return (
     <motion.div
       className="absolute"
-      animate={{ opacity: active ? 1 : 0.25, z: active ? z : z - 10 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      animate={{
+        opacity: active ? 1 : 0.0,
+        z: active ? z : z - 50,
+      }}
+      transition={{ duration: 0.01, ease: "easeOut" }}
       style={{
         left: x, top: y, width: w, height: h, transformStyle: "preserve-3d"
       }}
     >
       {/* Top Face */}
-      <div
-        className="absolute inset-0 flex items-center justify-center transition-colors duration-700 backdrop-blur-sm"
-        style={{ border: `1px solid ${borderColor}`, backgroundColor: topFaceColor, transform: `translateZ(${depth}px)` }}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center backdrop-blur-sm"
+        animate={{
+          border: `1px solid ${borderColor}`,
+          backgroundColor: topFaceColor,
+        }}
+        transition={{ duration: 0.01 }}
+        style={{ z: depth, transformStyle: "preserve-3d" }}
       >
         {label && textFace === "top" && (
           <span className={`${labelColor} text-[10px] md:text-[11px] font-mono tracking-wider -rotate-45 ${className}`}>{label}</span>
         )}
-      </div>
+      </motion.div>
 
       {/* Front-Right (X-axis) Face */}
-      <div
-        className="absolute origin-top flex items-center justify-center overflow-visible transition-colors duration-700 backdrop-blur-md"
-        style={{
-          width: w, height: depth, top: "100%", left: 0,
-          border: `1px solid ${borderColor}`, backgroundColor: rightFaceColor,
-          transform: `translateZ(${depth}px) rotateX(-90deg)`,
+      <motion.div
+        className="absolute origin-top flex items-center justify-center overflow-hidden backdrop-blur-md"
+        animate={{
+          border: `1px solid ${borderColor}`,
+          backgroundColor: rightFaceColor,
         }}
+        transition={{ duration: 0.2 }}
+        style={{ width: w, height: depth, top: "100%", left: 0, z: depth, rotateX: "-90deg" }}
       >
         {label && textFace === "right" && (
-          <span className={`block -rotate-90 origin-center ${labelColor} text-[9px] md:text-[10px] tracking-[0.2em] font-mono whitespace-nowrap ${className}`} style={{ minWidth: depth, textAlign: 'center' }}>
+          <span className={`block origin-center ${labelColor} text-[9px] md:text-[10px] tracking-[0.2em] font-mono whitespace-nowrap ${className}`} style={{ minWidth: depth, textAlign: 'center', transform: 'rotate(-90deg)' }}>
             {label}
           </span>
         )}
-      </div>
+      </motion.div>
 
       {/* Front-Left (Y-axis) Face */}
-      <div
-        className="absolute origin-right flex items-center justify-center overflow-visible transition-colors duration-700 backdrop-blur-md"
-        style={{
-          width: depth, height: h, top: 0, right: "100%",
-          border: `1px solid ${borderColor}`, backgroundColor: leftFaceColor,
-          transform: `translateZ(${depth}px) rotateY(-90deg)`,
+      <motion.div
+        className="absolute origin-right flex items-center justify-center overflow-hidden backdrop-blur-md"
+        animate={{
+          border: `1px solid ${borderColor}`,
+          backgroundColor: leftFaceColor,
         }}
+        transition={{ duration: 0.2 }}
+        style={{ height: h, width: depth, top: 0, right: "100%", z: depth, rotateY: "-90deg" }}
       >
         {label && textFace === "left" && (
           <span className={`block origin-center ${labelColor} text-[10px] md:text-[11px] tracking-[0.2em] font-mono whitespace-nowrap ${className}`} style={{ minWidth: h, textAlign: 'center' }}>
             {label}
           </span>
         )}
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
@@ -93,8 +104,24 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
   // Track the most recent active stage for the text transitions
   const stepText = step <= 4 ? "vaults" : step === 5 ? "agents" : "yield";
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const rotateX = useTransform(scrollYProgress, [0, 1], [50, 70]);
+  const rotateZ = useTransform(scrollYProgress, [0, 1], [-35, -55]);
+  const translateY = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
+  // Use a softer staggered scroll-driven depth
+  const baseDepth = 1;
+  const vaultDepth = useTransform(scrollYProgress, [0, 0.3], [baseDepth, 30]);
+  const agentsDepth = useTransform(scrollYProgress, [0.3, 0.6], [baseDepth, 100]);
+  const yieldDepth = useTransform(scrollYProgress, [0.6, 1], [baseDepth, 160]);
+
   return (
-    <div className="h-full w-full bg-[#030303] flex flex-col items-center justify-center relative overflow-hidden">
+    <div ref={containerRef} className="h-full w-full bg-[#030303] flex flex-col items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(215,215,182,0.05),transparent_70%)]" />
 
       <h2 className="absolute top-16 md:top-24 text-chrome font-medium text-4xl tracking-tight z-30">
@@ -105,11 +132,11 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
 
         {/* Left Column Text */}
         <div className="w-1/4 relative z-20 h-40 pointer-events-none md:pointer-events-auto">
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {stepText === "vaults" && (
               <motion.div
                 key="vaults"
-                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.3 }}
                 className="absolute inset-0"
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 1</div>
@@ -121,7 +148,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
             {stepText === "yield" && (
               <motion.div
                 key="yield"
-                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.01 }}
                 className="absolute inset-0"
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-[#d7d7b6]/30 bg-[#d7d7b6]/10 text-xs font-mono text-[#d7d7b6]">LAYER 3</div>
@@ -166,11 +193,11 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
 
         {/* Right Column Text */}
         <div className="w-1/4 pl-8 relative z-20 h-40 pointer-events-none md:pointer-events-auto">
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {stepText === "agents" && (
               <motion.div
                 key="agents"
-                initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 30 }} transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 30 }} transition={{ duration: 0.01 }}
                 className="absolute inset-0"
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 2</div>
