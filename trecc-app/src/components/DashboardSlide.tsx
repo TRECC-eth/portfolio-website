@@ -7,40 +7,40 @@ interface DashboardProps {
 // 60 Hand-crafted candles illustrating textbook crypto patterns.
 const MARKET_CANDLES = [
   // Phase 1: Wyckoff Distribution
-  {o: 120, c: 118, h: 110, l: 125, v: 20}, {o: 118, c: 122, h: 115, l: 125, v: 15},
-  {o: 122, c: 115, h: 110, l: 125, v: 25}, {o: 115, c: 112, h: 105, l: 120, v: 30},
-  {o: 112, c: 108, h: 100, l: 115, v: 35}, {o: 108, c: 110, h: 102, l: 115, v: 20},
-  {o: 110, c: 105, h: 98,  l: 112, v: 40}, {o: 105, c: 107, h: 100, l: 110, v: 25},
-  {o: 107, c: 102, h: 95,  l: 108, v: 30}, {o: 102, c: 104, h: 98,  l: 108, v: 15},
-  {o: 104, c: 100, h: 92,  l: 106, v: 35}, {o: 100, c: 103, h: 95,  l: 105, v: 20},
-  {o: 103, c: 105, h: 98,  l: 108, v: 15}, {o: 105, c: 108, h: 100, l: 112, v: 20},
-  {o: 108, c: 112, h: 105, l: 115, v: 25}, {o: 112, c: 110, h: 105, l: 115, v: 15},
-  {o: 110, c: 115, h: 108, l: 118, v: 30}, {o: 115, c: 118, h: 110, l: 120, v: 25},
-  {o: 118, c: 125, h: 115, l: 130, v: 40}, {o: 125, c: 122, h: 120, l: 128, v: 20},
+  { o: 120, c: 118, h: 110, l: 125, v: 20 }, { o: 118, c: 122, h: 115, l: 125, v: 15 },
+  { o: 122, c: 115, h: 110, l: 125, v: 25 }, { o: 115, c: 112, h: 105, l: 120, v: 30 },
+  { o: 112, c: 108, h: 100, l: 115, v: 35 }, { o: 108, c: 110, h: 102, l: 115, v: 20 },
+  { o: 110, c: 105, h: 98, l: 112, v: 40 }, { o: 105, c: 107, h: 100, l: 110, v: 25 },
+  { o: 107, c: 102, h: 95, l: 108, v: 30 }, { o: 102, c: 104, h: 98, l: 108, v: 15 },
+  { o: 104, c: 100, h: 92, l: 106, v: 35 }, { o: 100, c: 103, h: 95, l: 105, v: 20 },
+  { o: 103, c: 105, h: 98, l: 108, v: 15 }, { o: 105, c: 108, h: 100, l: 112, v: 20 },
+  { o: 108, c: 112, h: 105, l: 115, v: 25 }, { o: 112, c: 110, h: 105, l: 115, v: 15 },
+  { o: 110, c: 115, h: 108, l: 118, v: 30 }, { o: 115, c: 118, h: 110, l: 120, v: 25 },
+  { o: 118, c: 125, h: 115, l: 130, v: 40 }, { o: 125, c: 122, h: 120, l: 128, v: 20 },
 
   // Phase 2: Cascading Liquidation Crash
-  {o: 122, c: 140, h: 120, l: 145, v: 60}, {o: 140, c: 165, h: 135, l: 175, v: 85}, 
-  {o: 165, c: 190, h: 160, l: 200, v: 95}, {o: 190, c: 215, h: 185, l: 225, v: 110}, 
-  {o: 215, c: 205, h: 195, l: 220, v: 50}, {o: 205, c: 195, h: 185, l: 210, v: 45}, 
-  {o: 195, c: 200, h: 190, l: 205, v: 30}, 
-  {o: 200, c: 230, h: 195, l: 240, v: 120}, {o: 230, c: 255, h: 225, l: 265, v: 130}, 
-  {o: 255, c: 268, h: 250, l: 275, v: 90}, {o: 268, c: 275, h: 265, l: 285, v: 100},
-  {o: 275, c: 265, h: 260, l: 295, v: 180}, // Hammer
-  {o: 265, c: 268, h: 260, l: 272, v: 60}, {o: 268, c: 262, h: 258, l: 270, v: 40}, 
-  {o: 262, c: 258, h: 255, l: 265, v: 30},
+  { o: 122, c: 140, h: 120, l: 145, v: 60 }, { o: 140, c: 165, h: 135, l: 175, v: 85 },
+  { o: 165, c: 190, h: 160, l: 200, v: 95 }, { o: 190, c: 215, h: 185, l: 225, v: 110 },
+  { o: 215, c: 205, h: 195, l: 220, v: 50 }, { o: 205, c: 195, h: 185, l: 210, v: 45 },
+  { o: 195, c: 200, h: 190, l: 205, v: 30 },
+  { o: 200, c: 230, h: 195, l: 240, v: 120 }, { o: 230, c: 255, h: 225, l: 265, v: 130 },
+  { o: 255, c: 268, h: 250, l: 275, v: 90 }, { o: 268, c: 275, h: 265, l: 285, v: 100 },
+  { o: 275, c: 265, h: 260, l: 295, v: 180 }, // Hammer
+  { o: 265, c: 268, h: 260, l: 272, v: 60 }, { o: 268, c: 262, h: 258, l: 270, v: 40 },
+  { o: 262, c: 258, h: 255, l: 265, v: 30 },
 
   // Phase 3: Parabolic Breakout
-  {o: 258, c: 235, h: 230, l: 260, v: 90}, {o: 235, c: 210, h: 205, l: 240, v: 85}, 
-  {o: 210, c: 190, h: 185, l: 215, v: 75}, {o: 190, c: 175, h: 170, l: 195, v: 70}, 
-  {o: 175, c: 165, h: 160, l: 180, v: 65}, {o: 165, c: 155, h: 150, l: 170, v: 60}, 
-  {o: 155, c: 162, h: 152, l: 165, v: 30}, {o: 162, c: 168, h: 158, l: 172, v: 25}, 
-  {o: 168, c: 172, h: 165, l: 175, v: 20}, {o: 172, c: 168, h: 162, l: 175, v: 35}, 
-  {o: 168, c: 150, h: 145, l: 170, v: 100}, 
-  {o: 150, c: 125, h: 120, l: 155, v: 110}, {o: 125, c: 105, h: 100, l: 130, v: 120},
-  {o: 105, c: 85,  h: 80,  l: 110, v: 130}, {o: 85,  c: 90,  h: 80,  l: 95,  v: 50}, 
-  {o: 90,  c: 65,  h: 60,  l: 95,  v: 140}, {o: 65,  c: 45,  h: 40,  l: 70,  v: 150},
-  {o: 45,  c: 30,  h: 25,  l: 50,  v: 160}, {o: 30,  c: 20,  h: 15,  l: 35,  v: 180}, 
-  {o: 20,  c: 12,  h: 8,   l: 25,  v: 190}, {o: 12,  c: 5,   h: 2,   l: 15,  v: 200}
+  { o: 258, c: 235, h: 230, l: 260, v: 90 }, { o: 235, c: 210, h: 205, l: 240, v: 85 },
+  { o: 210, c: 190, h: 185, l: 215, v: 75 }, { o: 190, c: 175, h: 170, l: 195, v: 70 },
+  { o: 175, c: 165, h: 160, l: 180, v: 65 }, { o: 165, c: 155, h: 150, l: 170, v: 60 },
+  { o: 155, c: 162, h: 152, l: 165, v: 30 }, { o: 162, c: 168, h: 158, l: 172, v: 25 },
+  { o: 168, c: 172, h: 165, l: 175, v: 20 }, { o: 172, c: 168, h: 162, l: 175, v: 35 },
+  { o: 168, c: 150, h: 145, l: 170, v: 100 },
+  { o: 150, c: 125, h: 120, l: 155, v: 110 }, { o: 125, c: 105, h: 100, l: 130, v: 120 },
+  { o: 105, c: 85, h: 80, l: 110, v: 130 }, { o: 85, c: 90, h: 80, l: 95, v: 50 },
+  { o: 90, c: 65, h: 60, l: 95, v: 140 }, { o: 65, c: 45, h: 40, l: 70, v: 150 },
+  { o: 45, c: 30, h: 25, l: 50, v: 160 }, { o: 30, c: 20, h: 15, l: 35, v: 180 },
+  { o: 20, c: 12, h: 8, l: 25, v: 190 }, { o: 12, c: 5, h: 2, l: 15, v: 200 }
 ];
 
 const getCx = (i: number) => i * (1000 / MARKET_CANDLES.length) + 5 + ((1000 / MARKET_CANDLES.length) * 0.6) / 2;
@@ -51,29 +51,29 @@ export default function DashboardSlide({ step }: DashboardProps) {
   const isHedging = step >= 2;
   const isYielding = step >= 3;
 
-  const GREEN = "#0ECB81"; 
-  const RED = "#F6465D";   
+  const GREEN = "#0ECB81";
+  const RED = "#F6465D";
 
   let vaultPnl = "+$142.50";
   let activeCredit = "$50,000.00";
-  
+
   if (isBase && !isHedging) {
-    vaultPnl = "+$142.50"; 
-    activeCredit = "$50,000.00"; 
+    vaultPnl = "+$142.50";
+    activeCredit = "$50,000.00";
   } else if (isHedging && !isYielding) {
-    vaultPnl = "-$45.20"; 
-    activeCredit = "$50,000.00"; 
+    vaultPnl = "-$45.20";
+    activeCredit = "$50,000.00";
   } else if (isYielding) {
-    vaultPnl = "+$24,092.50"; 
-    activeCredit = "$500,000.00"; 
+    vaultPnl = "+$24,092.50";
+    activeCredit = "$500,000.00";
   }
 
   const isNegative = vaultPnl.includes("-");
   const pnlColorHex = isNegative ? RED : GREEN;
 
   return (
-    <div className="h-screen w-full bg-[#030303] flex flex-col items-center justify-start pt-[120px] pb-12 px-6 relative overflow-hidden box-border">
-      
+    <div className="h-screen w-full bg-[#030303] flex flex-col items-center justify-start pt-[85px] pb-12 px-6 relative overflow-hidden box-border">
+
       {/* Narrative Headers */}
       <div className="h-14 w-full flex items-center justify-center relative shrink-0 mb-8 z-30">
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: step === 1 ? 1 : 0, y: step === 1 ? 0 : -10 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="absolute">
@@ -94,7 +94,7 @@ export default function DashboardSlide({ step }: DashboardProps) {
       </div>
 
       {/* THE PLATFORM UI */}
-      <motion.div 
+      <motion.div
         initial={{ y: 60, opacity: 0 }}
         animate={{ y: isBase ? 0 : 60, opacity: isBase ? 1 : 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -102,7 +102,7 @@ export default function DashboardSlide({ step }: DashboardProps) {
         className="w-full max-w-[1080px] flex-1 min-h-[500px] max-h-[720px] flex flex-col shadow-[0_20px_60px_rgba(0,0,0,0.8)] rounded-xl"
       >
         <div className="w-full h-full overflow-hidden flex flex-col bg-[#0A0A0B] border border-white/5 rounded-xl relative">
-          
+
           {/* Header */}
           <div className="h-14 border-b border-white/5 flex items-center justify-between px-8 bg-[#0E0E10] shrink-0 z-20">
             <div className="flex items-center gap-6">
@@ -119,11 +119,11 @@ export default function DashboardSlide({ step }: DashboardProps) {
           </div>
 
           <div className="flex flex-1 min-h-0 overflow-hidden relative">
-            
+
             {/* Sidebar */}
             <div className="w-64 border-r border-white/5 p-6 hidden md:flex flex-col bg-[#0E0E10] shrink-0 z-20">
               <div className="text-[10px] text-[#50545a] font-bold mb-6 tracking-[0.2em]">WHITELISTED AGENTS</div>
-              
+
               <motion.div animate={{ backgroundColor: isHedging && !isYielding ? 'rgba(255, 255, 255, 0.03)' : 'transparent' }} className="p-3 rounded-lg mb-3 border border-transparent">
                 <div className="flex justify-between items-start mb-3">
                   <div className="flex items-center gap-2.5">
@@ -149,11 +149,11 @@ export default function DashboardSlide({ step }: DashboardProps) {
 
             {/* Main Chart Area */}
             <div className="flex-1 flex flex-col bg-[#050505] relative overflow-hidden">
-              
+
               <div className="absolute right-0 top-0 bottom-8 w-14 border-l border-white/5 flex flex-col justify-between py-6 text-[9px] text-[#50545a] items-end pr-3 bg-[#050505] z-10 font-mono shrink-0">
                 <span>$45.0k</span><span>$40.0k</span><span>$35.0k</span><span>$30.0k</span><span>$25.0k</span>
               </div>
-              
+
               <div className="absolute left-0 right-0 bottom-0 h-8 border-t border-white/5 flex justify-between items-center px-8 text-[9px] text-[#50545a] bg-[#050505] z-10 font-mono pr-20 shrink-0">
                 <span>09:00</span><span>12:00</span><span>15:00</span><span>18:00</span><span>21:00</span>
               </div>
@@ -168,34 +168,34 @@ export default function DashboardSlide({ step }: DashboardProps) {
                 <div>
                   <div className="text-[#50545a] text-[11px] mb-2 font-bold tracking-[0.2em]">VAULT NET PNL</div>
                   <AnimatePresence mode="popLayout">
-                    <motion.div 
+                    <motion.div
                       key={vaultPnl}
                       initial={{ opacity: 0, y: -10, filter: "blur(4px)" }}
                       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                       className="text-4xl font-light tracking-tight"
-                      style={{ color: pnlColorHex }} 
+                      style={{ color: pnlColorHex }}
                     >
                       {vaultPnl}
                     </motion.div>
                   </AnimatePresence>
                 </div>
               </div>
-              
+
               {/* SPACING FIX 3: Added generous margins inside the chart container (mt-4 mr-16 mb-12) to unclutter axes */}
               <div className="flex-1 relative mt-4 mr-16 mb-12 min-h-0 pl-8">
                 {/* We scale the viewbox slightly so the highest/lowest candles don't touch the ceiling/floor */}
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 -15 1000 330" preserveAspectRatio="none">
-                  
+
                   <motion.path
                     d={lineChartPath}
-                    fill="none" 
-                    stroke="#ffffff" 
-                    strokeWidth="1.5" 
-                    opacity="0.15" 
+                    fill="none"
+                    stroke="#ffffff"
+                    strokeWidth="1.5"
+                    opacity="0.15"
                     initial={{ pathLength: 0 }}
-                    animate={{ pathLength: isYielding ? 1 : (isHedging ? 35/60 : 20/60) }}
-                    transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }} 
+                    animate={{ pathLength: isYielding ? 1 : (isHedging ? 35 / 60 : 20 / 60) }}
+                    transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
                   />
 
                   <line x1="0" y1="120" x2="1000" y2="120" stroke="#30343a" strokeWidth="1" strokeDasharray="4 4" />
@@ -203,39 +203,39 @@ export default function DashboardSlide({ step }: DashboardProps) {
                   <g opacity="1">
                     {MARKET_CANDLES.map((c, i) => {
                       const isVisible = (i < 20 && isBase) || (i >= 20 && i < 35 && isHedging) || (i >= 35 && isYielding);
-                      const isUp = c.c < c.o; 
+                      const isUp = c.c < c.o;
                       const color = isUp ? GREEN : RED;
-                      const xPos = i * (1000 / MARKET_CANDLES.length) + 5; 
-                      const candleWidth = (1000 / MARKET_CANDLES.length) * 0.6; 
+                      const xPos = i * (1000 / MARKET_CANDLES.length) + 5;
+                      const candleWidth = (1000 / MARKET_CANDLES.length) * 0.6;
 
                       let relativeDelay = i;
                       if (isHedging && i >= 20) relativeDelay = i - 20;
                       if (isYielding && i >= 35) relativeDelay = i - 35;
-                      const animationDelay = isVisible ? relativeDelay * 0.04 : 0; 
+                      const animationDelay = isVisible ? relativeDelay * 0.04 : 0;
 
                       return (
                         <g key={i}>
-                          <motion.line 
-                            x1={xPos + candleWidth / 2} y1={c.h} 
-                            x2={xPos + candleWidth / 2} y2={c.l} 
+                          <motion.line
+                            x1={xPos + candleWidth / 2} y1={c.h}
+                            x2={xPos + candleWidth / 2} y2={c.l}
                             stroke={color} strokeWidth="1.5"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: isVisible ? 1 : 0 }}
                             transition={{ duration: 0.5, delay: animationDelay, ease: [0.22, 1, 0.36, 1] }}
                           />
-                          <motion.rect 
-                            x={xPos} y={Math.min(c.o, c.c)} 
-                            width={candleWidth} height={Math.max(1.5, Math.abs(c.o - c.c))} 
-                            fill={color} 
+                          <motion.rect
+                            x={xPos} y={Math.min(c.o, c.c)}
+                            width={candleWidth} height={Math.max(1.5, Math.abs(c.o - c.c))}
+                            fill={color}
                             initial={{ opacity: 0, scaleY: 0 }}
                             animate={{ opacity: isVisible ? 1 : 0, scaleY: isVisible ? 1 : 0 }}
                             transition={{ duration: 0.6, delay: animationDelay + 0.02, ease: [0.22, 1, 0.36, 1] }}
                             style={{ transformOrigin: `center ${c.o}px` }}
                           />
                           {/* SPACING FIX 4: Scaled volume bar multiplier down (from 0.4 to 0.25) so they don't hit the price candles */}
-                          <motion.rect 
-                            x={xPos} y={300 - (c.v * 0.25)} 
-                            width={candleWidth} height={c.v * 0.25} 
+                          <motion.rect
+                            x={xPos} y={300 - (c.v * 0.25)}
+                            width={candleWidth} height={c.v * 0.25}
                             fill={color} opacity="0.25"
                             initial={{ opacity: 0, scaleY: 0 }}
                             animate={{ opacity: isVisible ? 0.25 : 0, scaleY: isVisible ? 1 : 0 }}
