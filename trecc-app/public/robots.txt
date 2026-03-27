@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Block unnecessary / sensitive paths
+
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /node_modules/
+Disallow: /src/
+
+# Allow important assets
+
+Allow: /assets/
+Allow: /public/
+
+# Sitemap
+
+Sitemap: https://trecc.finance/sitemap.xml
