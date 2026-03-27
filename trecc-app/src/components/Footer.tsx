@@ -1,6 +1,41 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { motion, useMotionValue, useAnimationFrame, useTransform } from "framer-motion";
 import { FaGithub, FaTelegramPlane, FaDiscord } from "react-icons/fa";
 import treccLogo from "../assets/trecc-logo.png";
+
+function ShinyText({ text, speed = 5, color = "#b5b5b5", shineColor = "#ffffff", spread = 120, className = "" }: {
+  text: string; speed?: number; color?: string; shineColor?: string; spread?: number; className?: string;
+}) {
+  const progress = useMotionValue(0);
+  const elapsedRef = useRef(0);
+  const lastTimeRef = useRef<number | null>(null);
+
+  useAnimationFrame((time) => {
+    if (lastTimeRef.current === null) { lastTimeRef.current = time; return; }
+    elapsedRef.current += time - lastTimeRef.current;
+    lastTimeRef.current = time;
+    const p = (elapsedRef.current % (speed * 1000)) / (speed * 1000) * 100;
+    progress.set(p);
+  });
+
+  const backgroundPosition = useTransform(progress, (p) => `${150 - p * 2}% center`);
+
+  return (
+    <motion.span
+      className={className}
+      style={{
+        backgroundImage: `linear-gradient(${spread}deg, ${color} 0%, ${color} 35%, ${shineColor} 50%, ${color} 65%, ${color} 100%)`,
+        backgroundSize: "200% auto",
+        WebkitBackgroundClip: "text",
+        backgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundPosition,
+      }}
+    >
+      {text}
+    </motion.span>
+  );
+}
 
 export default function Footer() {
   const [logoPos, setLogoPos] = useState({ x: 0, y: 0 });
@@ -25,7 +60,7 @@ export default function Footer() {
       {/* Top Main Section with Huge Text */}
       <div className="w-full flex-grow flex items-end justify-center px-4 md:px-8 pb-12 z-10 select-none group">
         <h1 className="text-[25vw] leading-[0.75] font-serif font-medium tracking-tighter text-gray-200 text-center w-full group-hover:scale-[1.03] group-hover:text-gray-900 transition-all duration-700 ease-out">
-          TRECC
+          <ShinyText text="TRECC" speed={5} color="#d1d5db" shineColor="#9ca3af" spread={120} />
         </h1>
       </div>
 
