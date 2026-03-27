@@ -1,18 +1,17 @@
-import { motion } from "framer-motion";
 import { FaGithub, FaTwitter, FaTelegramPlane } from "react-icons/fa";
 import { FiArrowUpRight } from "react-icons/fi";
 
 export default function Footer() {
   return (
     <div className="h-screen w-full shrink-0 flex flex-col justify-between bg-[#0a0a0a] text-white pt-24 pb-8 px-8 md:px-24 border-t border-white/10 relative overflow-hidden">
-      
+
       {/* Decorative Blur Backgrounds */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto w-full flex-grow flex flex-col justify-center z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8">
-          
+
           {/* Main Brand Section */}
           <div className="md:col-span-6 flex flex-col">
             <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-500 mb-6">
