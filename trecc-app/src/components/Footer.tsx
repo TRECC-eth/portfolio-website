@@ -6,7 +6,7 @@ export default function Footer() {
   const [logoPos, setLogoPos] = useState({ x: 0, y: 0 });
 
   const moveLogo = () => {
-    const maxX = 60; 
+    const maxX = 60;
     const newX = (Math.random() - 0.5) * maxX * 2;
     setLogoPos({ x: newX, y: 0 });
   };
@@ -30,10 +30,10 @@ export default function Footer() {
       </div>
 
       {/* Bottom Section */}
-      <div className="w-full bg-[#070908] px-6 md:px-12 py-10 pt-16 z-10 border-t border-white/5 flex flex-col justify-between" style={{ minHeight: "35vh" }}>
-        
+      <div className="w-full bg-[#070908] px-6 md:px-12 pb-10 pt-12 z-10 border-t border-white/5 flex flex-col justify-end min-h-[20vh] md:min-h-[25vh]">
+
         {/* Social Icons row (Top right of bottom section) */}
-        <div className="flex justify-end gap-8 mb-16">
+        <div className="flex justify-end gap-6 mb-8">
           <a href="https://twitter.com/trecc_eth" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 hover:-translate-y-1 transition-all duration-300 ease-out">
             <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
           </a>
@@ -51,26 +51,26 @@ export default function Footer() {
         {/* Links row (Bottom row) */}
         <div className="hidden md:flex justify-between items-center text-sm font-medium text-white w-full">
           <span>{new Date().getFullYear()}</span>
-          
+
           <a href="#" className="hover:text-gray-300 transition-colors">Terms of Service</a>
-          
+
           <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
 
-          <div 
-            className="flex justify-center items-center px-4 w-32 h-12 z-20" 
+          <div
+            className="flex justify-center items-center px-4 w-32 h-12 z-20"
             onMouseLeave={resetLogo}
           >
-            <img 
-              src={treccLogo} 
-              alt="Trecc Logo" 
+            <img
+              src={treccLogo}
+              alt="Trecc Logo"
               onMouseEnter={moveLogo}
               style={{ transform: `translateX(${logoPos.x}px)` }}
-              className="w-8 h-8 object-contain transition-transform duration-200 ease-out cursor-default" 
+              className="w-8 h-8 object-contain transition-transform duration-200 ease-out cursor-default"
             />
           </div>
 
           <a href="#" className="hover:text-gray-300 transition-colors">Protocol Documentation</a>
-          
+
           <a href="https://github.com/TRECC-eth/Trecc-synthesis" className="hover:text-gray-300 transition-colors">GitHub Repository</a>
         </div>
 
@@ -82,7 +82,7 @@ export default function Footer() {
           <a href="#" className="hover:text-gray-400 transition-colors">Protocol Documentation</a>
           <a href="https://github.com/TRECC-eth/Trecc-synthesis" className="hover:text-gray-400 transition-colors">GitHub Repository</a>
         </div>
-        
+
       </div>
     </footer>
   );
