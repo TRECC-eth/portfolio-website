@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { motion, useMotionValue, useAnimationFrame, useTransform } from "framer-motion";
-import { FaGithub, FaTelegramPlane, FaDiscord } from "react-icons/fa";
+import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 import treccLogo from "../assets/favicon.png";
 
 function ShinyText({ text, speed = 5, color = "#b5b5b5", shineColor = "#ffffff", spread = 120, className = "" }: {
@@ -72,11 +73,11 @@ export default function Footer() {
           <a href="https://twitter.com/trecc_eth" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900 hover:-translate-y-1 transition-all duration-300 ease-out">
             <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
           </a>
-          <a href="#" className="text-gray-600 hover:text-gray-900 hover:-translate-y-1 transition-all duration-300 ease-out">
-            <FaDiscord className="w-7 h-7" />
+          <a href="https://youtube.com/@trecc.finance" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900 hover:-translate-y-1 transition-all duration-300 ease-out">
+            <FaYoutube className="w-7 h-7" />
           </a>
-          <a href="https://github.com/TRECC-eth/Trecc-synthesis" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900 hover:-translate-y-1 transition-all duration-300 ease-out">
-            <FaGithub className="w-7 h-7" />
+          <a href="mailto:treccxyz@gmail.com" className="text-gray-600 hover:text-gray-900 hover:-translate-y-1 transition-all duration-300 ease-out">
+            <MdEmail className="w-7 h-7" />
           </a>
           <a href="#" className="text-gray-600 hover:text-gray-900 hover:-translate-y-1 transition-all duration-300 ease-out">
             <FaTelegramPlane className="w-7 h-7" />
