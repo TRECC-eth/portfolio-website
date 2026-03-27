@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import Grainient from "./Grainient"; // <-- Make sure the path matches where you saved the component!
 
 interface DashboardProps {
   step: number;
@@ -72,9 +73,38 @@ export default function DashboardSlide({ step }: DashboardProps) {
   const pnlColorHex = isNegative ? RED : GREEN;
 
   return (
-    <div className="h-screen w-full bg-[#030303] flex flex-col items-center justify-start pt-[85px] pb-12 px-6 relative overflow-hidden box-border">
+    // Removed the solid background color so the Grainient shows through
+    <div className="h-screen w-full flex flex-col items-center justify-start pt-[120px] pb-12 px-6 relative overflow-hidden box-border">
+      
+      {/* BACKGROUND LAYER: The React Bits Grainient */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Grainient
+          color1="#858585"
+          color2="#000000"
+          color3="#7d7d7d"
+          timeSpeed={0.25}
+          colorBalance={0.54}
+          warpStrength={0.3}
+          warpFrequency={0.5}
+          warpSpeed={2}
+          warpAmplitude={50}
+          blendAngle={8}
+          blendSoftness={0.05}
+          rotationAmount={500}
+          noiseScale={2}
+          grainAmount={0.1}
+          grainScale={2}
+          grainAnimated={false}
+          contrast={1.5}
+          gamma={1}
+          saturation={1}
+          centerX={0}
+          centerY={0}
+          zoom={0.9}
+        />
+      </div>
 
-      {/* Narrative Headers */}
+      {/* Narrative Headers - Kept z-30 so it sits way above the background */}
       <div className="h-14 w-full flex items-center justify-center relative shrink-0 mb-8 z-30">
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: step === 1 ? 1 : 0, y: step === 1 ? 0 : -10 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="absolute">
           <h2 className="text-chrome font-medium text-3xl md:text-4xl tracking-tight text-center">
@@ -93,16 +123,15 @@ export default function DashboardSlide({ step }: DashboardProps) {
         </motion.div>
       </div>
 
-      {/* THE PLATFORM UI */}
-      <motion.div
+      {/* THE PLATFORM UI - Added relative and z-10 so it isn't hidden by the absolute background */}
+      <motion.div 
         initial={{ y: 60, opacity: 0 }}
         animate={{ y: isBase ? 0 : 60, opacity: isBase ? 1 : 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        // SPACING FIX 1: Scaled max-w down to 1080px to make it less overwhelming, and capped height so it breathes on top/bottom
-        className="w-full max-w-[1080px] flex-1 min-h-[500px] max-h-[720px] flex flex-col shadow-[0_20px_60px_rgba(0,0,0,0.8)] rounded-xl"
+        className="w-full max-w-[1080px] flex-1 min-h-[500px] max-h-[720px] flex flex-col shadow-[0_20px_60px_rgba(0,0,0,0.8)] rounded-xl relative z-10"
       >
-        <div className="w-full h-full overflow-hidden flex flex-col bg-[#0A0A0B] border border-white/5 rounded-xl relative">
-
+        <div className="w-full h-full overflow-hidden flex flex-col hyper-card relative">
+          
           {/* Header */}
           <div className="h-14 border-b border-white/5 flex items-center justify-between px-8 bg-[#0E0E10] shrink-0 z-20">
             <div className="flex items-center gap-6">
@@ -148,13 +177,13 @@ export default function DashboardSlide({ step }: DashboardProps) {
             </div>
 
             {/* Main Chart Area */}
-            <div className="flex-1 flex flex-col bg-[#050505] relative overflow-hidden">
-
-              <div className="absolute right-0 top-0 bottom-8 w-14 border-l border-white/5 flex flex-col justify-between py-6 text-[9px] text-[#50545a] items-end pr-3 bg-[#050505] z-10 font-mono shrink-0">
+            <div className="flex-1 flex flex-col bg-[#050505]/50 relative overflow-hidden">
+              
+              <div className="absolute right-0 top-0 bottom-8 w-14 border-l border-white/5 flex flex-col justify-between py-6 text-[9px] text-[#50545a] items-end pr-3 z-10 font-mono shrink-0">
                 <span>$45.0k</span><span>$40.0k</span><span>$35.0k</span><span>$30.0k</span><span>$25.0k</span>
               </div>
-
-              <div className="absolute left-0 right-0 bottom-0 h-8 border-t border-white/5 flex justify-between items-center px-8 text-[9px] text-[#50545a] bg-[#050505] z-10 font-mono pr-20 shrink-0">
+              
+              <div className="absolute left-0 right-0 bottom-0 h-8 border-t border-white/5 flex justify-between items-center px-8 text-[9px] text-[#50545a] z-10 font-mono pr-20 shrink-0">
                 <span>09:00</span><span>12:00</span><span>15:00</span><span>18:00</span><span>21:00</span>
               </div>
 
@@ -163,7 +192,6 @@ export default function DashboardSlide({ step }: DashboardProps) {
                 {[...Array(6)].map((_, i) => <div key={`v-${i}`} className="h-full border-l border-white absolute" style={{ left: `${i * 20}%` }} />)}
               </div>
 
-              {/* SPACING FIX 2: Increased bottom padding (pb-6) so text doesn't sit on the candles */}
               <div className="relative z-30 p-8 pb-6 flex justify-between items-end shrink-0">
                 <div>
                   <div className="text-[#50545a] text-[11px] mb-2 font-bold tracking-[0.2em]">VAULT NET PNL</div>
@@ -181,10 +209,8 @@ export default function DashboardSlide({ step }: DashboardProps) {
                   </AnimatePresence>
                 </div>
               </div>
-
-              {/* SPACING FIX 3: Added generous margins inside the chart container (mt-4 mr-16 mb-12) to unclutter axes */}
+              
               <div className="flex-1 relative mt-4 mr-16 mb-12 min-h-0 pl-8">
-                {/* We scale the viewbox slightly so the highest/lowest candles don't touch the ceiling/floor */}
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 -15 1000 330" preserveAspectRatio="none">
 
                   <motion.path
@@ -232,10 +258,9 @@ export default function DashboardSlide({ step }: DashboardProps) {
                             transition={{ duration: 0.6, delay: animationDelay + 0.02, ease: [0.22, 1, 0.36, 1] }}
                             style={{ transformOrigin: `center ${c.o}px` }}
                           />
-                          {/* SPACING FIX 4: Scaled volume bar multiplier down (from 0.4 to 0.25) so they don't hit the price candles */}
-                          <motion.rect
-                            x={xPos} y={300 - (c.v * 0.25)}
-                            width={candleWidth} height={c.v * 0.25}
+                          <motion.rect 
+                            x={xPos} y={300 - (c.v * 0.25)} 
+                            width={candleWidth} height={c.v * 0.25} 
                             fill={color} opacity="0.25"
                             initial={{ opacity: 0, scaleY: 0 }}
                             animate={{ opacity: isVisible ? 0.25 : 0, scaleY: isVisible ? 1 : 0 }}
