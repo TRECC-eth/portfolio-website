@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { motion, useMotionValue, useAnimationFrame, useTransform } from "framer-motion";
 import { FaGithub, FaTelegramPlane, FaDiscord } from "react-icons/fa";
-import treccLogo from "../assets/trecc-logo.png";
+import treccLogo from "../assets/favicon.png";
 
 function ShinyText({ text, speed = 5, color = "#b5b5b5", shineColor = "#ffffff", spread = 120, className = "" }: {
   text: string; speed?: number; color?: string; shineColor?: string; spread?: number; className?: string;
@@ -100,7 +100,7 @@ export default function Footer() {
               alt="Trecc Logo"
               onMouseEnter={moveLogo}
               style={{ transform: `translateX(${logoPos.x}px)` }}
-              className="w-8 h-8 object-contain transition-transform duration-200 ease-out cursor-default"
+              className="w-12 h-12 object-contain transition-transform duration-200 ease-out cursor-default"
             />
           </div>
 
