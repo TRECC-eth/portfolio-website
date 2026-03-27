@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import HeroSlide from "./components/HeroSlide";
 import DashboardSlide from "./components/DashboardSlide";
 import ArchitectureSlide from "./components/ArchitectureSlide";
+import Footer from "./components/Footer";
 
 export default function App() {
   // Swapped "Slide" for "Step" because we now have more steps than physical slides
@@ -104,10 +105,7 @@ export default function App() {
           <ArchitectureSlide step={currentStep} />
         </div>
 
-        <div className="h-screen w-full shrink-0 flex flex-col items-center justify-center bg-white text-black rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.5)] z-50">
-          <h2 className="text-5xl font-light tracking-tight mb-4">Ecosystem First.</h2>
-          <p className="text-gray-500">The next section of your platform.</p>
-        </div>
+        <Footer />
       </motion.div>
     </div>
   );
