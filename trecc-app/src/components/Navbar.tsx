@@ -8,18 +8,15 @@ export default function Navbar() {
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="pointer-events-auto w-full max-w-5xl flex items-center justify-between px-6 py-3 rounded-full border border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl"
+        className="pointer-events-auto w-full max-w-5xl flex items-center justify-between px-6 py-3 rounded-full border border-white/10 bg-black/40 backdrop-blur-xl"
       >
         {/* Logo Area */}
         <div className="flex items-center gap-3">
           <img
             src={logoImg}
             alt="TRECC"
-            className="h-8 w-auto object-contain brightness-0 invert opacity-90"
+            className="h-8 w-auto object-contain"
           />
-          <span className="text-white font-bold tracking-widest text-sm hidden sm:block">
-            TRECC
-          </span>
         </div>
 
         {/* Center Links */}
@@ -36,9 +33,14 @@ export default function Navbar() {
         </div>
 
         {/* Right CTA Button */}
-        <button className="bg-steel text-black px-6 py-2 rounded-full text-sm font-semibold font-['system-ui'] hover:brightness-125 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3),inset_0_2px_2px_rgba(255,255,255,0.9),inset_0_-2px_3px_rgba(0,0,0,0.2)] border border-white/50">
+        <a
+          href="https://app.trecc.finance"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-steel text-black px-6 py-2 rounded-full text-sm font-semibold font-['system-ui'] hover:brightness-125 transition-all border border-white/50"
+        >
           Launch App
-        </button>
+        </a>
       </motion.nav>
     </div>
   );
