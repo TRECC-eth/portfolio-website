@@ -39,7 +39,7 @@ const Block = ({
         opacity: active ? 1 : 0.0,
         z: active ? z : 0,
       }}
-      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       style={{
         left: x, top: y, width: w, height: h, transformStyle: "preserve-3d"
       }}
@@ -51,7 +51,7 @@ const Block = ({
           border: `1px solid ${borderColor}`,
           backgroundColor: topFaceColor,
         }}
-        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         style={{ z: depth, transformStyle: "preserve-3d" }}
       >
         {label && textFace === "top" && (
@@ -66,7 +66,7 @@ const Block = ({
           border: `1px solid ${borderColor}`,
           backgroundColor: rightFaceColor,
         }}
-        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8, ease: [0.5, 0, 1, 0.5] }}
         style={{ width: w, height: depth, top: "100%", left: 0, z: depth, rotateX: "-90deg" }}
       >
         {label && textFace === "right" && (
@@ -83,7 +83,7 @@ const Block = ({
           border: `1px solid ${borderColor}`,
           backgroundColor: leftFaceColor,
         }}
-        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8, ease: [0.5, 0, 1, 0.5] }}
         style={{ height: h, width: depth, top: 0, right: "100%", z: depth, rotateY: "-90deg" }}
       >
         {label && textFace === "left" && (
@@ -122,7 +122,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
             {stepText === "vaults" && (
               <motion.div
                 key="vaults"
-                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.01 }}
+                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.6 }}
                 className="absolute inset-0"
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 1</div>
@@ -134,7 +134,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
             {stepText === "yield" && (
               <motion.div
                 key="yield"
-                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.01 }}
+                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.6 }}
                 className="absolute inset-0"
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-[#d7d7b6]/30 bg-[#d7d7b6]/10 text-xs font-mono text-[#d7d7b6]">LAYER 3</div>
@@ -170,6 +170,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
               {/* Connection Line connecting the highlight to the text (Decorative) */}
               <motion.div
                 animate={{ opacity: yieldActive ? 1 : 0 }}
+                transition={{ duration: 0.8 }}
                 className="absolute left-[-150px] top-[100px] w-[150px] h-[1px] bg-[#d7d7b6]/50"
                 style={{ transform: "translateZ(200px) rotateZ(45deg)", transformOrigin: "right center" }}
               />
@@ -183,7 +184,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
             {stepText === "agents" && (
               <motion.div
                 key="agents"
-                initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 30 }} transition={{ duration: 0.01 }}
+                initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 30 }} transition={{ duration: 0.6 }}
                 className="absolute inset-0"
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 2</div>
