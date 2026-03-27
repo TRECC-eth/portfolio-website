@@ -2,13 +2,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRef } from "react";
 
 const Block = ({
-  x, y, z, w, h, depth, label, active, highlight = false, textFace = "top", className = ""
+  x, y, z, w, h, depth, label, active, highlight = false, textFace = "top", className = "", delay = 0
 }: {
   x: number, y: number, z: number, w: number, h: number, depth: number,
-  label: string, active: boolean, highlight?: boolean, textFace?: "top" | "right" | "left", className?: string
+  label: string, active: boolean, highlight?: boolean, textFace?: "top" | "right" | "left", className?: string, delay?: number
 }) => {
   // Define stronger 3D lighting states mapped to the reference images
   // Using variations of #d7d7b6 (approx 215, 215, 182)
+
+  const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
   // Outer wireframe borders
   const borderColor = active
@@ -37,11 +39,11 @@ const Block = ({
       className="absolute"
       animate={{
         opacity: active ? 1 : 0.0,
-        z: active ? z : 0,
+
       }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.4, ease: smoothEase }}
       style={{
-        left: x, top: y, width: w, height: h, transformStyle: "preserve-3d"
+        left: x, top: y, width: w, height: h, transformStyle: "preserve-3d", transform: `translateZ(${z}px)`
       }}
     >
       {/* Top Face */}
@@ -50,9 +52,10 @@ const Block = ({
         animate={{
           border: `1px solid ${borderColor}`,
           backgroundColor: topFaceColor,
+          z: active ? depth : 0
         }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        style={{ z: depth, transformStyle: "preserve-3d" }}
+        transition={{ duration: 0.8, ease: smoothEase, delay: active ? delay : 0 }}
+        style={{ z: depth, transformStyle: "preserve-3d", borderWidth: 1, borderStyle: "solid" }}
       >
         {label && textFace === "top" && (
           <span className={`${labelColor} text-[8px] md:text-[9px] font-mono tracking-wider -rotate-45 ${className}`}>{label}</span>
@@ -65,9 +68,11 @@ const Block = ({
         animate={{
           border: `1px solid ${borderColor}`,
           backgroundColor: rightFaceColor,
+          height: active ? depth : 0,
+          z: active ? depth : 0,
         }}
-        transition={{ duration: 0.8, ease: [0.5, 0, 1, 0.5] }}
-        style={{ width: w, height: depth, top: "100%", left: 0, z: depth, rotateX: "-90deg" }}
+        transition={{ duration: 0.8, ease: smoothEase, delay: active ? delay : 0 }}
+        style={{ width: w, height: depth, top: "100%", left: 0, z: depth, rotateX: "-90deg", borderWidth: 1, borderStyle: "solid" }}
       >
         {label && textFace === "right" && (
           <span className={`block origin-center ${labelColor} text-[7px] md:text-[8px] tracking-[0.15em] font-mono whitespace-nowrap ${className}`} style={{ minWidth: depth, textAlign: 'center', transform: 'rotate(-90deg)' }}>
@@ -82,9 +87,11 @@ const Block = ({
         animate={{
           border: `1px solid ${borderColor}`,
           backgroundColor: leftFaceColor,
+          width: active ? depth : 0,
+          z: active ? depth : 0,
         }}
-        transition={{ duration: 0.8, ease: [0.5, 0, 1, 0.5] }}
-        style={{ height: h, width: depth, top: 0, right: "100%", z: depth, rotateY: "-90deg" }}
+        transition={{ duration: 0.8, ease: smoothEase, delay: active ? delay : 0 }}
+        style={{ height: h, width: depth, top: 0, right: "100%", z: depth, rotateY: "-90deg", borderWidth: 1, borderStyle: "solid" }}
       >
         {label && textFace === "left" && (
           <span className={`block origin-center ${labelColor} text-[8px] md:text-[9px] tracking-[0.15em] font-mono whitespace-nowrap ${className}`} style={{ minWidth: h, textAlign: 'center' }}>

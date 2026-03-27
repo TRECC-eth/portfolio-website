@@ -58,12 +58,12 @@ export default function App() {
       setCurrentStep((prev) => {
         // Skip step 4 when scrolling down from 3 so the vaults load instantly when transitioning from Dashboard to Architecture
         if (prev === 3 && direction === 1) return 4;
-        
+
         return prev + direction;
       });
       setTimeout(() => {
         isAnimating.current = false;
-      }, 500);
+      }, 900);
     };
 
     window.addEventListener("wheel", handleWheel, { passive: false });
