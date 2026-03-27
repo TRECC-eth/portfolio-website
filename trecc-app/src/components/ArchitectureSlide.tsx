@@ -39,7 +39,7 @@ const Block = ({
         opacity: active ? 1 : 0.0,
         z: active ? z : 0,
       }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
       style={{
         left: x, top: y, width: w, height: h, transformStyle: "preserve-3d"
       }}
@@ -83,7 +83,7 @@ const Block = ({
           border: `1px solid ${borderColor}`,
           backgroundColor: leftFaceColor,
         }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
         style={{ height: h, width: depth, top: 0, right: "100%", z: depth, rotateY: "-90deg" }}
       >
         {label && textFace === "left" && (
@@ -122,7 +122,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
             {stepText === "vaults" && (
               <motion.div
                 key="vaults"
-                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.01 }}
                 className="absolute inset-0"
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 1</div>
