@@ -1,70 +1,89 @@
-import { FaGithub, FaTwitter, FaTelegramPlane } from "react-icons/fa";
-import { FiArrowUpRight } from "react-icons/fi";
+import { useState } from "react";
+import { FaGithub, FaTelegramPlane, FaDiscord } from "react-icons/fa";
+import treccLogo from "../assets/trecc-logo.png";
 
 export default function Footer() {
+  const [logoPos, setLogoPos] = useState({ x: 0, y: 0 });
+
+  const moveLogo = () => {
+    const maxX = 60; 
+    const newX = (Math.random() - 0.5) * maxX * 2;
+    setLogoPos({ x: newX, y: 0 });
+  };
+
+  const resetLogo = () => {
+    setLogoPos({ x: 0, y: 0 });
+  };
+
   return (
-    <div className="h-screen w-full shrink-0 flex flex-col justify-between bg-[#0a0a0a] text-white pt-24 pb-8 px-8 md:px-24 border-t border-white/10 relative overflow-hidden">
+    <footer className="w-full h-screen shrink-0 flex flex-col bg-[#0a0a0a] text-white pt-12 relative overflow-hidden">
 
       {/* Decorative Blur Backgrounds */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto w-full flex-grow flex flex-col justify-center z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8">
-
-          {/* Main Brand Section */}
-          <div className="md:col-span-6 flex flex-col">
-            <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-500 mb-6">
-              TRECC
-            </h2>
-            <p className="text-gray-400 text-lg md:text-xl max-w-md font-light mb-8">
-              Trustless Reputation & Evaluation Credit. The ERC-8004 AI Agent Lending protocol powering the agentic economy.
-            </p>
-            <div className="flex gap-4">
-              <a href="https://github.com/TRECC-eth/Trecc-synthesis" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 hover:bg-white/10 rounded-full transition-colors border border-white/10">
-                <FaGithub className="w-5 h-5 text-gray-300" />
-              </a>
-              <a href="https://twitter.com/trecc_eth" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 hover:bg-white/10 rounded-full transition-colors border border-white/10">
-                <FaTwitter className="w-5 h-5 text-gray-300" />
-              </a>
-              <a href="#" className="p-3 bg-white/5 hover:bg-white/10 rounded-full transition-colors border border-white/10">
-                <FaTelegramPlane className="w-5 h-5 text-gray-300" />
-              </a>
-            </div>
-          </div>
-
-          {/* Links Section */}
-          <div className="md:col-span-3">
-            <h4 className="text-lg font-medium mb-6 text-gray-200">Protocol</h4>
-            <ul className="space-y-4 text-gray-400 font-light">
-              <li><a href="#" className="hover:text-white transition-colors flex items-center group">Smart Contracts <FiArrowUpRight className="w-3 h-3 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" /></a></li>
-              <li><a href="#" className="hover:text-white transition-colors flex items-center group">Identity Registry <FiArrowUpRight className="w-3 h-3 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" /></a></li>
-              <li><a href="#" className="hover:text-white transition-colors flex items-center group">Reputation Score <FiArrowUpRight className="w-3 h-3 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" /></a></li>
-              <li><a href="#" className="hover:text-white transition-colors flex items-center group">EIP-712 KYC <FiArrowUpRight className="w-3 h-3 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" /></a></li>
-            </ul>
-          </div>
-
-          <div className="md:col-span-3">
-            <h4 className="text-lg font-medium mb-6 text-gray-200">Developers</h4>
-            <ul className="space-y-4 text-gray-400 font-light">
-              <li><a href="https://github.com/TRECC-eth/Trecc-synthesis" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Documentation</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Setup Guide</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">GitHub Repository</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Coinbase Vault Integration</a></li>
-            </ul>
-          </div>
-
-        </div>
+      {/* Top Main Section with Huge Text */}
+      <div className="w-full flex-grow flex items-end justify-center px-4 md:px-8 pb-12 z-10 select-none group">
+        <h1 className="text-[25vw] leading-[0.75] font-serif font-medium tracking-tighter text-[#e0e0e0] text-center w-full group-hover:scale-[1.03] group-hover:text-white transition-all duration-700 ease-out">
+          TRECC
+        </h1>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="max-w-7xl mx-auto w-full pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between z-10 text-sm text-gray-500 font-light">
-        <p>© {new Date().getFullYear()} TRECC Protocol. All rights reserved.</p>
-        <div className="flex gap-6 mt-4 md:mt-0">
+      {/* Bottom Section */}
+      <div className="w-full bg-[#070908] px-6 md:px-12 py-10 pt-16 z-10 border-t border-white/5 flex flex-col justify-between" style={{ minHeight: "35vh" }}>
+        
+        {/* Social Icons row (Top right of bottom section) */}
+        <div className="flex justify-end gap-8 mb-16">
+          <a href="https://twitter.com/trecc_eth" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 hover:-translate-y-1 transition-all duration-300 ease-out">
+            <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+          </a>
+          <a href="#" className="text-white hover:text-gray-300 hover:-translate-y-1 transition-all duration-300 ease-out">
+            <FaDiscord className="w-7 h-7" />
+          </a>
+          <a href="https://github.com/TRECC-eth/Trecc-synthesis" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 hover:-translate-y-1 transition-all duration-300 ease-out">
+            <FaGithub className="w-7 h-7" />
+          </a>
+          <a href="#" className="text-white hover:text-gray-300 hover:-translate-y-1 transition-all duration-300 ease-out">
+            <FaTelegramPlane className="w-7 h-7" />
+          </a>
+        </div>
+
+        {/* Links row (Bottom row) */}
+        <div className="hidden md:flex justify-between items-center text-sm font-medium text-white w-full">
+          <span>{new Date().getFullYear()}</span>
+          
           <a href="#" className="hover:text-gray-300 transition-colors">Terms of Service</a>
+          
           <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
+
+          <div 
+            className="flex justify-center items-center px-4 w-32 h-12 z-20" 
+            onMouseLeave={resetLogo}
+          >
+            <img 
+              src={treccLogo} 
+              alt="Trecc Logo" 
+              onMouseEnter={moveLogo}
+              style={{ transform: `translateX(${logoPos.x}px)` }}
+              className="w-8 h-8 object-contain transition-transform duration-200 ease-out cursor-default" 
+            />
+          </div>
+
+          <a href="#" className="hover:text-gray-300 transition-colors">Protocol Documentation</a>
+          
+          <a href="https://github.com/TRECC-eth/Trecc-synthesis" className="hover:text-gray-300 transition-colors">GitHub Repository</a>
         </div>
+
+        {/* Mobile Links row */}
+        <div className="flex md:hidden flex-wrap justify-center gap-4 items-center text-sm font-medium text-white w-full">
+          <span>{new Date().getFullYear()}</span>
+          <a href="#" className="hover:text-gray-400 transition-colors">Terms of Service</a>
+          <a href="#" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-gray-400 transition-colors">Protocol Documentation</a>
+          <a href="https://github.com/TRECC-eth/Trecc-synthesis" className="hover:text-gray-400 transition-colors">GitHub Repository</a>
+        </div>
+        
       </div>
-    </div>
+    </footer>
   );
 }
