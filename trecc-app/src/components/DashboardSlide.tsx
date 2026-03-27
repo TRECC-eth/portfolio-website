@@ -75,9 +75,9 @@ export default function DashboardSlide({ step }: DashboardProps) {
   return (
     // Removed the solid background color so the Grainient shows through
     <div className="h-screen w-full flex flex-col items-center justify-start pt-[120px] pb-12 px-6 relative overflow-hidden box-border">
-      
+
       {/* BACKGROUND LAYER: The React Bits Grainient */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
         <Grainient
           color1="#858585"
           color2="#000000"
@@ -124,14 +124,14 @@ export default function DashboardSlide({ step }: DashboardProps) {
       </div>
 
       {/* THE PLATFORM UI - Added relative and z-10 so it isn't hidden by the absolute background */}
-      <motion.div 
+      <motion.div
         initial={{ y: 60, opacity: 0 }}
         animate={{ y: isBase ? 0 : 60, opacity: isBase ? 1 : 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="w-full max-w-[1080px] flex-1 min-h-[500px] max-h-[720px] flex flex-col shadow-[0_20px_60px_rgba(0,0,0,0.8)] rounded-xl relative z-10"
       >
         <div className="w-full h-full overflow-hidden flex flex-col hyper-card relative">
-          
+
           {/* Header */}
           <div className="h-14 border-b border-white/5 flex items-center justify-between px-8 bg-[#0E0E10] shrink-0 z-20">
             <div className="flex items-center gap-6">
@@ -178,11 +178,11 @@ export default function DashboardSlide({ step }: DashboardProps) {
 
             {/* Main Chart Area */}
             <div className="flex-1 flex flex-col bg-[#050505]/50 relative overflow-hidden">
-              
+
               <div className="absolute right-0 top-0 bottom-8 w-14 border-l border-white/5 flex flex-col justify-between py-6 text-[9px] text-[#50545a] items-end pr-3 z-10 font-mono shrink-0">
                 <span>$45.0k</span><span>$40.0k</span><span>$35.0k</span><span>$30.0k</span><span>$25.0k</span>
               </div>
-              
+
               <div className="absolute left-0 right-0 bottom-0 h-8 border-t border-white/5 flex justify-between items-center px-8 text-[9px] text-[#50545a] z-10 font-mono pr-20 shrink-0">
                 <span>09:00</span><span>12:00</span><span>15:00</span><span>18:00</span><span>21:00</span>
               </div>
@@ -209,7 +209,7 @@ export default function DashboardSlide({ step }: DashboardProps) {
                   </AnimatePresence>
                 </div>
               </div>
-              
+
               <div className="flex-1 relative mt-4 mr-16 mb-12 min-h-0 pl-8">
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 -15 1000 330" preserveAspectRatio="none">
 
@@ -258,9 +258,9 @@ export default function DashboardSlide({ step }: DashboardProps) {
                             transition={{ duration: 0.6, delay: animationDelay + 0.02, ease: [0.22, 1, 0.36, 1] }}
                             style={{ transformOrigin: `center ${c.o}px` }}
                           />
-                          <motion.rect 
-                            x={xPos} y={300 - (c.v * 0.25)} 
-                            width={candleWidth} height={c.v * 0.25} 
+                          <motion.rect
+                            x={xPos} y={300 - (c.v * 0.25)}
+                            width={candleWidth} height={c.v * 0.25}
                             fill={color} opacity="0.25"
                             initial={{ opacity: 0, scaleY: 0 }}
                             animate={{ opacity: isVisible ? 0.25 : 0, scaleY: isVisible ? 1 : 0 }}

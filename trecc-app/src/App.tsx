@@ -86,7 +86,7 @@ export default function App() {
 
   return (
     <div className="fixed inset-0 w-full h-screen bg-[#030303] text-white overflow-hidden font-sans">
-      <Navbar />
+      <Navbar isLightMode={currentStep >= 7} />
 
       <motion.div
         className="w-full h-full flex flex-col"
