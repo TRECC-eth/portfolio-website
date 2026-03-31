@@ -3,8 +3,6 @@ import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import treccLogo from "../assets/favicon.png";
 
-<<<<<<< Updated upstream
-=======
 function ShinyText({ text, speed = 5, color = "#e5e7eb", shineColor = "#000000", spread = 120, className = "" }: {
   text: string; speed?: number; color?: string; shineColor?: string; spread?: number; className?: string;
 }) {
@@ -39,7 +37,6 @@ function ShinyText({ text, speed = 5, color = "#e5e7eb", shineColor = "#000000",
   );
 }
 
->>>>>>> Stashed changes
 export default function Footer() {
   const [logoPos, setLogoPos] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
