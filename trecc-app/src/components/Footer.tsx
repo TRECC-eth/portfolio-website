@@ -1,14 +1,19 @@
 import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import treccLogo from "../assets/favicon.png";
+import Threads from "./Threads";
 
 export default function Footer() {
   return (
-    <footer id="TRECC-footer" className="w-full mt-auto bg-white text-gray-600 px-8 py-16 md:px-16 border-t border-gray-100 flex flex-col font-sans shrink-0">
-      
+    <div>
+      <div style={{ width: "100%", height: "220px", background: "#f9fafb" }}>
+        <Threads color={[0.2, 0.2, 0.3]} amplitude={1.5} distance={0.4} />
+      </div>
+      <footer id="TRECC-footer" className="w-full mt-auto bg-white text-gray-600 px-8 py-16 md:px-16 border-t border-gray-100 flex flex-col font-sans shrink-0">
+
       {/* Top Section: Link Columns */}
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-12 mb-16">
-        
+
         {/* Left side Background/Logo area */}
         <div className="flex flex-col gap-4 max-w-xs">
           <div className="flex items-center gap-3 mb-2">
@@ -16,7 +21,7 @@ export default function Footer() {
             <span className="text-xl font-bold tracking-tight text-gray-900">TRECC</span>
           </div>
           <p className="text-sm text-gray-500 leading-relaxed">
-             Building the decentralized future. Join our community to access protocol documentation, discussions, and updates.
+            Building the decentralized future. Join our community to access protocol documentation, discussions, and updates.
           </p>
           <div className="flex items-center gap-3 mt-2">
             <a href="https://twitter.com/trecc_eth" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-50 border border-gray-200 rounded-md hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-colors">
@@ -61,33 +66,33 @@ export default function Footer() {
 
       {/* Newsletter Section */}
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-10 mb-10">
-        
+
         {/* Newsletter Text */}
         <div className="flex flex-col gap-2 max-w-md">
-          <h4 className="text-gray-900 font-semibold text-base">Never miss an update</h4>
+          <h4 className="text-gray-900 font-semibold text-base">Join the waitlist</h4>
           <p className="text-sm text-gray-500 leading-relaxed">
-            Get all the latest news, blog posts and product updates from <strong className="text-gray-800">TRECC</strong>. Delivered directly to your inbox. We'll rarely send more than one email a month.
+            Be the first to experience the future of our ecosystem. Join the <strong className="text-gray-800">TRECC</strong> waitlist to secure your spot for early access, exclusive sneak peeks, and priority onboarding.
           </p>
         </div>
 
         {/* Newsletter Form */}
         <div className="flex flex-col gap-3 w-full md:w-auto">
           <div className="flex gap-2 w-full md:w-[420px]">
-            <input 
-              type="email" 
-              placeholder="example@gmail.com" 
+            <input
+              type="email"
+              placeholder="example@gmail.com"
               className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all placeholder:text-gray-400"
             />
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="px-6 py-2.5 bg-white text-gray-900 border border-gray-200 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
             >
               Join
             </button>
           </div>
           <label className="flex items-center gap-2 cursor-pointer group">
-            <input 
-              type="checkbox" 
+            <input
+              type="checkbox"
               className="w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900 cursor-pointer"
             />
             <span className="text-xs text-gray-500 group-hover:text-gray-700 transition-colors mt-0.5">
@@ -105,7 +110,8 @@ export default function Footer() {
           <a href="#" className="hover:text-gray-900 hover:underline transition-colors">Terms of Service</a>
         </div>
       </div>
-      
+
     </footer>
+    </div>
   );
 }
