@@ -2,6 +2,40 @@ import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import treccLogo from "../assets/favicon.png";
 
+function ShinyText({ text, speed = 5, color = "#e5e7eb", shineColor = "#000000", spread = 120, className = "" }: {
+  text: string; speed?: number; color?: string; shineColor?: string; spread?: number; className?: string;
+}) {
+  const progress = useMotionValue(0);
+  const elapsedRef = useRef(0);
+  const lastTimeRef = useRef<number | null>(null);
+
+  useAnimationFrame((time) => {
+    if (lastTimeRef.current === null) { lastTimeRef.current = time; return; }
+    elapsedRef.current += time - lastTimeRef.current;
+    lastTimeRef.current = time;
+    const p = (elapsedRef.current % (speed * 1000)) / (speed * 1000) * 100;
+    progress.set(p);
+  });
+
+  const backgroundPosition = useTransform(progress, (p) => `${150 - p * 2}% center`);
+
+  return (
+    <motion.span
+      className={className}
+      style={{
+        backgroundImage: `linear-gradient(${spread}deg, ${color} 0%, ${color} 35%, ${shineColor} 50%, ${color} 65%, ${color} 100%)`,
+        backgroundSize: "200% auto",
+        WebkitBackgroundClip: "text",
+        backgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundPosition,
+      }}
+    >
+      {text}
+    </motion.span>
+  );
+}
+
 export default function Footer() {
   return (
     <footer id="TRECC-footer" className="w-full mt-auto bg-[#0a0a0a] text-gray-400 py-16 px-8 md:px-16 border-t border-[#1f1f1f] flex flex-col md:flex-row justify-between gap-12 font-sans shrink-0">
