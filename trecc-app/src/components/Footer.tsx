@@ -2,103 +2,110 @@ import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import treccLogo from "../assets/favicon.png";
 
-function ShinyText({ text, speed = 5, color = "#e5e7eb", shineColor = "#000000", spread = 120, className = "" }: {
-  text: string; speed?: number; color?: string; shineColor?: string; spread?: number; className?: string;
-}) {
-  const progress = useMotionValue(0);
-  const elapsedRef = useRef(0);
-  const lastTimeRef = useRef<number | null>(null);
-
-  useAnimationFrame((time) => {
-    if (lastTimeRef.current === null) { lastTimeRef.current = time; return; }
-    elapsedRef.current += time - lastTimeRef.current;
-    lastTimeRef.current = time;
-    const p = (elapsedRef.current % (speed * 1000)) / (speed * 1000) * 100;
-    progress.set(p);
-  });
-
-  const backgroundPosition = useTransform(progress, (p) => `${150 - p * 2}% center`);
-
-  return (
-    <motion.span
-      className={className}
-      style={{
-        backgroundImage: `linear-gradient(${spread}deg, ${color} 0%, ${color} 35%, ${shineColor} 50%, ${color} 65%, ${color} 100%)`,
-        backgroundSize: "200% auto",
-        WebkitBackgroundClip: "text",
-        backgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        backgroundPosition,
-      }}
-    >
-      {text}
-    </motion.span>
-  );
-}
-
 export default function Footer() {
   return (
-    <footer id="TRECC-footer" className="w-full mt-auto bg-[#0a0a0a] text-gray-400 py-16 px-8 md:px-16 border-t border-[#1f1f1f] flex flex-col md:flex-row justify-between gap-12 font-sans shrink-0">
-      {/* Left side */}
-      <div className="flex flex-col gap-6 max-w-xs">
-        {/* Logo and brand */}
-        <div className="flex items-center gap-2">
-          <img src={treccLogo} alt="Trecc Logo" className="w-8 h-8 object-contain rounded" />
-          <span className="text-2xl font-bold tracking-tight text-white">TRECC</span>
-        </div>
-
-        {/* Socials */}
-        <div className="flex items-center gap-4 text-gray-500 mt-2">
-          <a href="https://twitter.com/trecc_eth" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-          </a>
-          <a href="https://youtube.com/@trecc.finance" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-            <FaYoutube className="w-6 h-6" />
-          </a>
-          <a href="mailto:treccxyz@gmail.com" className="hover:text-white transition-colors">
-            <MdEmail className="w-6 h-6" />
-          </a>
-          <a href="#" className="hover:text-white transition-colors">
-            <FaTelegramPlane className="w-5 h-5" />
-          </a>
-        </div>
-
-        {/* Bottom items */}
-        <div className="text-sm text-gray-500 mt-8 flex flex-col gap-3">
-          <div className="flex items-center border border-[#2a2a2a] rounded-md w-fit px-3 py-1.5 cursor-pointer hover:bg-[#1a1a1a] transition-colors">
-            <span className="mr-2">🌐</span>
-            <span className="font-medium text-gray-300">English (US)</span>
-            <span className="ml-2 text-xs">▼</span>
+    <footer id="TRECC-footer" className="w-full mt-auto bg-white text-gray-600 px-8 py-16 md:px-16 border-t border-gray-100 flex flex-col font-sans shrink-0">
+      
+      {/* Top Section: Link Columns */}
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-12 mb-16">
+        
+        {/* Left side Background/Logo area */}
+        <div className="flex flex-col gap-4 max-w-xs">
+          <div className="flex items-center gap-3 mb-2">
+            <img src={treccLogo} alt="Trecc Logo" className="w-8 h-8 object-contain rounded" />
+            <span className="text-xl font-bold tracking-tight text-gray-900">TRECC</span>
           </div>
-          <p className="cursor-pointer hover:underline hover:text-gray-300 mt-2">Cookie settings</p>
-          <p>© {new Date().getFullYear()} TRECC Labs, Inc.</p>
+          <p className="text-sm text-gray-500 leading-relaxed">
+             Building the decentralized future. Join our community to access protocol documentation, discussions, and updates.
+          </p>
+          <div className="flex items-center gap-3 mt-2">
+            <a href="https://twitter.com/trecc_eth" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-50 border border-gray-200 rounded-md hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-colors">
+              <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+            </a>
+            <a href="https://youtube.com/@trecc.finance" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-50 border border-gray-200 rounded-md hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-colors">
+              <FaYoutube className="w-4 h-4" />
+            </a>
+            <a href="mailto:treccxyz@gmail.com" className="p-2 bg-gray-50 border border-gray-200 rounded-md hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-colors">
+              <MdEmail className="w-4 h-4" />
+            </a>
+            <a href="#" className="p-2 bg-gray-50 border border-gray-200 rounded-md hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-colors">
+              <FaTelegramPlane className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+
+        {/* Right side Links Area (2 Columns) */}
+        <div className="grid grid-cols-2 gap-16 md:gap-32 w-full md:w-auto">
+          {/* Company Column */}
+          <div className="flex flex-col gap-4 text-sm">
+            <h3 className="font-mono text-xs text-gray-400 mb-2 tracking-wider uppercase">// Company</h3>
+            <a href="#" className="hover:text-gray-900 font-medium transition-colors">About us</a>
+            <a href="#" className="hover:text-gray-900 font-medium transition-colors">Careers</a>
+            <a href="#" className="hover:text-gray-900 font-medium transition-colors">Security</a>
+            <a href="#" className="hover:text-gray-900 font-medium transition-colors">Status</a>
+          </div>
+
+          {/* Resources Column */}
+          <div className="flex flex-col gap-4 text-sm">
+            <h3 className="font-mono text-xs text-gray-400 mb-2 tracking-wider uppercase">// Resources</h3>
+            <a href="#" className="hover:text-gray-900 font-medium transition-colors">Help center</a>
+            <a href="https://github.com/TRECC-eth/Trecc-synthesis" className="hover:text-gray-900 font-medium transition-colors">GitHub Repository</a>
+            <a href="#" className="hover:text-gray-900 font-medium transition-colors">Protocol Documentation</a>
+            <a href="#" className="hover:text-gray-900 font-medium transition-colors">Community</a>
+          </div>
         </div>
       </div>
 
-      {/* Right side - Links */}
-      <div className="grid grid-cols-2 gap-16 md:gap-32 text-sm text-gray-400 mt-2 md:mt-0">
-        {/* Company Column */}
-        <div className="flex flex-col gap-3">
-          <h3 className="font-semibold text-white mb-2 text-base">Company</h3>
-          <a href="#" className="hover:text-white hover:underline transition-colors">About us</a>
-          <a href="#" className="hover:text-white hover:underline transition-colors">Careers</a>
-          <a href="#" className="hover:text-white hover:underline transition-colors">Security</a>
-          <a href="#" className="hover:text-white hover:underline transition-colors">Status</a>
-          <a href="#" className="hover:text-white hover:underline transition-colors">Terms & privacy</a>
+      {/* Divider */}
+      <div className="w-full max-w-6xl mx-auto h-px bg-gray-200 mb-12" />
+
+      {/* Newsletter Section */}
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-10 mb-10">
+        
+        {/* Newsletter Text */}
+        <div className="flex flex-col gap-2 max-w-md">
+          <h4 className="text-gray-900 font-semibold text-base">Never miss an update</h4>
+          <p className="text-sm text-gray-500 leading-relaxed">
+            Get all the latest news, blog posts and product updates from <strong className="text-gray-800">TRECC</strong>. Delivered directly to your inbox. We'll rarely send more than one email a month.
+          </p>
         </div>
 
-        {/* Resources Column */}
-        <div className="flex flex-col gap-3">
-          <h3 className="font-semibold text-white mb-2 text-base">Resources</h3>
-          <a href="#" className="hover:text-white hover:underline transition-colors">Help center</a>
-          <a href="https://github.com/TRECC-eth/Trecc-synthesis" className="hover:text-white hover:underline transition-colors">GitHub Repository</a>
-          <a href="#" className="hover:text-white hover:underline transition-colors">Protocol Documentation</a>
-          <a href="#" className="hover:text-white hover:underline transition-colors">Community</a>
-          <a href="#" className="font-semibold text-white mt-2 flex items-center hover:underline group">
-            Explore more <span className="ml-1 group-hover:translate-x-1 transition-transform">→</span>
-          </a>
+        {/* Newsletter Form */}
+        <div className="flex flex-col gap-3 w-full md:w-auto">
+          <div className="flex gap-2 w-full md:w-[420px]">
+            <input 
+              type="email" 
+              placeholder="example@gmail.com" 
+              className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all placeholder:text-gray-400"
+            />
+            <button 
+              type="button" 
+              className="px-6 py-2.5 bg-white text-gray-900 border border-gray-200 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
+            >
+              Join
+            </button>
+          </div>
+          <label className="flex items-center gap-2 cursor-pointer group">
+            <input 
+              type="checkbox" 
+              className="w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900 cursor-pointer"
+            />
+            <span className="text-xs text-gray-500 group-hover:text-gray-700 transition-colors mt-0.5">
+              I agree to receive marketing emails from TRECC
+            </span>
+          </label>
         </div>
       </div>
+
+      {/* Copyright & Legal */}
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 font-medium">
+        <p>© {new Date().getFullYear()} TRECC Labs, Inc. Designed by the community</p>
+        <div className="flex gap-6 mt-4 md:mt-0">
+          <a href="#" className="hover:text-gray-900 hover:underline transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-gray-900 hover:underline transition-colors">Terms of Service</a>
+        </div>
+      </div>
+      
     </footer>
   );
 }
