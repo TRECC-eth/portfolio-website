@@ -14,8 +14,8 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`pointer-events-auto w-full max-w-5xl flex items-center justify-between px-6 py-3 rounded-full border backdrop-blur-xl transition-all duration-500 ease-in-out ${
           isLightMode
-            ? "border-black/10 bg-white/70 shadow-sm"
-            : "border-white/10 bg-black/40"
+            ? "border-black/10 bg-transparent shadow-none"
+            : "border-white/10 bg-transparent"
         }`}
       >
         {/* Logo Area */}

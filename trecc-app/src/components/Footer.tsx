@@ -5,11 +5,14 @@ import Threads from "./Threads";
 
 export default function Footer() {
   return (
-    <div>
-      <div style={{ width: "100%", height: "220px", background: "#f9fafb" }}>
-        <Threads color={[0.2, 0.2, 0.3]} amplitude={1.5} distance={0.4} />
-      </div>
-      <footer id="TRECC-footer" className="w-full mt-auto bg-white text-gray-600 px-8 py-16 md:px-16 border-t border-gray-100 flex flex-col font-sans shrink-0">
+    <footer id="TRECC-footer" className="w-full min-h-screen bg-white text-gray-600 px-8 pb-16 md:px-16 border-t border-gray-100 flex flex-col font-sans shrink-0 overflow-hidden" style={{ position: "relative" }}>
+      <Threads color={[0.2, 0.2, 0.3]} amplitude={1.5} distance={0.4} style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "45%", zIndex: 0 }} />
+
+      {/* Spacer so content sits below the threads area */}
+      <div style={{ height: "40vh" }} />
+
+      {/* Content sits above the canvas */}
+      <div style={{ position: "relative", zIndex: 1 }} className="flex flex-col">
 
       {/* Top Section: Link Columns */}
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-12 mb-16">
@@ -111,7 +114,7 @@ export default function Footer() {
         </div>
       </div>
 
+      </div>{/* end z-index content wrapper */}
     </footer>
-    </div>
   );
 }
