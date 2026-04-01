@@ -36,7 +36,17 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
               : "text-[#8A8D93] hover:text-white"
               }`}
           >
-            docs
+            Docs
+          </a>
+          <a
+            target="_blank"
+            href="https://docs.trecc.finance"
+            className={`text-sm font-medium transition-colors duration-500 ${isLightMode
+              ? "text-gray-600 hover:text-black"
+              : "text-[#8A8D93] hover:text-white"
+              }`}
+          >
+            Contact Us
           </a>
         </div>
 

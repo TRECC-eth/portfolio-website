@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
 
           {/* Right side Links Area (2 Columns) */}
-          <div className="grid grid-cols-2 gap-16 md:gap-32 w-full md:w-auto">
+          <div className="grid grid-cols-2 gap-16 md:gap-32 mt-8 w-full md:w-auto">
             {/* Company Column */}
             <div className="flex flex-col gap-4 text-sm">
               <a href="#" className="hover:text-gray-900 font-medium transition-colors">About us</a>
@@ -64,7 +64,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="w-full max-w-6xl mx-auto h-px bg-gray-200 mb-12" />
+        <div className="w-full max-w-6xl mx-auto h-px bg-gray-200 mb-5" />
 
         {/* Newsletter Section */}
         <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-10 mb-10">
