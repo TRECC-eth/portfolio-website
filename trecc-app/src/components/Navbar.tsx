@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import logoImg from "../assets/trecc-logo.png";
 
 interface NavbarProps {
@@ -18,13 +19,13 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
           }`}
       >
         {/* Logo Area */}
-        <div className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3">
           <img
             src={logoImg}
             alt="TRECC"
             className={`h-8 w-auto object-contain transition-all duration-500 ${isLightMode ? "brightness-0" : ""}`}
           />
-        </div>
+        </Link>
 
         {/* Center Links */}
         <div className="hidden md:flex items-center gap-8">
@@ -38,16 +39,15 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
           >
             Docs
           </a>
-          <a
-            target="_blank"
-            href="https://docs.trecc.finance"
+          <Link
+            to="/contact"
             className={`text-sm font-medium transition-colors duration-500 ${isLightMode
               ? "text-gray-600 hover:text-black"
               : "text-[#8A8D93] hover:text-white"
               }`}
           >
             Contact Us
-          </a>
+          </Link>
         </div>
 
         {/* Right CTA Button */}
