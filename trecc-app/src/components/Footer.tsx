@@ -1,6 +1,7 @@
 import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import treccLogo from "../assets/favicon.png";
+import textImg from "../assets/text.png";
 import Threads from "./Threads";
 
 export default function Footer() {
@@ -21,7 +22,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4 max-w-xs">
             <div className="flex items-center gap-3 mb-2">
               <img src={treccLogo} alt="Trecc Logo" className="w-8 h-8 object-contain rounded" />
-              <span className="text-xl font-bold tracking-tight text-gray-900">TRECC</span>
+              <img src={textImg} alt="Trecc Text" className="h-[4rem] w-auto object-contain relative translate-y-0.5" />
             </div>
             <p className="text-sm text-gray-500 leading-relaxed">
               Building the decentralized future.Join our community to access protocol documentation, discussions, and updates.
