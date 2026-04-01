@@ -24,7 +24,7 @@ export default function Footer() {
               <span className="text-xl font-bold tracking-tight text-gray-900">TRECC</span>
             </div>
             <p className="text-sm text-gray-500 leading-relaxed">
-              Building the decentralized future. Join our community to access protocol documentation, discussions, and updates.
+              Building the decentralized future.Join our community to access protocol documentation, discussions, and updates.
             </p>
             <div className="flex items-center gap-3 mt-2">
               <a href="https://twitter.com/trecc_eth" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-50 border border-gray-200 rounded-md hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-colors">
