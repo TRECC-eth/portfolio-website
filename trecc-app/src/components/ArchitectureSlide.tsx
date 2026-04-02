@@ -17,20 +17,36 @@ const Block = ({
     ? (highlight ? "rgba(215, 215, 182, 0.9)" : "rgba(215, 215, 182, 0.3)")
     : "rgba(215, 215, 182, 0.1)";
 
-  // Top Face (Lightest)
+  /* Same hue as before; multi-stop gradients + inset sheen = metallic finish */
   const topFaceColor = active
-    ? (highlight ? "rgba(180, 180, 150, 1)" : "rgba(47, 47, 40, 1)")
+    ? (highlight
+      ? "linear-gradient(135deg, rgba(200, 200, 170, 1) 0%, rgba(180, 180, 150, 1) 38%, rgba(180, 180, 150, 1) 58%, rgba(158, 158, 134, 1) 100%)"
+      : "linear-gradient(135deg, rgba(55, 53, 45, 1) 0%, rgba(47, 47, 40, 1) 48%, rgba(47, 47, 40, 1) 55%, rgba(38, 36, 31, 1) 100%)")
     : "rgba(15, 15, 13, 1)";
 
-  // Right Face (Darkest shadow to create depth)
   const rightFaceColor = active
-    ? (highlight ? "rgba(150, 150, 130, 1)" : "rgba(22, 22, 19, 1)")
+    ? (highlight
+      ? "linear-gradient(180deg, rgba(168, 168, 145, 1) 0%, rgba(150, 150, 130, 1) 42%, rgba(150, 150, 130, 1) 58%, rgba(128, 126, 108, 1) 100%)"
+      : "linear-gradient(180deg, rgba(28, 27, 24, 1) 0%, rgba(22, 22, 19, 1) 50%, rgba(17, 16, 14, 1) 100%)")
     : "rgba(7, 7, 6, 1)";
 
-  // Left Face (Mid-tone shadow)
   const leftFaceColor = active
-    ? (highlight ? "rgba(165, 165, 140, 1)" : "rgba(32, 32, 28, 1)")
+    ? (highlight
+      ? "linear-gradient(180deg, rgba(182, 182, 156, 1) 0%, rgba(165, 165, 140, 1) 45%, rgba(165, 165, 140, 1) 60%, rgba(142, 140, 118, 1) 100%)"
+      : "linear-gradient(180deg, rgba(38, 36, 32, 1) 0%, rgba(32, 32, 28, 1) 50%, rgba(26, 25, 22, 1) 100%)")
     : "rgba(11, 11, 9, 1)";
+
+  const topSheen = active
+    ? highlight
+      ? "inset 0 2px 0 rgba(235, 233, 210, 0.35), inset 0 -2px 0 rgba(95, 93, 78, 0.4), 0 6px 18px rgba(0,0,0,0.4)"
+      : "inset 0 1px 0 rgba(255,255,255,0.07), inset 0 -1px 0 rgba(0,0,0,0.5)"
+    : "none";
+
+  const sideSheen = active
+    ? highlight
+      ? "inset 1px 0 0 rgba(215, 213, 190, 0.22), inset -1px 0 0 rgba(60, 58, 48, 0.35)"
+      : "inset 1px 0 0 rgba(255,255,255,0.04), inset -1px 0 0 rgba(0,0,0,0.45)"
+    : "none";
 
   const labelColor = highlight ? "text-[#030303] font-bold" : "text-white/80";
 
@@ -51,7 +67,8 @@ const Block = ({
         className="absolute inset-0 flex items-center justify-center"
         animate={{
           border: `1px solid ${borderColor}`,
-          backgroundColor: topFaceColor,
+          background: topFaceColor,
+          boxShadow: topSheen,
           z: active ? depth : 0
         }}
         transition={{ duration: 0.8, ease: smoothEase, delay: active ? delay : 0 }}
@@ -67,7 +84,8 @@ const Block = ({
         className="absolute origin-top flex items-center justify-center overflow-hidden"
         animate={{
           border: `1px solid ${borderColor}`,
-          backgroundColor: rightFaceColor,
+          background: rightFaceColor,
+          boxShadow: sideSheen,
           height: active ? depth : 0,
           z: active ? depth : 0,
         }}
@@ -86,7 +104,8 @@ const Block = ({
         className="absolute origin-right flex items-center justify-center overflow-hidden"
         animate={{
           border: `1px solid ${borderColor}`,
-          backgroundColor: leftFaceColor,
+          background: leftFaceColor,
+          boxShadow: sideSheen,
           width: active ? depth : 0,
           z: active ? depth : 0,
         }}
@@ -104,12 +123,13 @@ const Block = ({
 };
 
 export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
-  const vaultActive = step >= 4;
-  const agentsActive = step >= 5;
-  const yieldActive = step >= 6;
+  const baseActive = step >= 4;
+  const platesActive = step >= 5;
+  const agentsActive = step >= 6;
+  const yieldActive = step >= 7;
 
-  // Track the most recent active stage for the text transitions
-  const stepText = step <= 4 ? "vaults" : step === 5 ? "agents" : "yield";
+  /* Copy + horizontal bias: steps 4–5 = Layer 1 (base vs base+plates), 6 = agents, 7 = yield */
+  const stepText = step <= 5 ? "vaults" : step === 6 ? "agents" : "yield";
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -126,10 +146,21 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
         {/* Left Column Text */}
         <div className="w-1/4 relative z-20 h-40 pointer-events-none md:pointer-events-auto">
           <AnimatePresence>
-            {stepText === "vaults" && (
+            {step === 4 && (
               <motion.div
-                key="vaults"
-                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.6 }}
+                key="layer1-base"
+                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.6 }}
+                className="absolute inset-0"
+              >
+                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 1</div>
+                <h3 className="text-3xl text-white font-semibold mb-3">Protocol foundation</h3>
+                <p className="text-[#8A8D93] leading-relaxed">The TRECC Protocol base—where settlement and shared execution context are anchored before vaults, registries, and engines come online.</p>
+              </motion.div>
+            )}
+            {step === 5 && (
+              <motion.div
+                key="layer1-plates"
+                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.6 }}
                 className="absolute inset-0"
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 1</div>
@@ -138,7 +169,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
               </motion.div>
             )}
 
-            {stepText === "yield" && (
+            {stepText === "yield" && step === 7 && (
               <motion.div
                 key="yield"
                 initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.6 }}
@@ -152,19 +183,25 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
           </AnimatePresence>
         </div>
 
-        {/* CENTER 3D STACK - Isometric layout */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[35%] pointer-events-none z-10">
+        {/* CENTER 3D STACK - Isometric layout (horizontal shift per scroll step: vaults center, agents left, yield right) */}
+        <motion.div
+          className="absolute top-1/2 -translate-x-1/2 -translate-y-[35%] pointer-events-none z-10"
+          animate={{
+            left: stepText === "yield" ? "58%" : stepText === "agents" ? "40%" : "50%",
+          }}
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+        >
           {/* Scale wrapper to prevent Tailwind classes from being overwritten by the inline transform string */}
           <div className="transform-gpu scale-[0.8] md:scale-[1] lg:scale-[1.2] xl:scale-[1.4] origin-center mt-[180px] ml-3">
             <div className="relative w-[320px] h-[320px]" style={{ transform: "rotateX(60deg) rotateZ(-45deg)", transformStyle: "preserve-3d" }}>
 
               {/* BASE LAYER */}
-              <Block className="rotate-90" x={0} y={0} z={0} w={320} h={320} depth={20} label="TRECC Protocol" active={vaultActive} textFace="left" />
+              <Block className="rotate-90" x={0} y={0} z={0} w={320} h={320} depth={20} label="TRECC Protocol" active={baseActive} textFace="left" />
 
-              {/* VAULTS LAYER (Middle Base) */}
-              <Block x={20} y={20} z={30} w={120} h={120} depth={30} label="Liquidity Vault" active={vaultActive} textFace="top" />
-              <Block x={20} y={160} z={30} w={120} h={140} depth={30} label="Identity Registry" active={vaultActive} textFace="top" />
-              <Block x={160} y={20} z={30} w={140} h={280} depth={30} label="Risk Engine" active={vaultActive} textFace="top" />
+              {/* VAULTS LAYER (Middle Base) — appear after base-only beat */}
+              <Block x={20} y={20} z={30} w={120} h={120} depth={30} label="Liquidity Vault" active={platesActive} textFace="top" />
+              <Block x={20} y={160} z={30} w={120} h={140} depth={30} label="Identity Registry" active={platesActive} textFace="top" />
+              <Block x={160} y={20} z={30} w={140} h={280} depth={30} label="Risk Engine" active={platesActive} textFace="top" />
 
               {/* AUTONOMOUS AGENTS (Pillars) */}
               <Block x={40} y={180} z={70} w={50} h={70} depth={80} label="MPC Wallet" active={agentsActive} textFace="right" />
@@ -174,21 +211,14 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
               {/* YIELD / APPS (Highlight Pillars) */}
               <Block x={40} y={40} z={70} w={60} h={60} depth={140} label="Agent UI" active={yieldActive} highlight={yieldActive} textFace="right" />
               <Block x={180} y={180} z={70} w={60} h={60} depth={160} label="Lender UI" active={yieldActive} highlight={yieldActive} textFace="left" />
-              {/* Connection Line connecting the highlight to the text (Decorative) */}
-              <motion.div
-                animate={{ opacity: yieldActive ? 1 : 0 }}
-                transition={{ duration: 0.8 }}
-                className="absolute left-[-150px] top-[100px] w-[150px] h-[1px] bg-[#d7d7b6]/50"
-                style={{ transform: "translateZ(200px) rotateZ(45deg)", transformOrigin: "right center" }}
-              />
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Column Text */}
         <div className="w-1/4 pl-8 relative z-20 h-40 pointer-events-none md:pointer-events-auto">
           <AnimatePresence>
-            {stepText === "agents" && (
+            {stepText === "agents" && step === 6 && (
               <motion.div
                 key="agents"
                 initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 30 }} transition={{ duration: 0.6 }}

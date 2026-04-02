@@ -9,18 +9,17 @@ import Footer from "../components/Footer";
 export default function HomePage() {
   const [currentStep, setCurrentStep] = useState(0);
   const isAnimating = useRef(false);
-  const totalSteps = 8;
+  const totalSteps = 9;
 
   /*
     STEP MAPPING:
     0 = Hero
-    1 = Dashboard (Base empty state)
-    2 = Dashboard (Red Bearish Line draws in)
-    3 = Dashboard (Green Bullish Bars shoot up)
-    4 = Architecture (Bottom Layer Explanation, Instantly loaded)
-    5 = Architecture (Agents Layer Explanation)
-    6 = Architecture (Yield Layer Explanation)
-    7 = Ecosystem/Footer
+    1–3 = Dashboard (three beats)
+    4 = Architecture — TRECC Protocol base only
+    5 = Architecture — base + Liquidity Vault, Identity Registry, Risk Engine
+    6 = Architecture — Off-chain / agent pillars
+    7 = Architecture — Application / yield UI pillars
+    8 = Footer
   */
 
   useEffect(() => {
@@ -76,12 +75,12 @@ export default function HomePage() {
   let yOffset = 0;
   if (currentStep === 0) yOffset = 0;
   else if (currentStep >= 1 && currentStep <= 3) yOffset = 100;
-  else if (currentStep >= 4 && currentStep <= 6) yOffset = 200;
-  else if (currentStep >= 7) yOffset = 300;
+  else if (currentStep >= 4 && currentStep <= 7) yOffset = 200;
+  else if (currentStep >= 8) yOffset = 300;
 
   return (
     <div className="fixed inset-0 w-full h-screen bg-[#030303] text-white overflow-hidden font-sans">
-      <Navbar isLightMode={currentStep >= 7} />
+      <Navbar isLightMode={currentStep >= 8} />
 
       <motion.div
         className="w-full h-full flex flex-col"

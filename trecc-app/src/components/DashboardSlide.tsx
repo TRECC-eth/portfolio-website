@@ -105,19 +105,19 @@ export default function DashboardSlide({ step }: DashboardProps) {
       </div>
 
       {/* Narrative Headers - Kept z-30 so it sits way above the background */}
-      <div className="h-14 w-full flex items-center justify-center relative shrink-0 mb-8 z-30">
-        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: step === 1 ? 1 : 0, y: step === 1 ? 0 : -10 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="absolute">
-          <h2 className="text-chrome font-medium text-3xl md:text-4xl tracking-tight text-center">
+      <div className="min-h-[4rem] md:min-h-[4.5rem] w-full flex items-center justify-center relative shrink-0 mb-10 z-30 px-4">
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: step === 1 ? 1 : 0, y: step === 1 ? 0 : -10 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="absolute max-w-4xl">
+          <h2 className="text-chrome font-medium text-3xl md:text-5xl tracking-tight text-center leading-tight">
             The Capital-Starved Machine
           </h2>
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: step === 2 ? 1 : 0, y: step === 2 ? 0 : -10 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="absolute">
-          <h2 className="text-chrome font-medium text-3xl md:text-4xl tracking-tight text-center">
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: step === 2 ? 1 : 0, y: step === 2 ? 0 : -10 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="absolute max-w-4xl">
+          <h2 className="text-chrome font-medium text-3xl md:text-5xl tracking-tight text-center leading-tight">
             Programmable Guardrails
           </h2>
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: step >= 3 ? 1 : 0, y: step >= 3 ? 0 : -10 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="absolute">
-          <h2 className="text-chrome font-medium text-3xl md:text-4xl tracking-tight text-center">
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: step >= 3 ? 1 : 0, y: step >= 3 ? 0 : -10 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="absolute max-w-4xl">
+          <h2 className="text-chrome font-medium text-3xl md:text-5xl tracking-tight text-center leading-tight">
             Autonomous Credit Expansion
           </h2>
         </motion.div>
@@ -133,15 +133,17 @@ export default function DashboardSlide({ step }: DashboardProps) {
         <div className="w-full h-full overflow-hidden flex flex-col hyper-card relative">
 
           {/* Header */}
-          <div className="h-14 border-b border-white/5 flex items-center justify-between px-8 bg-[#0E0E10] shrink-0 z-20">
-            <div className="flex items-center gap-6">
-              <span className="text-white font-semibold text-sm flex items-center gap-2 tracking-wide">
+          <div className="h-16 border-b border-white/5 flex items-center justify-between gap-4 px-6 md:px-8 bg-[#0E0E10] shrink-0 z-20">
+            <div className="flex items-center gap-6 min-w-0">
+              <span className="text-white font-semibold text-base md:text-lg flex items-center gap-2 tracking-tight truncate">
                 TRECC Liquidity Vault
               </span>
             </div>
-            <div className="flex items-center gap-4 text-xs font-mono">
-              <span className="text-[#50545a]">DELEGATED CREDIT:</span>
-              <motion.span className="text-white bg-black px-3 py-1.5 rounded border border-white/10">
+            <div className="flex items-center gap-3 md:gap-4 shrink-0">
+              <span className="text-[#8A8D93] text-sm font-medium uppercase tracking-wide hidden sm:inline">
+                Delegated credit
+              </span>
+              <motion.span className="text-white bg-black px-3.5 py-2 rounded-md border border-white/10 text-sm md:text-base font-mono tabular-nums">
                 {activeCredit}
               </motion.span>
             </div>
@@ -150,58 +152,62 @@ export default function DashboardSlide({ step }: DashboardProps) {
           <div className="flex flex-1 min-h-0 overflow-hidden relative">
 
             {/* Sidebar */}
-            <div className="w-64 border-r border-white/5 p-6 hidden md:flex flex-col bg-[#0E0E10] shrink-0 z-20">
-              <div className="text-[10px] text-[#50545a] font-bold mb-6 tracking-[0.2em]">WHITELISTED AGENTS</div>
+            <div className="w-72 border-r border-white/5 p-6 hidden md:flex flex-col bg-[#0E0E10] shrink-0 z-20">
+              <div className="text-xs text-[#8A8D93] font-semibold mb-6 uppercase tracking-widest">
+                Whitelisted agents
+              </div>
 
-              <motion.div animate={{ backgroundColor: isHedging && !isYielding ? 'rgba(255, 255, 255, 0.03)' : 'transparent' }} className="p-3 rounded-lg mb-3 border border-transparent">
-                <div className="flex justify-between items-start mb-3">
-                  <div className="flex items-center gap-2.5">
-                    <div className={`w-1.5 h-1.5 rounded-full ${isHedging && !isYielding ? 'bg-white' : 'bg-[#30343a]'}`} />
-                    <span className={isHedging && !isYielding ? 'text-white text-sm font-medium' : 'text-[#606468] text-sm font-medium'}>0xDelta_Hedge</span>
+              <motion.div animate={{ backgroundColor: isHedging && !isYielding ? 'rgba(255, 255, 255, 0.04)' : 'transparent' }} className="p-4 rounded-lg mb-3 border border-white/[0.06]">
+                <div className="flex justify-between items-start mb-4">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className={`w-2 h-2 rounded-full shrink-0 ${isHedging && !isYielding ? 'bg-white' : 'bg-[#30343a]'}`} />
+                    <span className={isHedging && !isYielding ? 'text-white text-base font-semibold truncate' : 'text-[#606468] text-base font-semibold truncate'}>0xDelta_Hedge</span>
                   </div>
                 </div>
-                <div className="flex justify-between items-center text-xs mb-1.5"><span className="text-[#50545a]">Reputation</span><span className="text-[#8A8D93] font-mono">720 (Tier 2)</span></div>
-                <div className="flex justify-between items-center text-xs"><span className="text-[#50545a]">Scope</span><span className="text-[#8A8D93]">Delta-Neutral</span></div>
+                <div className="flex justify-between items-center text-sm mb-2 gap-2"><span className="text-[#8A8D93] shrink-0">Reputation</span><span className="text-[#C4C7CC] font-mono tabular-nums text-right">720 (Tier 2)</span></div>
+                <div className="flex justify-between items-center text-sm gap-2"><span className="text-[#8A8D93] shrink-0">Scope</span><span className="text-[#C4C7CC] text-right">Delta-neutral</span></div>
               </motion.div>
 
-              <motion.div animate={{ backgroundColor: isYielding ? 'rgba(255, 255, 255, 0.03)' : 'transparent' }} className="p-3 rounded-lg border border-transparent">
-                <div className="flex justify-between items-start mb-3">
-                  <div className="flex items-center gap-2.5">
-                    <div className={`w-1.5 h-1.5 rounded-full ${isYielding ? 'bg-white' : 'bg-[#30343a]'}`} style={{ backgroundColor: isYielding ? GREEN : '' }} />
-                    <span className={isYielding ? 'text-white text-sm font-medium' : 'text-[#606468] text-sm font-medium'}>0xArb_Prime</span>
+              <motion.div animate={{ backgroundColor: isYielding ? 'rgba(255, 255, 255, 0.04)' : 'transparent' }} className="p-4 rounded-lg border border-white/[0.06]">
+                <div className="flex justify-between items-start mb-4">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className={`w-2 h-2 rounded-full shrink-0 ${isYielding ? 'bg-white' : 'bg-[#30343a]'}`} style={{ backgroundColor: isYielding ? GREEN : '' }} />
+                    <span className={isYielding ? 'text-white text-base font-semibold truncate' : 'text-[#606468] text-base font-semibold truncate'}>0xArb_Prime</span>
                   </div>
                 </div>
-                <div className="flex justify-between items-center text-xs mb-1.5"><span className="text-[#50545a]">Reputation</span><motion.span animate={{ color: isYielding ? '#ffffff' : '#8A8D93' }} className="font-mono">{isYielding ? "980 (Tier 1)" : "850 (Tier 2)"}</motion.span></div>
-                <div className="flex justify-between items-center text-xs"><span className="text-[#50545a]">Scope</span><span className={isYielding ? 'text-white' : 'text-[#8A8D93]'}>Uncollateralized</span></div>
+                <div className="flex justify-between items-center text-sm mb-2 gap-2"><span className="text-[#8A8D93] shrink-0">Reputation</span><motion.span animate={{ color: isYielding ? '#ffffff' : '#C4C7CC' }} className="font-mono tabular-nums text-right">{isYielding ? "980 (Tier 1)" : "850 (Tier 2)"}</motion.span></div>
+                <div className="flex justify-between items-center text-sm gap-2"><span className="text-[#8A8D93] shrink-0">Scope</span><span className={isYielding ? 'text-white text-right' : 'text-[#C4C7CC] text-right'}>Uncollateralized</span></div>
               </motion.div>
             </div>
 
             {/* Main Chart Area */}
             <div className="flex-1 flex flex-col bg-[#050505]/50 relative overflow-hidden">
 
-              <div className="absolute right-0 top-0 bottom-8 w-14 border-l border-white/5 flex flex-col justify-between py-6 text-[9px] text-[#50545a] items-end pr-3 z-10 font-mono shrink-0">
+              <div className="absolute right-0 top-0 bottom-10 w-16 border-l border-white/5 flex flex-col justify-between py-8 text-xs text-[#8A8D93] items-end pr-3 z-10 font-mono tabular-nums shrink-0">
                 <span>$45.0k</span><span>$40.0k</span><span>$35.0k</span><span>$30.0k</span><span>$25.0k</span>
               </div>
 
-              <div className="absolute left-0 right-0 bottom-0 h-8 border-t border-white/5 flex justify-between items-center px-8 text-[9px] text-[#50545a] z-10 font-mono pr-20 shrink-0">
+              <div className="absolute left-0 right-0 bottom-0 h-10 border-t border-white/5 flex justify-between items-center px-6 md:px-8 text-xs text-[#8A8D93] z-10 font-mono tabular-nums pr-[4.5rem] shrink-0">
                 <span>09:00</span><span>12:00</span><span>15:00</span><span>18:00</span><span>21:00</span>
               </div>
 
-              <div className="absolute inset-0 pointer-events-none opacity-[0.03] bottom-8 right-14">
+              <div className="absolute inset-0 pointer-events-none opacity-[0.03] bottom-10 right-16">
                 {[...Array(5)].map((_, i) => <div key={`h-${i}`} className="w-full border-t border-white absolute" style={{ top: `${i * 25}%` }} />)}
                 {[...Array(6)].map((_, i) => <div key={`v-${i}`} className="h-full border-l border-white absolute" style={{ left: `${i * 20}%` }} />)}
               </div>
 
-              <div className="relative z-30 p-8 pb-6 flex justify-between items-end shrink-0">
+              <div className="relative z-30 p-6 md:p-8 pb-5 flex justify-between items-end shrink-0">
                 <div>
-                  <div className="text-[#50545a] text-[11px] mb-2 font-bold tracking-[0.2em]">VAULT NET PNL</div>
+                  <div className="text-[#8A8D93] text-xs md:text-sm mb-2 font-semibold uppercase tracking-widest">
+                    Vault net P&amp;L
+                  </div>
                   <AnimatePresence mode="popLayout">
                     <motion.div
                       key={vaultPnl}
                       initial={{ opacity: 0, y: -10, filter: "blur(4px)" }}
                       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-4xl font-light tracking-tight"
+                      className="text-4xl md:text-5xl font-medium tracking-tight tabular-nums"
                       style={{ color: pnlColorHex }}
                     >
                       {vaultPnl}
@@ -210,7 +216,7 @@ export default function DashboardSlide({ step }: DashboardProps) {
                 </div>
               </div>
 
-              <div className="flex-1 relative mt-4 mr-16 mb-12 min-h-0 pl-8">
+              <div className="flex-1 relative mt-2 mr-[4.5rem] mb-14 min-h-0 pl-6 md:pl-8">
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 -15 1000 330" preserveAspectRatio="none">
 
                   <motion.path
