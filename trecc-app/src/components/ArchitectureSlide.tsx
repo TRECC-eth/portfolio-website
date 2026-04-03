@@ -152,7 +152,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.6 }}
                 className="absolute inset-0"
               >
-                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 1</div>
+                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono font-bold text-white/70">LAYER 1</div>
                 <h3 className="text-3xl text-white font-semibold mb-3">On-Chain Core</h3>
                 <p className="text-[#8A8D93] leading-relaxed">The foundational protocol layer. Vaults pool lender capital while the Registry and Risk Engine manage soulbound agent identities and credit bonds natively.</p>
               </motion.div>
@@ -164,7 +164,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.6 }}
                 className="absolute inset-0"
               >
-                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-[#d7d7b6]/30 bg-[#d7d7b6]/10 text-xs font-mono text-[#d7d7b6]">LAYER 3</div>
+                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-[#d7d7b6]/30 bg-[#d7d7b6]/10 text-xs font-mono font-bold text-[#d7d7b6]">LAYER 3</div>
                 <h3 className="text-3xl text-white font-semibold mb-3 drop-shadow-[0_0_15px_rgba(215,215,182,0.4)]">Application Interfaces</h3>
                 <p className="text-[#8A8D93] leading-relaxed">Purpose-built client gateways. Human capital providers earn yield via the Lender UI, while agents access credit operations through the Agent UI.</p>
               </motion.div>
@@ -213,7 +213,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 24 }} transition={{ duration: 0.6 }}
                 className="absolute inset-0"
               >
-                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 0</div>
+                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono font-bold text-white/70">LAYER 0</div>
                 <h3 className="text-3xl text-white font-semibold mb-3">Protocol foundation</h3>
                 <p className="text-[#8A8D93] leading-relaxed">The TRECC Protocol base—where settlement and shared execution context are anchored before vaults, registries, and engines come online.</p>
               </motion.div>
@@ -224,7 +224,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 30 }} transition={{ duration: 0.6 }}
                 className="absolute inset-0"
               >
-                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 2</div>
+                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono font-bold text-white/70">LAYER 2</div>
                 <h3 className="text-3xl text-white font-semibold mb-3">Off-Chain</h3>
                 <p className="text-[#8A8D93] leading-relaxed">The secure execution environment. Off-chain Risk Sentinels and MPC Wallets seamlessly bridge autonomous AI logic to on-chain capabilities.</p>
               </motion.div>
