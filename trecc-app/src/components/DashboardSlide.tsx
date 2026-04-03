@@ -135,9 +135,6 @@ export default function DashboardSlide({ step }: DashboardProps) {
           {/* Header */}
           <div className="h-16 border-b border-white/[0.06] flex items-center justify-between gap-4 px-6 md:px-8 bg-gradient-to-b from-white/[0.03] to-transparent shrink-0 z-20">
             <div className="flex items-center gap-6 min-w-0">
-              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/[0.05] border border-white/10">
-                <div className="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
-              </div>
               <span className="text-white font-medium text-base md:text-lg flex items-center gap-2 tracking-tight truncate">
                 TRECC Liquidity Vault
               </span>
@@ -181,7 +178,7 @@ export default function DashboardSlide({ step }: DashboardProps) {
                   </div>
                   <div className="flex justify-between items-center text-[13px] gap-2">
                     <span className="text-white/50">Utilization</span>
-                    <motion.span animate={{ color: isHedging ? '#F6C90E' : '#606468' }} className="font-mono tabular-nums font-medium">
+                    <motion.span animate={{ color: isHedging ? '#E2E8F0' : '#606468' }} className="font-mono tabular-nums font-medium">
                       {isYielding ? "94%" : isHedging ? "100%" : "0%"}
                     </motion.span>
                   </div>
@@ -243,7 +240,7 @@ export default function DashboardSlide({ step }: DashboardProps) {
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-[10px] text-white/50 font-bold uppercase tracking-widest">Collateral</span>
                   <motion.span
-                    animate={{ color: isHedging ? '#F6C90E' : '#606468', opacity: isHedging ? 1 : 0.4 }}
+                    animate={{ color: isHedging ? '#E2E8F0' : '#606468', opacity: isHedging ? 1 : 0.4 }}
                     className="text-[10px] font-mono font-bold"
                   >
                     {isHedging ? "UNDERCOLLAT." : "—"}
@@ -266,7 +263,7 @@ export default function DashboardSlide({ step }: DashboardProps) {
                   </div>
                   <div className="flex justify-between items-center text-[13px] gap-2">
                     <span className="text-white/50">Collateral ratio</span>
-                    <motion.span animate={{ color: isYielding ? RED : isHedging ? '#F6C90E' : '#606468' }} className="font-mono tabular-nums font-medium">
+                    <motion.span animate={{ color: isYielding ? RED : isHedging ? '#E2E8F0' : '#606468' }} className="font-mono tabular-nums font-medium">
                       {isYielding ? "0.003%" : isHedging ? "0.03%" : "—"}
                     </motion.span>
                   </div>
