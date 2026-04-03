@@ -1,55 +1,46 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import emailjs from "@emailjs/browser";
 import Navbar from "../components/Navbar";
 
-export default function ContactPage() {
-  const vantaRef = useRef<HTMLDivElement>(null);
-  const vantaEffect = useRef<any>(null);
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
-
-  useEffect(() => {
-    if (vantaRef.current && (window as any).VANTA && !vantaEffect.current) {
-      try {
-        vantaEffect.current = (window as any).VANTA.TOPOLOGY({
-          el: vantaRef.current,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200,
-          minWidth: 200,
-          scale: 1,
-          scaleMobile: 1,
-          color: 0xd7d7b6,
-          backgroundColor: 0x030303,
-          speed: 8.0,
-        });
-      } catch (e) {
-        console.error("Vanta init failed:", e);
-      }
-    }
-    return () => {
-      if (vantaEffect.current) {
-        vantaEffect.current.destroy();
-        vantaEffect.current = null;
-      }
-    };
-  }, []);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { name, email, subject, message } = form;
-    const body = encodeURIComponent(`Name: ${name}\n\n${message}`);
-    const mailtoSubject = encodeURIComponent(subject || "Contact from TRECC website");
-    window.location.href = `mailto:treccxyz@gmail.com?subject=${mailtoSubject}&body=${body}&cc=${encodeURIComponent(email)}`;
-    setSubmitted(true);
+    setSending(true);
+    setError(null);
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          subject: form.subject || "Contact from TRECC website",
+          message: form.message,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+      setSubmitted(true);
+    } catch (err) {
+      setError("Failed to send message. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputClass =
@@ -57,12 +48,6 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen w-full bg-[#030303] text-white font-sans relative overflow-x-hidden">
-      {/* Vanta background */}
-      <div
-        ref={vantaRef}
-        className="fixed inset-0 z-0 opacity-40 pointer-events-none"
-      />
-
       <Navbar isLightMode={false} />
 
       <main className="relative z-10 min-h-screen flex items-center justify-center px-6 pt-28 pb-20">
@@ -102,10 +87,10 @@ export default function ContactPage() {
                   <span className="text-sm font-semibold text-white/80 uppercase tracking-widest">Email</span>
                 </div>
                 <a
-                  href="mailto:treccxyz@gmail.com"
+                  href="mailto:trecclabs@gmail.com"
                   className="text-[#d7d7b6] text-sm hover:text-white transition-colors duration-200"
                 >
-                  treccxyz@gmail.com
+                  trecclabs@gmail.com
                 </a>
                 <p className="text-xs text-[#606468] leading-relaxed">
                   For protocol inquiries, partnerships, and general questions. We typically respond within 24 hours.
@@ -143,7 +128,7 @@ export default function ContactPage() {
                     <FaYoutube className="w-4 h-4" />
                   </a>
                   <a
-                    href="mailto:treccxyz@gmail.com"
+                    href="mailto:trecclabs@gmail.com"
                     className="p-2 bg-white/5 border border-white/10 rounded-md hover:bg-white/10 hover:border-white/20 text-[#8A8D93] hover:text-white transition-all"
                   >
                     <MdEmail className="w-4 h-4" />
@@ -198,7 +183,7 @@ export default function ContactPage() {
                     </div>
                     <h3 className="text-white font-semibold text-lg">Message sent</h3>
                     <p className="text-[#8A8D93] text-sm max-w-xs leading-relaxed">
-                      Your email client should have opened. We'll get back to you as soon as possible.
+                      We'll get back to you as soon as possible.
                     </p>
                     <button
                       onClick={() => { setSubmitted(false); setForm({ name: "", email: "", subject: "", message: "" }); }}
@@ -262,14 +247,15 @@ export default function ContactPage() {
 
                     <button
                       type="submit"
-                      className="w-full px-6 py-3 rounded-full text-sm font-semibold bg-steel text-black hover:brightness-110 border border-white/30 transition-all duration-300 mt-1"
+                      disabled={sending}
+                      className="w-full px-6 py-3 rounded-full text-sm font-semibold bg-steel text-black hover:brightness-110 border border-white/30 transition-all duration-300 mt-1 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Send Message
+                      {sending ? "Sending..." : "Send Message"}
                     </button>
 
-                    <p className="text-center text-xs text-[#50545a]">
-                      By submitting, your default email client will open with this message pre-filled.
-                    </p>
+                    {error && (
+                      <p className="text-center text-xs text-red-400">{error}</p>
+                    )}
                   </form>
                 )}
               </div>
