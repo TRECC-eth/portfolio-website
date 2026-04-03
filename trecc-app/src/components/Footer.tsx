@@ -1,5 +1,6 @@
 import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
 import treccLogo from "../assets/favicon.png";
 import textImg from "../assets/text.png";
 import Threads from "./Threads";
@@ -105,8 +106,8 @@ export default function Footer() {
         <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 font-medium">
           <p>© {new Date().getFullYear()} TRECC Inc.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-gray-900 hover:underline transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-gray-900 hover:underline transition-colors">Terms of Service</a>
+            <Link to="/privacy" className="hover:text-gray-900 hover:underline transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-gray-900 hover:underline transition-colors">Terms of Service</Link>
           </div>
         </div>
 
