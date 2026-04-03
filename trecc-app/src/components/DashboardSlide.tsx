@@ -128,22 +128,25 @@ export default function DashboardSlide({ step }: DashboardProps) {
         initial={{ y: 60, opacity: 0 }}
         animate={{ y: isBase ? 0 : 60, opacity: isBase ? 1 : 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-[1080px] flex-1 min-h-[500px] max-h-[720px] flex flex-col shadow-[0_20px_60px_rgba(0,0,0,0.8)] rounded-xl relative z-10"
+        className="w-full max-w-[1080px] flex-1 min-h-[500px] max-h-[720px] flex flex-col shadow-[0_30px_80px_rgba(0,0,0,0.9)] rounded-2xl relative z-10 border border-white/[0.08] bg-[#09090B]/95 backdrop-blur-2xl"
       >
-        <div className="w-full h-full overflow-hidden flex flex-col hyper-card relative">
+        <div className="w-full h-full overflow-hidden flex flex-col relative rounded-2xl">
 
           {/* Header */}
-          <div className="h-16 border-b border-white/5 flex items-center justify-between gap-4 px-6 md:px-8 bg-[#0E0E10] shrink-0 z-20">
+          <div className="h-16 border-b border-white/[0.06] flex items-center justify-between gap-4 px-6 md:px-8 bg-gradient-to-b from-white/[0.03] to-transparent shrink-0 z-20">
             <div className="flex items-center gap-6 min-w-0">
-              <span className="text-white font-semibold text-base md:text-lg flex items-center gap-2 tracking-tight truncate">
+              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/[0.05] border border-white/10">
+                <div className="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+              </div>
+              <span className="text-white font-medium text-base md:text-lg flex items-center gap-2 tracking-tight truncate">
                 TRECC Liquidity Vault
               </span>
             </div>
             <div className="flex items-center gap-3 md:gap-4 shrink-0">
-              <span className="text-[#8A8D93] text-sm font-medium uppercase tracking-wide hidden sm:inline">
+              <span className="text-white/40 text-[11px] font-semibold uppercase tracking-widest hidden sm:inline">
                 Delegated credit
               </span>
-              <motion.span className="text-white bg-black px-3.5 py-2 rounded-md border border-white/10 text-sm md:text-base font-mono tabular-nums">
+              <motion.span className="text-white bg-black/50 px-3.5 py-1.5 rounded-lg border border-white/[0.08] text-sm md:text-base font-mono tabular-nums shadow-inner">
                 {activeCredit}
               </motion.span>
             </div>
@@ -152,54 +155,152 @@ export default function DashboardSlide({ step }: DashboardProps) {
           <div className="flex flex-1 min-h-0 overflow-hidden relative">
 
             {/* Sidebar */}
-            <div className="w-72 border-r border-white/5 p-6 hidden md:flex flex-col bg-[#0E0E10] shrink-0 z-20">
-              <div className="text-xs text-[#8A8D93] font-semibold mb-6 uppercase tracking-widest">
-                Whitelisted agents
+            <div className="w-72 border-r border-white/[0.06] p-4 hidden md:flex flex-col gap-3 bg-black/20 shrink-0 z-20 overflow-hidden justify-center relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20 pointer-events-none" />
+
+              {/* Block 1: Lending Pool */}
+              <div className="p-3.5 rounded-xl border border-white/[0.04] bg-gradient-to-b from-white/[0.03] to-white/[0.01] shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] relative z-10">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] text-white/50 font-bold uppercase tracking-widest">Lending Pool</span>
+                  <motion.div
+                    animate={{ color: isBase ? GREEN : '#606468' }}
+                    className="flex items-center gap-1.5 text-[10px] font-mono font-medium tracking-wide border border-current/20 px-2 py-0.5 rounded-full bg-current/5"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-current shadow-[0_0_8px_currentColor]" />
+                    {isBase ? "LIVE" : "IDLE"}
+                  </motion.div>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center text-xs gap-2">
+                    <span className="text-white/50">TVL</span>
+                    <AnimatePresence mode="popLayout">
+                      <motion.span key={activeCredit} initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 5 }} transition={{ duration: 0.4 }} className="font-mono tabular-nums font-semibold" style={{ color: GREEN, textShadow: `0 0 12px ${GREEN}40` }}>
+                        {activeCredit}
+                      </motion.span>
+                    </AnimatePresence>
+                  </div>
+                  <div className="flex justify-between items-center text-[13px] gap-2">
+                    <span className="text-white/50">Utilization</span>
+                    <motion.span animate={{ color: isHedging ? '#F6C90E' : '#606468' }} className="font-mono tabular-nums font-medium">
+                      {isYielding ? "94%" : isHedging ? "100%" : "0%"}
+                    </motion.span>
+                  </div>
+                  <div className="flex justify-between items-center text-[13px] gap-2">
+                    <span className="text-white/50">Lender APY</span>
+                    <motion.span animate={{ color: isYielding ? GREEN : isHedging ? '#C4C7CC' : '#606468' }} className="font-mono tabular-nums font-medium">
+                      {isYielding ? "18.7%" : isHedging ? "3.2%" : "—"}
+                    </motion.span>
+                  </div>
+                  <div className="flex justify-between items-center text-[13px] gap-2">
+                    <span className="text-white/50">Active loans</span>
+                    <motion.span animate={{ color: isYielding ? GREEN : '#C4C7CC' }} className="font-mono tabular-nums font-medium">
+                      {isYielding ? "12" : isHedging ? "1" : "0"}
+                    </motion.span>
+                  </div>
+                </div>
               </div>
 
-              <motion.div animate={{ backgroundColor: isHedging && !isYielding ? 'rgba(255, 255, 255, 0.04)' : 'transparent' }} className="p-4 rounded-lg mb-3 border border-white/[0.06]">
-                <div className="flex justify-between items-start mb-4">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className={`w-2 h-2 rounded-full shrink-0 ${isHedging && !isYielding ? 'bg-white' : 'bg-[#30343a]'}`} />
-                    <span className={isHedging && !isYielding ? 'text-white text-base font-semibold truncate' : 'text-[#606468] text-base font-semibold truncate'}>0xDelta_Hedge</span>
+              {/* Block 2: ERC-8004 Agent Credit */}
+              <div className="p-3.5 rounded-xl border border-white/[0.04] bg-gradient-to-b from-white/[0.03] to-white/[0.01] shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] relative z-10">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] text-white/50 font-bold uppercase tracking-widest">ERC-8004 Agent</span>
+                  <motion.span animate={{ opacity: isHedging ? 1 : 0.3 }} className="text-[9px] font-mono text-white/40 border border-white/10 px-1.5 py-0.5 rounded backdrop-blur-sm bg-white/5">
+                    Soulbound NFT
+                  </motion.span>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center text-[13px] gap-2">
+                    <span className="text-white/50">ENS Identity</span>
+                    <motion.span animate={{ color: isHedging ? '#E2E8F0' : '#606468' }} className="font-mono font-medium">
+                      {isYielding ? "arb.trecc.eth" : isHedging ? "delta.trecc.eth" : "—"}
+                    </motion.span>
+                  </div>
+                  <div className="flex justify-between items-center text-[13px] gap-2">
+                    <span className="text-white/50">Credit score</span>
+                    <AnimatePresence mode="popLayout">
+                      <motion.span key={isYielding ? "980" : isHedging ? "720" : "none"} initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0, color: isYielding ? GREEN : isHedging ? '#E2E8F0' : '#606468' }} exit={{ opacity: 0, y: 5 }} transition={{ duration: 0.4 }} className="font-mono tabular-nums font-medium">
+                        {isYielding ? "980" : isHedging ? "720" : "—"}
+                      </motion.span>
+                    </AnimatePresence>
+                  </div>
+                  <div className="flex justify-between items-center text-[13px] gap-2">
+                    <span className="text-white/50">Tier</span>
+                    <motion.span animate={{ color: isYielding ? GREEN : isHedging ? '#E2E8F0' : '#606468' }} className="font-mono font-medium">
+                      {isYielding ? "Tier 1" : isHedging ? "Tier 2" : "—"}
+                    </motion.span>
+                  </div>
+                  <div className="flex justify-between items-center text-[13px] gap-2">
+                    <span className="text-white/50">Borrows / slashed</span>
+                    <motion.span animate={{ color: isHedging ? '#E2E8F0' : '#606468' }} className="font-mono font-medium">
+                      {isYielding ? "47 / 0" : isHedging ? "1 / 0" : "— / —"}
+                    </motion.span>
                   </div>
                 </div>
-                <div className="flex justify-between items-center text-sm mb-2 gap-2"><span className="text-[#8A8D93] shrink-0">Reputation</span><span className="text-[#C4C7CC] font-mono tabular-nums text-right">720 (Tier 2)</span></div>
-                <div className="flex justify-between items-center text-sm gap-2"><span className="text-[#8A8D93] shrink-0">Scope</span><span className="text-[#C4C7CC] text-right">Delta-neutral</span></div>
-              </motion.div>
+              </div>
 
-              <motion.div animate={{ backgroundColor: isYielding ? 'rgba(255, 255, 255, 0.04)' : 'transparent' }} className="p-4 rounded-lg border border-white/[0.06]">
-                <div className="flex justify-between items-start mb-4">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className={`w-2 h-2 rounded-full shrink-0 ${isYielding ? 'bg-white' : 'bg-[#30343a]'}`} style={{ backgroundColor: isYielding ? GREEN : '' }} />
-                    <span className={isYielding ? 'text-white text-base font-semibold truncate' : 'text-[#606468] text-base font-semibold truncate'}>0xArb_Prime</span>
+              {/* Block 3: Collateral Exposure */}
+              <div className="p-3.5 rounded-xl border border-white/[0.04] bg-gradient-to-b from-white/[0.03] to-white/[0.01] shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] relative z-10">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] text-white/50 font-bold uppercase tracking-widest">Collateral</span>
+                  <motion.span
+                    animate={{ color: isHedging ? '#F6C90E' : '#606468', opacity: isHedging ? 1 : 0.4 }}
+                    className="text-[10px] font-mono font-bold"
+                  >
+                    {isHedging ? "UNDERCOLLAT." : "—"}
+                  </motion.span>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center text-[13px] gap-2">
+                    <span className="text-white/50">ETH bond posted</span>
+                    <motion.span animate={{ color: isHedging ? '#E2E8F0' : '#606468' }} className="font-mono font-medium">
+                      {isHedging ? "0.01 ETH" : "—"}
+                    </motion.span>
+                  </div>
+                  <div className="flex justify-between items-center text-[13px] gap-2">
+                    <span className="text-white/50">Loan exposure</span>
+                    <AnimatePresence mode="popLayout">
+                      <motion.span key={activeCredit} initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 5 }} transition={{ duration: 0.4 }} className="font-mono tabular-nums font-semibold" style={{ color: isHedging ? RED : '#606468', textShadow: isHedging ? `0 0 12px ${RED}40` : 'none' }}>
+                        {isHedging ? activeCredit : "—"}
+                      </motion.span>
+                    </AnimatePresence>
+                  </div>
+                  <div className="flex justify-between items-center text-[13px] gap-2">
+                    <span className="text-white/50">Collateral ratio</span>
+                    <motion.span animate={{ color: isYielding ? RED : isHedging ? '#F6C90E' : '#606468' }} className="font-mono tabular-nums font-medium">
+                      {isYielding ? "0.003%" : isHedging ? "0.03%" : "—"}
+                    </motion.span>
+                  </div>
+                  <div className="flex justify-between items-center text-[13px] gap-2">
+                    <span className="text-white/50">Protection</span>
+                    <motion.span animate={{ color: isHedging ? GREEN : '#606468' }} className="font-mono text-right font-medium">
+                      {isHedging ? "Score + Sentinel" : "—"}
+                    </motion.span>
                   </div>
                 </div>
-                <div className="flex justify-between items-center text-sm mb-2 gap-2"><span className="text-[#8A8D93] shrink-0">Reputation</span><motion.span animate={{ color: isYielding ? '#ffffff' : '#C4C7CC' }} className="font-mono tabular-nums text-right">{isYielding ? "980 (Tier 1)" : "850 (Tier 2)"}</motion.span></div>
-                <div className="flex justify-between items-center text-sm gap-2"><span className="text-[#8A8D93] shrink-0">Scope</span><span className={isYielding ? 'text-white text-right' : 'text-[#C4C7CC] text-right'}>Uncollateralized</span></div>
-              </motion.div>
+              </div>
             </div>
 
             {/* Main Chart Area */}
-            <div className="flex-1 flex flex-col bg-[#050505]/50 relative overflow-hidden">
+            <div className="flex-1 flex flex-col bg-transparent relative overflow-hidden">
 
-              <div className="absolute right-0 top-0 bottom-10 w-16 border-l border-white/5 flex flex-col justify-between py-8 text-xs text-[#8A8D93] items-end pr-3 z-10 font-mono tabular-nums shrink-0">
+              <div className="absolute right-0 top-0 bottom-10 w-16 flex flex-col justify-between py-8 text-[11px] text-white/30 items-end pr-4 z-10 font-mono tabular-nums shrink-0 font-medium">
                 <span>$45.0k</span><span>$40.0k</span><span>$35.0k</span><span>$30.0k</span><span>$25.0k</span>
               </div>
 
-              <div className="absolute left-0 right-0 bottom-0 h-10 border-t border-white/5 flex justify-between items-center px-6 md:px-8 text-xs text-[#8A8D93] z-10 font-mono tabular-nums pr-[4.5rem] shrink-0">
+              <div className="absolute left-0 right-0 bottom-0 h-10 border-t border-white/[0.04] flex justify-between items-center px-6 md:px-8 text-[11px] text-white/30 z-10 font-mono tabular-nums pr-[4.5rem] shrink-0 font-medium bg-black/10">
                 <span>09:00</span><span>12:00</span><span>15:00</span><span>18:00</span><span>21:00</span>
               </div>
 
-              <div className="absolute inset-0 pointer-events-none opacity-[0.03] bottom-10 right-16">
+              <div className="absolute inset-0 pointer-events-none opacity-[0.02] bottom-10 right-16">
                 {[...Array(5)].map((_, i) => <div key={`h-${i}`} className="w-full border-t border-white absolute" style={{ top: `${i * 25}%` }} />)}
                 {[...Array(6)].map((_, i) => <div key={`v-${i}`} className="h-full border-l border-white absolute" style={{ left: `${i * 20}%` }} />)}
               </div>
 
               <div className="relative z-30 p-6 md:p-8 pb-5 flex justify-between items-end shrink-0">
                 <div>
-                  <div className="text-[#8A8D93] text-xs md:text-sm mb-2 font-semibold uppercase tracking-widest">
-                    Vault net P&amp;L
+                  <div className="text-white/40 text-[11px] md:text-xs mb-2 font-bold uppercase tracking-widest flex items-center gap-2">
+                    Vault net P&L
+                    <div className="h-[1px] w-8 bg-white/10" />
                   </div>
                   <AnimatePresence mode="popLayout">
                     <motion.div
@@ -207,8 +308,8 @@ export default function DashboardSlide({ step }: DashboardProps) {
                       initial={{ opacity: 0, y: -10, filter: "blur(4px)" }}
                       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-4xl md:text-5xl font-medium tracking-tight tabular-nums"
-                      style={{ color: pnlColorHex }}
+                      className="text-4xl md:text-[56px] font-medium tracking-tight tabular-nums"
+                      style={{ color: pnlColorHex, textShadow: `0 4px 32px ${pnlColorHex}50` }}
                     >
                       {vaultPnl}
                     </motion.div>

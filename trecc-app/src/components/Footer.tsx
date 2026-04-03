@@ -24,10 +24,7 @@ export default function Footer() {
               <img src={treccLogo} alt="Trecc Logo" className="w-8 h-8 object-contain rounded" />
               <img src={textImg} alt="Trecc Text" className="h-[4rem] w-auto object-contain relative translate-y-0.5" />
             </div>
-            <p className="text-sm text-gray-500 leading-relaxed">
-              Building the decentralized future.Join our community to access protocol documentation, discussions, and updates.
-            </p>
-            <div className="flex items-center gap-3 mt-2">
+            <div className="flex items-center gap-3">
               <a href="https://twitter.com/trecc_eth" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-50 border border-gray-200 rounded-md hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-colors">
                 <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
               </a>
@@ -106,7 +103,7 @@ export default function Footer() {
 
         {/* Copyright & Legal */}
         <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 font-medium">
-          <p>© {new Date().getFullYear()} TRECC Labs, Inc. Designed by the community</p>
+          <p>© {new Date().getFullYear()} TRECC Inc.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-gray-900 hover:underline transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-gray-900 hover:underline transition-colors">Terms of Service</a>
