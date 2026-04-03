@@ -146,17 +146,6 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
         {/* Left Column Text */}
         <div className="w-1/4 relative z-20 h-40 pointer-events-none md:pointer-events-auto">
           <AnimatePresence>
-            {step === 4 && (
-              <motion.div
-                key="layer1-base"
-                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.6 }}
-                className="absolute inset-0"
-              >
-                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 1</div>
-                <h3 className="text-3xl text-white font-semibold mb-3">Protocol foundation</h3>
-                <p className="text-[#8A8D93] leading-relaxed">The TRECC Protocol base—where settlement and shared execution context are anchored before vaults, registries, and engines come online.</p>
-              </motion.div>
-            )}
             {step === 5 && (
               <motion.div
                 key="layer1-plates"
@@ -187,7 +176,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
         <motion.div
           className="absolute top-1/2 -translate-x-1/2 -translate-y-[35%] pointer-events-none z-10"
           animate={{
-            left: stepText === "yield" ? "58%" : stepText === "agents" ? "40%" : "50%",
+            left: step === 7 ? "58%" : step === 6 ? "40%" : step === 5 ? "58%" : "40%",
           }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
         >
@@ -218,6 +207,17 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
         {/* Right Column Text */}
         <div className="w-1/4 pl-8 relative z-20 h-40 pointer-events-none md:pointer-events-auto">
           <AnimatePresence>
+            {step === 4 && (
+              <motion.div
+                key="layer0-base"
+                initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 24 }} transition={{ duration: 0.6 }}
+                className="absolute inset-0"
+              >
+                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 0</div>
+                <h3 className="text-3xl text-white font-semibold mb-3">Protocol foundation</h3>
+                <p className="text-[#8A8D93] leading-relaxed">The TRECC Protocol base—where settlement and shared execution context are anchored before vaults, registries, and engines come online.</p>
+              </motion.div>
+            )}
             {stepText === "agents" && step === 6 && (
               <motion.div
                 key="agents"
