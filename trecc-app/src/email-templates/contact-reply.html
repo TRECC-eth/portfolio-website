@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to the TRECC Waitlist</title>
+  <title>We received your message — TRECC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -57,83 +57,84 @@
             <td style="padding:36px 40px 32px;">
 
               <!-- Headline -->
-              <p style="margin:0 0 8px;font-size:22px;font-weight:700;color:#111111;letter-spacing:-0.02em;line-height:1.2;">
-                You're on the list.
+              <p style="margin:0 0 6px;font-size:22px;font-weight:700;color:#111111;letter-spacing:-0.02em;line-height:1.2;">
+                Message received.
               </p>
               <p style="margin:0 0 24px;font-size:13px;font-weight:500;color:#9ca3af;letter-spacing:0.04em;text-transform:uppercase;">
-                Waitlist Confirmed
+                We'll be in touch soon
               </p>
 
               <!-- Divider -->
               <div style="height:1px;background-color:#f0f0f0;margin-bottom:24px;"></div>
 
-              <!-- Message -->
-              <p style="margin:0 0 16px;font-size:15px;color:#374151;line-height:1.7;">
-                Thanks for joining the <strong style="color:#111111;">TRECC</strong> waitlist. You've secured your spot at the front of the line.
-              </p>
-              <p style="margin:0 0 10px;font-size:15px;color:#374151;line-height:1.7;">
-                As an early member you'll get:
+              <!-- Greeting -->
+              <p style="margin:0 0 20px;font-size:15px;color:#374151;line-height:1.7;">
+                Hey <strong style="color:#111111;">{{from_name}}</strong>, thanks for reaching out. We've received your message and will get back to you as soon as possible.
               </p>
 
-              <!-- Perks list -->
-              <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
+              <!-- Message summary box -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;background-color:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;">
                 <tr>
-                  <td style="padding:8px 0;">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td style="width:20px;vertical-align:top;padding-top:2px;">
-                          <div style="width:6px;height:6px;background-color:#111111;border-radius:50%;margin-top:4px;"></div>
-                        </td>
-                        <td style="font-size:14px;color:#374151;line-height:1.6;">
-                          <strong style="color:#111111;">Priority access: </strong>be among the first to use the platform
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding:8px 0;">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td style="width:20px;vertical-align:top;padding-top:2px;">
-                          <div style="width:6px;height:6px;background-color:#111111;border-radius:50%;margin-top:4px;"></div>
-                        </td>
-                        <td style="font-size:14px;color:#374151;line-height:1.6;">
-                          <strong style="color:#111111;">Exclusive sneak peeks: </strong>early previews before public launch
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding:8px 0;">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td style="width:20px;vertical-align:top;padding-top:2px;">
-                          <div style="width:6px;height:6px;background-color:#111111;border-radius:50%;margin-top:4px;"></div>
-                        </td>
-                        <td style="font-size:14px;color:#374151;line-height:1.6;">
-                          <strong style="color:#111111;">Priority onboarding: </strong>dedicated support when we launch
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
+                  <td>
 
-              <!-- CTA Button -->
-              <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
-                <tr>
-                  <td style="background-color:#111111;border-radius:10px;padding:13px 28px;">
-                    <a href="https://trecc.finance" style="color:#ffffff;font-size:14px;font-weight:600;text-decoration:none;letter-spacing:-0.01em;">
-                      Visit TRECC &rarr;
-                    </a>
+                    <!-- Subject row -->
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding:14px 20px;border-bottom:1px solid #e5e7eb;">
+                          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td style="width:70px;">
+                                <span style="font-size:11px;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:0.06em;">Subject</span>
+                              </td>
+                              <td>
+                                <span style="font-size:13px;color:#111111;font-weight:500;">{{subject}}</span>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- From row -->
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding:14px 20px;border-bottom:1px solid #e5e7eb;">
+                          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td style="width:70px;">
+                                <span style="font-size:11px;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:0.06em;">From</span>
+                              </td>
+                              <td>
+                                <span style="font-size:13px;color:#374151;font-weight:500;">{{from_email}}</span>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Message row -->
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding:14px 20px 18px;">
+                          <p style="margin:0 0 8px;font-size:11px;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:0.06em;">Message</p>
+                          <p style="margin:0;font-size:13px;color:#374151;line-height:1.7;">{{message}}</p>
+                        </td>
+                      </tr>
+                    </table>
+
                   </td>
                 </tr>
               </table>
 
               <!-- Divider -->
               <div style="height:1px;background-color:#f0f0f0;margin-bottom:24px;"></div>
+
+              <!-- Direct contact note -->
+              <p style="margin:0 0 24px;font-size:13px;color:#6b7280;line-height:1.7;">
+                Need a faster response? Reach us directly at
+                <a href="mailto:trecclabs@gmail.com" style="color:#111111;text-decoration:none;font-weight:500;">trecclabs@gmail.com</a>
+              </p>
 
               <!-- Social row -->
               <p style="margin:0 0 12px;font-size:13px;color:#6b7280;">Follow us for updates:</p>
@@ -187,19 +188,13 @@
           <!-- Footer -->
           <tr>
             <td style="padding:20px 40px;background-color:#f9fafb;border-top:1px solid #f0f0f0;">
-              <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td>
-                    <p style="margin:0;font-size:12px;color:#9ca3af;line-height:1.6;">
-                      &copy; 2026 TRECC Inc. &nbsp;&middot;&nbsp;
-                      <a href="mailto:trecclabs@gmail.com" style="color:#9ca3af;text-decoration:underline;">trecclabs@gmail.com</a>
-                    </p>
-                    <p style="margin:6px 0 0;font-size:11px;color:#d1d5db;">
-                      You received this email because you joined the TRECC waitlist.
-                    </p>
-                  </td>
-                </tr>
-              </table>
+              <p style="margin:0;font-size:12px;color:#9ca3af;line-height:1.6;">
+                &copy; 2026 TRECC Inc. &nbsp;&middot;&nbsp;
+                <a href="mailto:trecclabs@gmail.com" style="color:#9ca3af;text-decoration:underline;">trecclabs@gmail.com</a>
+              </p>
+              <p style="margin:6px 0 0;font-size:11px;color:#d1d5db;">
+                You received this because you submitted the contact form at trecc.finance.
+              </p>
             </td>
           </tr>
 
