@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Block = ({
   x, y, z, w, h, depth, label, active, highlight = false, textFace = "top", className = "", delay = 0
@@ -132,27 +132,55 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
   const stepText = step <= 5 ? "vaults" : step === 6 ? "agents" : "yield";
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 767px)");
+    const onChange = () => setIsMobile(media.matches);
+    onChange();
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
+
+  const stackLeft = isMobile
+    ? "50%"
+    : stepText === "yield"
+      ? "58%"
+      : stepText === "agents"
+        ? "40%"
+        : "50%";
 
   return (
     <div ref={containerRef} className="h-full w-full bg-[#030303] flex flex-col items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(215,215,182,0.05),transparent_70%)]" />
 
-      <h2 className="absolute top-16 md:top-24 text-chrome font-medium text-4xl tracking-tight z-30">
+      <h2 className="absolute top-28 sm:top-32 md:top-24 text-chrome font-medium text-xl sm:text-2xl md:text-4xl tracking-tight z-30 text-center px-6 leading-tight">
         The TRECC Stack
       </h2>
 
-      <div className="w-full max-w-7xl mx-auto flex items-center justify-between px-6 relative h-full">
+      <div className="w-full max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 relative h-full">
 
         {/* Left Column Text */}
-        <div className="w-1/4 relative z-20 h-40 pointer-events-none md:pointer-events-auto">
+        <div className="hidden md:block w-1/4 relative z-20 h-40 pointer-events-none md:pointer-events-auto">
           <AnimatePresence>
+            {step === 4 && (
+              <motion.div
+                key="layer1-base"
+                initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.6 }}
+                className="absolute inset-0"
+              >
+                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 1</div>
+                <h3 className="text-3xl text-white font-semibold mb-3">Protocol foundation</h3>
+                <p className="text-[#8A8D93] leading-relaxed">The TRECC Protocol base—where settlement and shared execution context are anchored before vaults, registries, and engines come online.</p>
+              </motion.div>
+            )}
             {step === 5 && (
               <motion.div
                 key="layer1-plates"
                 initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.6 }}
                 className="absolute inset-0"
               >
-                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono font-bold text-white/70">LAYER 1</div>
+                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 1</div>
                 <h3 className="text-3xl text-white font-semibold mb-3">On-Chain Core</h3>
                 <p className="text-[#8A8D93] leading-relaxed">The foundational protocol layer. Vaults pool lender capital while the Registry and Risk Engine manage soulbound agent identities and credit bonds natively.</p>
               </motion.div>
@@ -164,7 +192,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.6 }}
                 className="absolute inset-0"
               >
-                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-[#d7d7b6]/30 bg-[#d7d7b6]/10 text-xs font-mono font-bold text-[#d7d7b6]">LAYER 3</div>
+                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-[#d7d7b6]/30 bg-[#d7d7b6]/10 text-xs font-mono text-[#d7d7b6]">LAYER 3</div>
                 <h3 className="text-3xl text-white font-semibold mb-3 drop-shadow-[0_0_15px_rgba(215,215,182,0.4)]">Application Interfaces</h3>
                 <p className="text-[#8A8D93] leading-relaxed">Purpose-built client gateways. Human capital providers earn yield via the Lender UI, while agents access credit operations through the Agent UI.</p>
               </motion.div>
@@ -174,14 +202,14 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
 
         {/* CENTER 3D STACK - Isometric layout (horizontal shift per scroll step: vaults center, agents left, yield right) */}
         <motion.div
-          className="absolute top-1/2 -translate-x-1/2 -translate-y-[35%] pointer-events-none z-10"
+          className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 md:-translate-y-[35%] pointer-events-none z-10"
           animate={{
-            left: step === 7 ? "58%" : step === 6 ? "40%" : step === 5 ? "58%" : "40%",
+            left: stackLeft,
           }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* Scale wrapper to prevent Tailwind classes from being overwritten by the inline transform string */}
-          <div className="transform-gpu scale-[0.8] md:scale-[1] lg:scale-[1.2] xl:scale-[1.4] origin-center mt-[180px] ml-3">
+          <div className="transform-gpu scale-[0.64] sm:scale-[0.76] md:scale-[1] lg:scale-[1.2] xl:scale-[1.4] origin-center mt-[28px] sm:mt-[20px] md:mt-[180px] ml-0 md:ml-3">
             <div className="relative w-[320px] h-[320px]" style={{ transform: "rotateX(60deg) rotateZ(-45deg)", transformStyle: "preserve-3d" }}>
 
               {/* BASE LAYER */}
@@ -205,28 +233,77 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
         </motion.div>
 
         {/* Right Column Text */}
-        <div className="w-1/4 pl-8 relative z-20 h-40 pointer-events-none md:pointer-events-auto">
+        <div className="hidden md:block w-1/4 pl-8 relative z-20 h-40 pointer-events-none md:pointer-events-auto">
           <AnimatePresence>
-            {step === 4 && (
-              <motion.div
-                key="layer0-base"
-                initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 24 }} transition={{ duration: 0.6 }}
-                className="absolute inset-0"
-              >
-                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono font-bold text-white/70">LAYER 0</div>
-                <h3 className="text-3xl text-white font-semibold mb-3">Protocol foundation</h3>
-                <p className="text-[#8A8D93] leading-relaxed">The TRECC Protocol base—where settlement and shared execution context are anchored before vaults, registries, and engines come online.</p>
-              </motion.div>
-            )}
             {stepText === "agents" && step === 6 && (
               <motion.div
                 key="agents"
                 initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 30 }} transition={{ duration: 0.6 }}
                 className="absolute inset-0"
               >
-                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono font-bold text-white/70">LAYER 2</div>
+                <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 2</div>
                 <h3 className="text-3xl text-white font-semibold mb-3">Off-Chain</h3>
                 <p className="text-[#8A8D93] leading-relaxed">The secure execution environment. Off-chain Risk Sentinels and MPC Wallets seamlessly bridge autonomous AI logic to on-chain capabilities.</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Mobile Text Panel */}
+        <div className="md:hidden absolute left-4 right-4 top-[72%] z-20">
+          <AnimatePresence mode="wait">
+            {(step === 4 || step === 5) && (
+              <motion.div
+                key={`mobile-vaults-${step}`}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 12 }}
+                transition={{ duration: 0.4 }}
+                className="rounded-2xl border border-white/10 bg-black/45 backdrop-blur-sm p-4"
+              >
+                <div className="inline-block px-3 py-1 mb-3 rounded-full border border-white/20 bg-white/5 text-[10px] font-mono text-white/70">LAYER 1</div>
+                <h3 className="text-xl text-white font-semibold mb-2">
+                  {step === 4 ? "Protocol foundation" : "On-Chain Core"}
+                </h3>
+                <p className="text-sm text-[#8A8D93] leading-relaxed">
+                  {step === 4
+                    ? "The TRECC Protocol base anchors settlement and shared execution context before vaults, registries, and engines come online."
+                    : "Vaults pool lender capital while the Registry and Risk Engine manage soulbound agent identities and credit bonds natively."}
+                </p>
+              </motion.div>
+            )}
+
+            {step === 6 && (
+              <motion.div
+                key="mobile-agents"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 12 }}
+                transition={{ duration: 0.4 }}
+                className="rounded-2xl border border-white/10 bg-black/45 backdrop-blur-sm p-4"
+              >
+                <div className="inline-block px-3 py-1 mb-3 rounded-full border border-white/20 bg-white/5 text-[10px] font-mono text-white/70">LAYER 2</div>
+                <h3 className="text-xl text-white font-semibold mb-2">Off-Chain</h3>
+                <p className="text-sm text-[#8A8D93] leading-relaxed">
+                  The secure execution environment. Risk Sentinels and MPC Wallets bridge autonomous AI logic to on-chain capabilities.
+                </p>
+              </motion.div>
+            )}
+
+            {step === 7 && (
+              <motion.div
+                key="mobile-yield"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 12 }}
+                transition={{ duration: 0.4 }}
+                className="rounded-2xl border border-[#d7d7b6]/30 bg-black/50 backdrop-blur-sm p-4"
+              >
+                <div className="inline-block px-3 py-1 mb-3 rounded-full border border-[#d7d7b6]/30 bg-[#d7d7b6]/10 text-[10px] font-mono text-[#d7d7b6]">LAYER 3</div>
+                <h3 className="text-xl text-white font-semibold mb-2 drop-shadow-[0_0_10px_rgba(215,215,182,0.35)]">Application Interfaces</h3>
+                <p className="text-sm text-[#8A8D93] leading-relaxed">
+                  Purpose-built client gateways where lenders earn yield through the Lender UI and agents access credit operations via the Agent UI.
+                </p>
               </motion.div>
             )}
           </AnimatePresence>

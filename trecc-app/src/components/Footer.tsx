@@ -7,23 +7,23 @@ import Threads from "./Threads";
 
 export default function Footer() {
   return (
-    <footer id="TRECC-footer" className="w-full min-h-screen bg-white text-gray-600 px-8 pb-16 md:px-16 border-t border-gray-100 flex flex-col font-sans shrink-0 overflow-hidden" style={{ position: "relative" }}>
-      <Threads color={[0.2, 0.2, 0.3]} amplitude={1.5} distance={0.4} style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "45%", zIndex: 0 }} />
+    <footer id="TRECC-footer" className="w-full min-h-screen bg-white text-gray-600 px-5 pb-10 pt-6 md:px-16 md:pb-16 md:pt-0 border-t border-gray-100 flex flex-col font-sans shrink-0 overflow-hidden" style={{ position: "relative" }}>
+      <Threads color={[0.2, 0.2, 0.3]} amplitude={1.5} distance={0.4} style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "30%", zIndex: 0 }} />
 
       {/* Spacer so content sits below the threads area */}
-      <div style={{ height: "40vh" }} />
+      <div className="h-[30vh] md:h-[40vh]" />
 
       {/* Content sits above the canvas */}
       <div style={{ position: "relative", zIndex: 1 }} className="flex flex-col">
 
         {/* Top Section: Link Columns */}
-        <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-12 mb-16">
+        <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-10 md:gap-12 mb-12 md:mb-16">
 
           {/* Left side Background/Logo area */}
           <div className="flex flex-col gap-4 max-w-xs">
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-3 mb-1 md:mb-2">
               <img src={treccLogo} alt="Trecc Logo" className="w-8 h-8 object-contain rounded" />
-              <img src={textImg} alt="Trecc Text" className="h-[4rem] w-auto object-contain relative translate-y-0.5" />
+              <img src={textImg} alt="Trecc Text" className="h-[3rem] md:h-[4rem] w-auto object-contain relative translate-y-0.5" />
             </div>
             <div className="flex items-center gap-3">
               <a href="https://twitter.com/trecc_eth" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-50 border border-gray-200 rounded-md hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-colors">
@@ -42,7 +42,7 @@ export default function Footer() {
           </div>
 
           {/* Right side Links Area (2 Columns) */}
-          <div className="grid grid-cols-2 gap-16 md:gap-32 mt-8 w-full md:w-auto">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-8 md:gap-32 mt-2 md:mt-8 w-full md:w-auto">
             {/* Company Column */}
             <div className="flex flex-col gap-4 text-sm">
               <a href="#" className="hover:text-gray-900 font-medium transition-colors">About us</a>
@@ -65,7 +65,7 @@ export default function Footer() {
         <div className="w-full max-w-6xl mx-auto h-px bg-gray-200 mb-5" />
 
         {/* Newsletter Section */}
-        <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-10 mb-10">
+        <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8 md:gap-10 mb-10">
 
           {/* Newsletter Text */}
           <div className="flex flex-col gap-2 max-w-md">
@@ -77,7 +77,7 @@ export default function Footer() {
 
           {/* Newsletter Form */}
           <div className="flex flex-col gap-3 w-full md:w-auto">
-            <div className="flex gap-2 w-full md:w-[420px]">
+            <div className="flex flex-col sm:flex-row gap-2 w-full md:w-[420px]">
               <input
                 type="email"
                 placeholder="example@gmail.com"
@@ -85,17 +85,17 @@ export default function Footer() {
               />
               <button
                 type="button"
-                className="px-6 py-2.5 bg-white text-gray-900 border border-gray-200 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
+                className="w-full sm:w-auto px-6 py-2.5 bg-white text-gray-900 border border-gray-200 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
               >
                 Join
               </button>
             </div>
-            <label className="flex items-center gap-2 cursor-pointer group">
+            <label className="flex items-start gap-2 cursor-pointer group">
               <input
                 type="checkbox"
-                className="w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900 cursor-pointer"
+                className="w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900 cursor-pointer mt-0.5 shrink-0"
               />
-              <span className="text-xs text-gray-500 group-hover:text-gray-700 transition-colors mt-0.5">
+              <span className="text-xs text-gray-500 group-hover:text-gray-700 transition-colors">
                 I agree to receive marketing emails from TRECC
               </span>
             </label>
@@ -103,9 +103,9 @@ export default function Footer() {
         </div>
 
         {/* Copyright & Legal */}
-        <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 font-medium">
+        <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center text-xs text-gray-400 font-medium gap-4">
           <p>© {new Date().getFullYear()} TRECC Inc.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
+          <div className="flex gap-6 flex-wrap">
             <Link to="/privacy" className="hover:text-gray-900 hover:underline transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-gray-900 hover:underline transition-colors">Terms of Service</Link>
           </div>
