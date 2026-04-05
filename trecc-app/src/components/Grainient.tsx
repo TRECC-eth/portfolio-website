@@ -3,6 +3,7 @@ import { Renderer, Program, Mesh, Triangle } from 'ogl';
 import './Grainient.css';
 
 interface GrainientProps {
+  active?: boolean;
   timeSpeed?: number;
   colorBalance?: number;
   warpStrength?: number;
@@ -167,6 +168,7 @@ void main(){
 `;
 
 const Grainient: React.FC<GrainientProps> = ({
+  active = true,
   timeSpeed = 0.25,
   colorBalance = 0.0,
   warpStrength = 1.0,
@@ -199,7 +201,7 @@ const Grainient: React.FC<GrainientProps> = ({
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!active || !containerRef.current) return;
 
     const renderer = new Renderer({
       webgl: 2,
@@ -306,6 +308,8 @@ const Grainient: React.FC<GrainientProps> = ({
     color2,
     color3,
     opacity
+    ,
+    active
   ]);
 
   return (

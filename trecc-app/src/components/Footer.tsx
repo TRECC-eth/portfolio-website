@@ -5,11 +5,11 @@ import treccLogo from "../assets/favicon.png";
 import textImg from "../assets/text.png";
 import Threads from "./Threads";
 
-export default function Footer() {
+export default function Footer({ active = true }: { active?: boolean }) {
   return (
     <footer id="TRECC-footer" className="w-full min-h-screen bg-white text-gray-600 px-4 pb-6 pt-4 md:px-16 md:pb-16 md:pt-0 border-t border-gray-100 flex flex-col font-sans shrink-0 overflow-hidden" style={{ position: "relative" }}>
       <div className="absolute inset-x-0 top-0 h-[22%] md:h-[30%] z-0">
-        <Threads color={[0.2, 0.2, 0.3]} amplitude={1.5} distance={0.4} style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }} />
+        <Threads active={active} color={[0.2, 0.2, 0.3]} amplitude={1.5} distance={0.4} style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }} />
       </div>
 
       {/* Spacer so content sits below the threads area */}

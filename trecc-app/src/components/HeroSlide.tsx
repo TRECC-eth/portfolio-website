@@ -1,26 +1,36 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function HeroSlide() {
+export default function HeroSlide({ active = true }: { active?: boolean }) {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
   const vantaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!active) {
+      if (vantaEffect) {
+        vantaEffect.destroy();
+        setVantaEffect(null);
+      }
+      return;
+    }
+
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
     // Check if the global VANTA object has loaded from the index.html scripts
     if (!vantaEffect && vantaRef.current && (window as any).VANTA) {
       try {
         setVantaEffect(
           (window as any).VANTA.TOPOLOGY({
             el: vantaRef.current,
-            mouseControls: true,
-            touchControls: true,
+            mouseControls: !isMobile,
+            touchControls: false,
             gyroControls: false,
             minHeight: 200.00,
             minWidth: 200.00,
             scale: 1.00,
-            scaleMobile: 1.00,
+            scaleMobile: 0.85,
             color: 0xd7d7b6, // The silver topography lines
             backgroundColor: 0x0, // Pure black background
-            speed: 15.0 // Increased speed
+            speed: isMobile ? 9.0 : 15.0 // Increased speed
           })
         );
       } catch (error) {
@@ -31,7 +41,7 @@ export default function HeroSlide() {
     return () => {
       if (vantaEffect) vantaEffect.destroy();
     };
-  }, [vantaEffect]);
+  }, [active, vantaEffect]);
 
   return (
     <div className="h-full w-full flex flex-col items-center justify-center px-4 sm:px-6 pt-24 pb-16 md:pt-0 md:pb-0 relative overflow-hidden bg-black">

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Renderer, Program, Mesh, Triangle, Color } from 'ogl';
 
 interface ThreadsProps {
+  active?: boolean;
   color?: [number, number, number];
   amplitude?: number;
   distance?: number;
@@ -128,6 +129,7 @@ void main() {
 `;
 
 export default function Threads({
+  active = true,
   color = [1, 1, 1],
   amplitude = 1,
   distance = 0,
@@ -139,7 +141,7 @@ export default function Threads({
   const animationFrameId = useRef<number>(0);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!active || !containerRef.current) return;
     const container = containerRef.current;
 
     const renderer = new Renderer({ alpha: true });
@@ -221,7 +223,7 @@ export default function Threads({
       if (container.contains(gl.canvas)) container.removeChild(gl.canvas);
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
-  }, [color, amplitude, distance, enableMouseInteraction]);
+  }, [active, color, amplitude, distance, enableMouseInteraction]);
 
   return (
     <div

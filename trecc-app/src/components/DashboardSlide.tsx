@@ -3,6 +3,7 @@ import Grainient from "./Grainient"; // <-- Make sure the path matches where you
 
 interface DashboardProps {
   step: number;
+  active?: boolean;
 }
 
 // 60 Hand-crafted candles illustrating textbook crypto patterns.
@@ -47,7 +48,7 @@ const MARKET_CANDLES = [
 const getCx = (i: number) => i * (1000 / MARKET_CANDLES.length) + 5 + ((1000 / MARKET_CANDLES.length) * 0.6) / 2;
 const lineChartPath = MARKET_CANDLES.map((c, i) => `${i === 0 ? 'M' : 'L'} ${getCx(i)} ${c.c}`).join(" ");
 
-export default function DashboardSlide({ step }: DashboardProps) {
+export default function DashboardSlide({ step, active = true }: DashboardProps) {
   const isBase = step >= 1;
   const isHedging = step >= 2;
   const isYielding = step >= 3;
@@ -74,11 +75,12 @@ export default function DashboardSlide({ step }: DashboardProps) {
 
   return (
     // Removed the solid background color so the Grainient shows through
-    <div className="h-screen w-full flex flex-col items-center justify-start pt-24 md:pt-[120px] pb-6 md:pb-12 px-4 md:px-6 relative overflow-hidden box-border">
+    <div className="h-screen w-full flex flex-col items-center justify-start pt-20 md:pt-[120px] pb-4 md:pb-12 px-4 md:px-6 relative overflow-hidden box-border">
 
       {/* BACKGROUND LAYER: The React Bits Grainient */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
         <Grainient
+          active={active}
           color1="#858585"
           color2="#000000"
           color3="#7d7d7d"
@@ -105,19 +107,19 @@ export default function DashboardSlide({ step }: DashboardProps) {
       </div>
 
       {/* Narrative Headers - Kept z-30 so it sits way above the background */}
-      <div className="min-h-[3.5rem] md:min-h-[4.5rem] w-full flex items-center justify-center relative shrink-0 mb-6 md:mb-10 z-30 px-4">
+      <div className="min-h-[3rem] md:min-h-[4.5rem] w-full flex items-center justify-center relative shrink-0 mb-4 md:mb-10 z-30 px-4">
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: step === 1 ? 1 : 0, y: step === 1 ? 0 : -10 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="absolute max-w-4xl">
-          <h2 className="text-chrome font-medium text-2xl sm:text-3xl md:text-5xl tracking-tight text-center leading-tight">
+          <h2 className="text-chrome font-medium text-[1.65rem] sm:text-3xl md:text-5xl tracking-tight text-center leading-tight">
             The Capital-Starved Machine
           </h2>
         </motion.div>
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: step === 2 ? 1 : 0, y: step === 2 ? 0 : -10 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="absolute max-w-4xl">
-          <h2 className="text-chrome font-medium text-2xl sm:text-3xl md:text-5xl tracking-tight text-center leading-tight">
+          <h2 className="text-chrome font-medium text-[1.65rem] sm:text-3xl md:text-5xl tracking-tight text-center leading-tight">
             Programmable Guardrails
           </h2>
         </motion.div>
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: step >= 3 ? 1 : 0, y: step >= 3 ? 0 : -10 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="absolute max-w-4xl">
-          <h2 className="text-chrome font-medium text-2xl sm:text-3xl md:text-5xl tracking-tight text-center leading-tight">
+          <h2 className="text-chrome font-medium text-[1.65rem] sm:text-3xl md:text-5xl tracking-tight text-center leading-tight">
             Autonomous Credit Expansion
           </h2>
         </motion.div>
@@ -128,14 +130,14 @@ export default function DashboardSlide({ step }: DashboardProps) {
         initial={{ y: 60, opacity: 0 }}
         animate={{ y: isBase ? 0 : 60, opacity: isBase ? 1 : 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-[1080px] flex-1 min-h-[380px] sm:min-h-[420px] md:min-h-[500px] max-h-[calc(100vh-11rem)] sm:max-h-[calc(100vh-9.5rem)] md:max-h-[720px] flex flex-col shadow-[0_30px_80px_rgba(0,0,0,0.9)] rounded-2xl relative z-10 border border-white/[0.08] bg-[#09090B]/95 backdrop-blur-2xl"
+        className="w-full max-w-[1080px] flex-1 min-h-[340px] sm:min-h-[420px] md:min-h-[500px] max-h-[calc(100vh-9rem)] sm:max-h-[calc(100vh-9.5rem)] md:max-h-[720px] flex flex-col shadow-[0_30px_80px_rgba(0,0,0,0.9)] rounded-2xl relative z-10 border border-white/[0.08] bg-[#09090B]/95 backdrop-blur-2xl"
       >
         <div className="w-full h-full overflow-hidden flex flex-col relative rounded-2xl">
 
           {/* Header */}
-          <div className="h-14 md:h-16 border-b border-white/[0.06] flex items-center justify-between gap-4 px-4 md:px-8 bg-gradient-to-b from-white/[0.03] to-transparent shrink-0 z-20">
+          <div className="h-12 md:h-16 border-b border-white/[0.06] flex items-center justify-between gap-3 px-3.5 md:px-8 bg-gradient-to-b from-white/[0.03] to-transparent shrink-0 z-20">
             <div className="flex items-center gap-6 min-w-0">
-              <span className="text-white font-medium text-sm sm:text-base md:text-lg flex items-center gap-2 tracking-tight truncate">
+              <span className="text-white font-medium text-[13px] sm:text-base md:text-lg flex items-center gap-2 tracking-tight truncate">
                 TRECC Liquidity Vault
               </span>
             </div>
@@ -143,7 +145,7 @@ export default function DashboardSlide({ step }: DashboardProps) {
               <span className="text-white/40 text-[11px] font-semibold uppercase tracking-widest hidden sm:inline">
                 Delegated credit
               </span>
-              <motion.span className="text-white bg-black/50 px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs sm:text-sm md:text-base font-mono tabular-nums shadow-inner">
+              <motion.span className="text-white bg-black/50 px-2.5 py-1 rounded-lg border border-white/[0.08] text-[11px] sm:text-sm md:text-base font-mono tabular-nums shadow-inner">
                 {activeCredit}
               </motion.span>
             </div>
@@ -293,7 +295,7 @@ export default function DashboardSlide({ step }: DashboardProps) {
                 {[...Array(6)].map((_, i) => <div key={`v-${i}`} className="h-full border-l border-white absolute" style={{ left: `${i * 20}%` }} />)}
               </div>
 
-              <div className="relative z-30 p-3.5 sm:p-6 md:p-8 pb-3 sm:pb-4 md:pb-5 flex justify-between items-end shrink-0">
+              <div className="relative z-30 p-3 sm:p-6 md:p-8 pb-2.5 sm:pb-4 md:pb-5 flex justify-between items-end shrink-0">
                 <div>
                   <div className="text-white/40 text-[11px] md:text-xs mb-2 font-bold uppercase tracking-widest flex items-center gap-2">
                     Vault net P&L
@@ -305,7 +307,7 @@ export default function DashboardSlide({ step }: DashboardProps) {
                       initial={{ opacity: 0, y: -10, filter: "blur(4px)" }}
                       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-[1.7rem] sm:text-4xl md:text-[56px] font-medium tracking-tight tabular-nums"
+                      className="text-[1.45rem] sm:text-4xl md:text-[56px] font-medium tracking-tight tabular-nums"
                       style={{ color: pnlColorHex, textShadow: `0 4px 32px ${pnlColorHex}50` }}
                     >
                       {vaultPnl}
@@ -314,7 +316,7 @@ export default function DashboardSlide({ step }: DashboardProps) {
                 </div>
               </div>
 
-              <div className="flex-1 relative mt-1 mr-11 sm:mr-[4.5rem] mb-10 sm:mb-12 md:mb-14 min-h-0 pl-3.5 md:pl-8">
+              <div className="flex-1 relative mt-0.5 mr-11 sm:mr-[4.5rem] mb-9 sm:mb-12 md:mb-14 min-h-0 pl-3 md:pl-8">
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 -15 1000 330" preserveAspectRatio="none">
 
                   <motion.path
