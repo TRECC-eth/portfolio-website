@@ -28,13 +28,13 @@ export default function Footer({ active = true }: { active?: boolean }) {
               <img src={textImg} alt="Trecc Text" className="h-[2.4rem] md:h-[4rem] w-auto object-contain relative translate-y-0.5" />
             </div>
             <div className="flex items-center gap-3">
-              <a href="https://twitter.com/trecc_eth" target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 bg-gray-50 border border-gray-200 rounded-md hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-colors">
+              <a href="https://twitter.com/trecc_finance" target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 bg-gray-50 border border-gray-200 rounded-md hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-colors">
                 <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
               </a>
               <a href="https://youtube.com/@trecc.finance" target="_blank" rel="noopener noreferrer" className="p-1.5 md:p-2 bg-gray-50 border border-gray-200 rounded-md hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-colors">
                 <FaYoutube className="w-4 h-4" />
               </a>
-              <a href="mailto:treccxyz@gmail.com" className="p-1.5 md:p-2 bg-gray-50 border border-gray-200 rounded-md hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-colors">
+              <a href="mailto:trecclabs@gmail.com" className="p-1.5 md:p-2 bg-gray-50 border border-gray-200 rounded-md hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-colors">
                 <MdEmail className="w-4 h-4" />
               </a>
               <a href="#" className="p-1.5 md:p-2 bg-gray-50 border border-gray-200 rounded-md hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-colors">
