@@ -1,11 +1,39 @@
+import { useState } from "react";
 import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 import treccLogo from "../assets/favicon.png";
 import textImg from "../assets/text.png";
 import Threads from "./Threads";
 
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_WAITLIST_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_WAITLIST_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
 export default function Footer({ active = true }: { active?: boolean }) {
+  const [email, setEmail] = useState("");
+  const [agreed, setAgreed] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const handleJoin = async () => {
+    if (!email || !agreed) return;
+    setStatus("sending");
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_WAITLIST_TEMPLATE_ID,
+        { to_email: email },
+        EMAILJS_PUBLIC_KEY
+      );
+      setStatus("success");
+      setEmail("");
+      setAgreed(false);
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <footer id="TRECC-footer" className="w-full min-h-screen bg-white text-gray-600 px-4 pb-6 pt-4 md:px-16 md:pb-16 md:pt-0 border-t border-gray-100 flex flex-col font-sans shrink-0 overflow-hidden" style={{ position: "relative" }}>
       <div className="absolute inset-x-0 top-0 h-[22%] md:h-[30%] z-0">
@@ -83,24 +111,38 @@ export default function Footer({ active = true }: { active?: boolean }) {
               <input
                 type="email"
                 placeholder="example@gmail.com"
-                className="flex-1 px-4 py-2 rounded-lg border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all placeholder:text-gray-400"
+                value={email}
+                onChange={(e) => { setStatus("idle"); setEmail(e.target.value); }}
+                disabled={status === "sending" || status === "success"}
+                className="flex-1 px-4 py-2 rounded-lg border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all placeholder:text-gray-400 disabled:opacity-60"
               />
               <button
                 type="button"
-                className="w-full sm:w-auto px-6 py-2 bg-white text-gray-900 border border-gray-200 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
+                onClick={handleJoin}
+                disabled={!email || !agreed || status === "sending" || status === "success"}
+                className="w-full sm:w-auto px-6 py-2 bg-white text-gray-900 border border-gray-200 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Join
+                {status === "sending" ? "Joining..." : status === "success" ? "Joined!" : "Join"}
               </button>
             </div>
             <label className="flex items-start gap-2 cursor-pointer group">
               <input
                 type="checkbox"
+                checked={agreed}
+                onChange={(e) => setAgreed(e.target.checked)}
+                disabled={status === "sending" || status === "success"}
                 className="w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900 cursor-pointer mt-0.5 shrink-0"
               />
               <span className="text-[11px] md:text-xs text-gray-500 group-hover:text-gray-700 transition-colors">
                 I agree to receive marketing emails from TRECC
               </span>
             </label>
+            {status === "success" && (
+              <p className="text-[11px] md:text-xs text-green-600 font-medium">Thanks for joining! Check your inbox for a confirmation.</p>
+            )}
+            {status === "error" && (
+              <p className="text-[11px] md:text-xs text-red-500 font-medium">Something went wrong. Please try again.</p>
+            )}
           </div>
         </div>
 
