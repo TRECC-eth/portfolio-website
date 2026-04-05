@@ -13,9 +13,9 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
   return (
     <div className="fixed top-3 md:top-6 left-0 w-full z-50 flex justify-center px-4 md:px-6 pointer-events-none">
       <motion.nav
-        initial={{ y: -40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ y: -12, opacity: 0, scale: 0.985 }}
+        animate={{ y: 0, opacity: 1, scale: 1 }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         className={`pointer-events-auto w-full max-w-5xl px-5 py-2.5 md:px-6 md:py-3 rounded-[1.75rem] md:rounded-full border backdrop-blur-xl transition-all duration-500 ease-in-out ${isLightMode
           ? "border-black/10 bg-transparent shadow-none"
           : "border-white/10 bg-transparent"
