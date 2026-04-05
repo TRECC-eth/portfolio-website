@@ -27,7 +27,11 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
             <img
               src={logoImg}
               alt="TRECC"
-              className={`h-7 md:h-8 w-auto object-contain transition-all duration-500 ${isLightMode ? "brightness-0" : ""}`}
+              className={`h-7 md:h-8 w-auto object-contain transition-all duration-500 drop-shadow-[0_0_10px_rgba(255,255,255,0.18)] ${isLightMode
+                ? "brightness-0 contrast-125 saturate-0"
+                : "brightness-125 contrast-125 saturate-0 sepia-[0.08] hue-rotate-[8deg]"
+                }`}
+              style={!isLightMode ? { filter: "drop-shadow(0 0 14px rgba(215,215,182,0.22))" } : undefined}
             />
           </Link>
 
@@ -81,13 +85,13 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
             <span className="sr-only">{isMenuOpen ? "Close menu" : "Open menu"}</span>
             <span className="relative block h-4 w-5">
               <span
-                className={`absolute left-0 top-0 h-[2px] w-5 rounded-full transition-all duration-300 ${isLightMode ? "bg-black" : "bg-white"} ${isMenuOpen ? "translate-y-[7px] rotate-45" : ""}`}
+                className={`absolute left-0 top-0 h-[2px] w-5 rounded-full transition-all duration-300 ${isLightMode ? "bg-black" : "bg-[#d7d7b6] shadow-[0_0_8px_rgba(215,215,182,0.45)]"} ${isMenuOpen ? "translate-y-[7px] rotate-45" : ""}`}
               />
               <span
-                className={`absolute left-0 top-[7px] h-[2px] w-5 rounded-full transition-all duration-300 ${isLightMode ? "bg-black" : "bg-white"} ${isMenuOpen ? "opacity-0" : "opacity-100"}`}
+                className={`absolute left-0 top-[7px] h-[2px] w-5 rounded-full transition-all duration-300 ${isLightMode ? "bg-black" : "bg-[#d7d7b6] shadow-[0_0_8px_rgba(215,215,182,0.45)]"} ${isMenuOpen ? "opacity-0" : "opacity-100"}`}
               />
               <span
-                className={`absolute left-0 top-[14px] h-[2px] w-5 rounded-full transition-all duration-300 ${isLightMode ? "bg-black" : "bg-white"} ${isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""}`}
+                className={`absolute left-0 top-[14px] h-[2px] w-5 rounded-full transition-all duration-300 ${isLightMode ? "bg-black" : "bg-[#d7d7b6] shadow-[0_0_8px_rgba(215,215,182,0.45)]"} ${isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""}`}
               />
             </span>
           </button>
