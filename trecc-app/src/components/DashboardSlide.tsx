@@ -130,7 +130,7 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
         initial={{ y: 60, opacity: 0 }}
         animate={{ y: isBase ? 0 : 60, opacity: isBase ? 1 : 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-[920px] md:max-w-[1080px] flex-1 min-h-[220px] sm:min-h-[420px] md:min-h-[500px] max-h-[calc(100vh-12rem)] sm:max-h-[calc(100vh-9.5rem)] md:max-h-[720px] flex flex-col shadow-[0_30px_80px_rgba(0,0,0,0.9)] rounded-2xl relative z-10 border border-white/[0.08] bg-[#09090B]/95 backdrop-blur-2xl"
+        className="w-full max-w-[920px] md:max-w-[1080px] h-[50vh] sm:h-auto md:flex-1 min-h-[220px] sm:min-h-[420px] md:min-h-[500px] max-h-[50vh] sm:max-h-[calc(100vh-9.5rem)] md:max-h-[720px] flex flex-col shadow-[0_30px_80px_rgba(0,0,0,0.9)] rounded-2xl relative z-10 border border-white/[0.08] bg-[#09090B]/95 backdrop-blur-2xl"
       >
         <div className="w-full h-full overflow-hidden flex flex-col relative rounded-2xl">
 
