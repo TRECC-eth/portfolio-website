@@ -134,7 +134,7 @@ export default function Footer({ active = true }: { active?: boolean }) {
                 className="w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900 cursor-pointer mt-0.5 shrink-0"
               />
               <span className="text-[11px] md:text-xs text-gray-500 group-hover:text-gray-700 transition-colors">
-                I agree to receive marketing emails from TRECC
+              I agree to receive news and updates from TRECC.
               </span>
             </label>
             {status === "success" && (
