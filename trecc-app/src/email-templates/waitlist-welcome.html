@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="supported-color-schemes" content="light dark" />
   <title>Welcome to the TRECC Waitlist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -10,10 +12,16 @@
   <style>
     * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important; }
 
-    .logo-dark  { display: none !important; }
-    .logo-light { display: block !important; }
-    .icon-dark  { display: none !important; }
-    .icon-light { display: block !important; }
+    .brand-wrap  { white-space: nowrap !important; }
+    .icon-cell   { width: 44px !important; }
+    .logo-cell   { padding-left: 5px !important; line-height: 0 !important; }
+    .brand-icon  { display: block !important; width: 44px !important; height: 44px !important; object-fit: contain !important; }
+    .brand-text  { display: block !important; height: 72px !important; width: auto !important; margin-top: 9px !important; }
+
+    .logo-dark  { display: none !important; max-height: 0 !important; overflow: hidden !important; mso-hide: all !important; }
+    .logo-light { display: block !important; max-height: none !important; overflow: visible !important; }
+    .icon-dark  { display: none !important; max-height: 0 !important; overflow: hidden !important; mso-hide: all !important; }
+    .icon-light { display: block !important; max-height: none !important; overflow: visible !important; }
 
     @media (prefers-color-scheme: dark) {
       .email-outer   { background-color: #0a0a0a !important; }
@@ -45,11 +53,77 @@
       .email-cta-btn        { background-color: #ffffff !important; }
       .email-cta-link       { color: #111111 !important; }
 
-      .logo-light { display: none !important; }
-      .logo-dark  { display: block !important; height: 52px !important; width: auto !important; margin-top: 16px !important; }
-      .icon-light { display: none !important; }
-      .icon-dark  { display: block !important; }
+      .logo-light { display: none !important; max-height: 0 !important; overflow: hidden !important; }
+      .logo-dark  { display: block !important; max-height: none !important; height: 52px !important; width: auto !important; margin-top: 16px !important; overflow: visible !important; }
+      .icon-light { display: none !important; max-height: 0 !important; overflow: hidden !important; }
+      .icon-dark  { display: block !important; max-height: none !important; overflow: visible !important; }
     }
+
+    [data-ogsc] .email-outer,
+    [data-ogsb] .email-outer   { background-color: #0a0a0a !important; }
+    [data-ogsc] .email-card,
+    [data-ogsb] .email-card    { background-color: #111111 !important; border-color: #2a2a2a !important; }
+    [data-ogsc] .email-header,
+    [data-ogsb] .email-header  { background-color: #111111 !important; border-color: #1f1f1f !important; }
+    [data-ogsc] .email-body,
+    [data-ogsb] .email-body    { background-color: #111111 !important; }
+    [data-ogsc] .email-footer,
+    [data-ogsb] .email-footer  { background-color: #0d0d0d !important; border-color: #1a1a1a !important; }
+
+    [data-ogsc] .email-headline,
+    [data-ogsb] .email-headline  { color: #ffffff !important; }
+    [data-ogsc] .email-subline,
+    [data-ogsb] .email-subline   { color: #606468 !important; }
+    [data-ogsc] .email-divider,
+    [data-ogsb] .email-divider   { background-color: #1f1f1f !important; }
+    [data-ogsc] .email-text,
+    [data-ogsb] .email-text      { color: #8a8d93 !important; }
+    [data-ogsc] .email-strong,
+    [data-ogsb] .email-strong    { color: #d7d7b6 !important; }
+    [data-ogsc] .email-dot,
+    [data-ogsb] .email-dot       { background-color: #d7d7b6 !important; }
+
+    [data-ogsc] .email-msgbox,
+    [data-ogsb] .email-msgbox       { background-color: #0a0a0a !important; border-color: #2a2a2a !important; }
+    [data-ogsc] .email-msgrow,
+    [data-ogsb] .email-msgrow       { border-color: #1f1f1f !important; }
+    [data-ogsc] .email-label,
+    [data-ogsb] .email-label        { color: #606468 !important; }
+    [data-ogsc] .email-value,
+    [data-ogsb] .email-value        { color: #d7d7b6 !important; }
+    [data-ogsc] .email-value-muted,
+    [data-ogsb] .email-value-muted  { color: #8a8d93 !important; }
+
+    [data-ogsc] .email-social-label,
+    [data-ogsb] .email-social-label { color: #606468 !important; }
+    [data-ogsc] .email-social-btn,
+    [data-ogsb] .email-social-btn   { background: #1a1a1a !important; border-color: #2a2a2a !important; }
+    [data-ogsc] .email-social-text,
+    [data-ogsb] .email-social-text  { color: #8a8d93 !important; }
+
+    [data-ogsc] .email-footer-text,
+    [data-ogsb] .email-footer-text    { color: #606468 !important; }
+    [data-ogsc] .email-footer-subtext,
+    [data-ogsb] .email-footer-subtext { color: #3a3d42 !important; }
+    [data-ogsc] .email-footer-link,
+    [data-ogsb] .email-footer-link    { color: #606468 !important; }
+    [data-ogsc] .email-cta-btn,
+    [data-ogsb] .email-cta-btn        { background-color: #ffffff !important; }
+    [data-ogsc] .email-cta-link,
+    [data-ogsb] .email-cta-link       { color: #111111 !important; }
+
+    [data-ogsc] .logo-light,
+    [data-ogsb] .logo-light,
+    [data-ogsc] .icon-light,
+    [data-ogsb] .icon-light { display: none !important; max-height: 0 !important; overflow: hidden !important; }
+    [data-ogsc] .logo-dark,
+    [data-ogsb] .logo-dark  { display: block !important; max-height: none !important; height: 52px !important; width: auto !important; margin-top: 16px !important; overflow: visible !important; }
+    [data-ogsc] .icon-dark,
+    [data-ogsb] .icon-dark  { display: block !important; max-height: none !important; overflow: visible !important; }
+    [data-ogsc] .logo-frame,
+    [data-ogsb] .logo-frame { background-color: #111111 !important; }
+    [data-ogsc] .icon-frame,
+    [data-ogsb] .icon-frame { background-color: #111111 !important; }
   </style>
 </head>
 <body class="email-outer" style="margin:0;padding:0;background-color:#f5f5f5;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
@@ -69,32 +143,32 @@
           <!-- Header -->
           <tr>
             <td class="email-header" style="padding:28px 40px 24px;border-bottom:1px solid #f0f0f0;">
-              <table cellpadding="0" cellspacing="0" border="0">
+              <table cellpadding="0" cellspacing="0" border="0" class="brand-wrap">
                 <tr>
-                  <td style="vertical-align:middle;">
+                  <td class="icon-frame icon-cell" style="vertical-align:middle;background-color:#ffffff;width:44px;">
                     <!-- Light mode icon -->
-                    <img class="logo-light"
+                    <img class="icon-light brand-icon"
                       src="https://raw.githubusercontent.com/TRECC-eth/portfolio-website/main/trecc-app/src/assets/icon.png"
                       alt="TRECC" width="44" height="44"
                       style="display:block;width:44px;height:44px;object-fit:contain;"
                     />
                     <!-- Dark mode icon -->
-                    <img class="logo-dark"
-                      src="https://raw.githubusercontent.com/TRECC-eth/portfolio-website/main/trecc-app/src/assets/trecc-icon-light.png"
+                    <img class="icon-dark brand-icon"
+                      src="https://raw.githubusercontent.com/TRECC-eth/portfolio-website/main/trecc-app/src/assets/icon-dark-theme.png"
                       alt="TRECC" width="44" height="44"
                       style="display:none;width:44px;height:44px;object-fit:contain;"
                     />
                   </td>
-                  <td style="vertical-align:middle;padding-left:5px;line-height:0;">
+                  <td class="logo-frame logo-cell" style="vertical-align:middle;padding-left:5px;line-height:0;background-color:#ffffff;">
                     <!-- Light mode logo -->
-                    <img class="logo-light"
+                    <img class="logo-light brand-text"
                       src="https://raw.githubusercontent.com/TRECC-eth/portfolio-website/main/trecc-app/src/assets/text.png"
                       alt="TRECC" height="72"
                       style="display:block;height:72px;width:auto;margin-top:9px;"
                     />
                     <!-- Dark mode logo -->
-                    <img class="logo-dark"
-                      src="https://raw.githubusercontent.com/TRECC-eth/portfolio-website/main/trecc-app/src/assets/TRECC-light.png"
+                    <img class="logo-dark brand-text"
+                      src="https://raw.githubusercontent.com/TRECC-eth/portfolio-website/main/trecc-app/src/assets/text-dark-theme.png"
                       alt="TRECC" height="72"
                       style="display:none;height:72px;width:auto;margin-top:9px;"
                     />
