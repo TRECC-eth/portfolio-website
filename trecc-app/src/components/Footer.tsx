@@ -148,7 +148,7 @@ export default function Footer({ active = true }: { active?: boolean }) {
 
         {/* Copyright & Legal */}
         <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center text-[11px] md:text-xs text-gray-400 font-medium gap-3 md:gap-4">
-          <p>© {new Date().getFullYear()} TRECC Inc.</p>
+          <p>© {new Date().getFullYear()} TRECC</p>
           <div className="flex gap-6 flex-wrap">
             <Link to="/privacy" className="hover:text-gray-900 hover:underline transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-gray-900 hover:underline transition-colors">Terms of Service</Link>
