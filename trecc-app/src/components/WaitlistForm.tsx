@@ -1,5 +1,6 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { saveWaitlistSignup } from "../lib/waitlist";
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_WAITLIST_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_WAITLIST_TEMPLATE_ID;
@@ -10,6 +11,7 @@ interface WaitlistFormProps {
 }
 
 export default function WaitlistForm({ variant = "footer" }: WaitlistFormProps) {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -17,19 +19,31 @@ export default function WaitlistForm({ variant = "footer" }: WaitlistFormProps) 
   const isModal = variant === "modal";
 
   const handleJoin = async () => {
-    if (!email || !agreed) return;
+    if (!name || !email || !agreed) return;
 
     setStatus("sending");
 
     try {
+      await saveWaitlistSignup({
+        name,
+        email,
+        agreed,
+        source: variant,
+      });
+
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_WAITLIST_TEMPLATE_ID,
-        { to_email: email },
+        {
+          to_email: email,
+          to_name: name,
+          name,
+        },
         EMAILJS_PUBLIC_KEY
       );
 
       setStatus("success");
+      setName("");
       setEmail("");
       setAgreed(false);
     } catch {
@@ -39,34 +53,51 @@ export default function WaitlistForm({ variant = "footer" }: WaitlistFormProps) 
 
   return (
     <div className={`flex flex-col gap-2.5 md:gap-3 w-full ${isModal ? "" : "md:w-auto"}`}>
-      <div className={`flex flex-col sm:flex-row gap-2 w-full ${isModal ? "" : "md:w-[420px]"}`}>
+      <div className={`flex flex-col gap-2 w-full ${isModal ? "" : "md:w-[420px]"}`}>
         <input
-          type="email"
-          placeholder="example@gmail.com"
-          value={email}
+          type="text"
+          placeholder="Your name"
+          value={name}
           onChange={(e) => {
             setStatus("idle");
-            setEmail(e.target.value);
+            setName(e.target.value);
           }}
           disabled={status === "sending" || status === "success"}
-          className={`flex-1 px-4 py-3 rounded-xl border text-sm transition-all placeholder:text-gray-400 disabled:opacity-60 focus:outline-none ${
+          className={`w-full px-4 py-3 rounded-xl border text-sm transition-all placeholder:text-gray-400 disabled:opacity-60 focus:outline-none ${
             isModal
               ? "border-white/15 bg-white/10 text-white focus:border-[#d7d7b6]/40 focus:ring-2 focus:ring-[#d7d7b6]/15"
               : "border-gray-200 bg-gray-50 text-gray-900 focus:border-gray-400 focus:ring-2 focus:ring-gray-200"
           }`}
         />
-        <button
-          type="button"
-          onClick={handleJoin}
-          disabled={!email || !agreed || status === "sending" || status === "success"}
-          className={`w-full sm:w-auto px-6 py-3 text-sm font-medium rounded-xl transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed ${
-            isModal
-              ? "bg-[#d7d7b6] text-black hover:brightness-105 border border-[#d7d7b6]/80"
-              : "bg-white text-gray-900 border border-gray-200 hover:bg-gray-50"
-          }`}
-        >
-          {status === "sending" ? "Joining..." : status === "success" ? "Joined!" : "Join"}
-        </button>
+        <div className="flex flex-col sm:flex-row gap-2 w-full">
+          <input
+            type="email"
+            placeholder="example@gmail.com"
+            value={email}
+            onChange={(e) => {
+              setStatus("idle");
+              setEmail(e.target.value);
+            }}
+            disabled={status === "sending" || status === "success"}
+            className={`flex-1 px-4 py-3 rounded-xl border text-sm transition-all placeholder:text-gray-400 disabled:opacity-60 focus:outline-none ${
+              isModal
+                ? "border-white/15 bg-white/10 text-white focus:border-[#d7d7b6]/40 focus:ring-2 focus:ring-[#d7d7b6]/15"
+                : "border-gray-200 bg-gray-50 text-gray-900 focus:border-gray-400 focus:ring-2 focus:ring-gray-200"
+            }`}
+          />
+          <button
+            type="button"
+            onClick={handleJoin}
+            disabled={!name || !email || !agreed || status === "sending" || status === "success"}
+            className={`w-full sm:w-auto px-6 py-3 text-sm font-medium rounded-xl transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed ${
+              isModal
+                ? "bg-[#d7d7b6] text-black hover:brightness-105 border border-[#d7d7b6]/80"
+                : "bg-white text-gray-900 border border-gray-200 hover:bg-gray-50"
+            }`}
+          >
+            {status === "sending" ? "Joining..." : status === "success" ? "Joined!" : "Join"}
+          </button>
+        </div>
       </div>
 
       <label className="flex items-start gap-2 cursor-pointer group">
@@ -88,7 +119,7 @@ export default function WaitlistForm({ variant = "footer" }: WaitlistFormProps) 
               : "text-gray-500 group-hover:text-gray-700"
           }`}
         >
-          I agree to receive news and updates from TRECC.
+          I agree to receive news and updates from TRECC and understand my waitlist details will be stored.
         </span>
       </label>
 

@@ -62,7 +62,7 @@ export default function WaitlistModal({ open, onClose }: WaitlistModalProps) {
                 Application is in internal beta testing
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-white/70 md:text-base">
-                To join the beta waitlist, add your email below and opt in to receive updates.
+                To join the beta waitlist, add your name and email below, then opt in to receive updates.
               </p>
             </div>
 
