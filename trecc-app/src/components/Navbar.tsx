@@ -39,7 +39,7 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
           <div className="hidden md:flex items-center gap-8">
             <a
               target="_blank"
-              href="https://docs.trecc.finance"
+              href="https://trecc.finance"
               className={`text-sm font-medium transition-colors duration-500 ${isLightMode
                 ? "text-gray-600 hover:text-black"
                 : "text-[#8A8D93] hover:text-white"
@@ -110,7 +110,7 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
           <div className={`flex flex-col gap-3 rounded-3xl border p-4 ${isLightMode ? "border-black/10 bg-white/85" : "border-white/10 bg-black/35"}`}>
             <a
               target="_blank"
-              href="https://docs.trecc.finance"
+              href="https://trecc.finance"
               className={`text-sm font-medium transition-colors duration-500 ${isLightMode ? "text-gray-700 hover:text-black" : "text-[#c1c4ca] hover:text-white"}`}
               onClick={() => setIsMenuOpen(false)}
             >
