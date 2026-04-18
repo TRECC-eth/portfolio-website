@@ -48,11 +48,8 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
                   }`}
               >
                 <span>Docs</span>
-                <span className={`rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-[0.14em] ${isLightMode
-                  ? "border-gray-200 text-gray-400"
-                  : "border-white/10 text-white/40"
-                  }`}>
-                  Coming soon
+                <span className={isLightMode ? "text-gray-400" : "text-white/35"}>
+                  (coming soon)
                 </span>
               </span>
               <Link
@@ -120,11 +117,8 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
                 className={`inline-flex items-center gap-2 text-sm font-medium cursor-not-allowed ${isLightMode ? "text-gray-400" : "text-[#7f848c]"}`}
               >
                 <span>Docs</span>
-                <span className={`rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-[0.14em] ${isLightMode
-                  ? "border-gray-200 text-gray-400"
-                  : "border-white/10 text-white/40"
-                  }`}>
-                  Coming soon
+                <span className={isLightMode ? "text-gray-400" : "text-white/35"}>
+                  (coming soon)
                 </span>
               </span>
               <Link
