@@ -8,7 +8,7 @@
 
 ## The Idea
 
-TRECC is an institutional-grade DeFi credit and liquidity protocol built for the machine economy.
+TRECC is an institutional grade DeFi credit and liquidity protocol built for the machine economy.
 
 It helps capital providers deploy liquidity to verified autonomous systems through programmable risk controls, reputation, and on-chain accountability.
 

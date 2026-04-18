@@ -57,9 +57,7 @@ export default function WaitlistModal({ open, onClose }: WaitlistModalProps) {
             >
               ×
             </button>
-
             <div className="mb-6 pr-12">
-              
               <h2 className="text-2xl font-medium tracking-tight text-white md:text-4xl">
                 Application is in internal beta testing
               </h2>
