@@ -60,7 +60,7 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
 
           {/* Desktop CTA Button */}
           <a
-            href="https://app.trecc.finance"
+            href="/"
             target="_blank"
             rel="noopener noreferrer"
             className={`hidden md:inline-flex shrink-0 px-4 py-2 md:px-6 md:py-2 rounded-full text-sm font-semibold font-['system-ui'] transition-all duration-500 border ${isLightMode
@@ -124,7 +124,7 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
               Contact Us
             </Link>
             <a
-              href="https://app.trecc.finance"
+              href="/"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsMenuOpen(false)}
