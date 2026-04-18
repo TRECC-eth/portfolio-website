@@ -47,10 +47,10 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
                   : "text-[#6d7178]"
                   }`}
               >
-                <span>Docs</span>
+                {/* <span>Docs</span>
                 <span className={isLightMode ? "text-gray-400" : "text-white/35"}>
                   (coming soon)
-                </span>
+                </span> */}
               </span>
               <Link
                 to="/contact"
