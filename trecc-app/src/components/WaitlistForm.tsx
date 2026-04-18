@@ -15,12 +15,14 @@ export default function WaitlistForm({ variant = "footer" }: WaitlistFormProps) 
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const isModal = variant === "modal";
 
   const handleJoin = async () => {
     if (!name || !email || !agreed) return;
 
+    setErrorMessage("");
     setStatus("sending");
 
     try {
@@ -46,7 +48,9 @@ export default function WaitlistForm({ variant = "footer" }: WaitlistFormProps) 
       setName("");
       setEmail("");
       setAgreed(false);
-    } catch {
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Something went wrong. Please try again.";
+      setErrorMessage(message);
       setStatus("error");
     }
   };
@@ -60,6 +64,7 @@ export default function WaitlistForm({ variant = "footer" }: WaitlistFormProps) 
           value={name}
           onChange={(e) => {
             setStatus("idle");
+            setErrorMessage("");
             setName(e.target.value);
           }}
           disabled={status === "sending" || status === "success"}
@@ -76,6 +81,7 @@ export default function WaitlistForm({ variant = "footer" }: WaitlistFormProps) 
             value={email}
             onChange={(e) => {
               setStatus("idle");
+              setErrorMessage("");
               setEmail(e.target.value);
             }}
             disabled={status === "sending" || status === "success"}
@@ -131,7 +137,7 @@ export default function WaitlistForm({ variant = "footer" }: WaitlistFormProps) 
 
       {status === "error" && (
         <p className={`text-[11px] md:text-xs font-medium ${isModal ? "text-red-300" : "text-red-500"}`}>
-          Something went wrong. Please try again.
+          {errorMessage || "Something went wrong. Please try again."}
         </p>
       )}
     </div>

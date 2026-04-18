@@ -20,7 +20,6 @@ export async function saveWaitlistSignup(payload: WaitlistSignupPayload) {
       headers: {
         "Content-Type": "application/json",
         apikey: SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
         Prefer: "resolution=merge-duplicates,return=minimal",
       },
       body: JSON.stringify([
@@ -36,6 +35,15 @@ export async function saveWaitlistSignup(payload: WaitlistSignupPayload) {
 
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(errorText || "Failed to save waitlist signup.");
+    let message = errorText || "Failed to save waitlist signup.";
+
+    try {
+      const parsed = JSON.parse(errorText);
+      message = parsed.message || parsed.error || parsed.hint || message;
+    } catch {
+      // Keep the raw response text when the error isn't JSON.
+    }
+
+    throw new Error(message);
   }
 }
