@@ -57,7 +57,7 @@ export default function Footer({ active = true }: { active?: boolean }) {
             {/* Resources Column */}
             <div className="flex flex-col gap-3 md:gap-4 text-sm">
               <a href="#" className="hover:text-gray-900 font-medium transition-colors">Help center</a>
-              <a href="https://github.com/TRECC-eth/Trecc-synthesis" className="hover:text-gray-900 font-medium transition-colors">GitHub Repository</a>
+              <a href="https://github.com/TRECC-eth" className="hover:text-gray-900 font-medium transition-colors">GitHub Repository</a>
               <a href="#" className="hover:text-gray-900 font-medium transition-colors">Protocol Documentation</a>
               <a href="#" className="hover:text-gray-900 font-medium transition-colors">Community</a>
             </div>
