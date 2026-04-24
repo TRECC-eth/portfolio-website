@@ -139,7 +139,7 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
                   : "bg-steel text-black hover:brightness-125 border-white/50"
                   }`}
               >
-                Launch App
+                Join Waitlist
               </button>
             </div>
           </motion.div>
