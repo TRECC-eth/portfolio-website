@@ -128,9 +128,6 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
   const agentsActive = step >= 6;
   const yieldActive = step >= 7;
 
-  /* Copy + horizontal bias: steps 4–5 = Layer 1 (base vs base+plates), 6 = agents, 7 = yield */
-  const stepText = step <= 5 ? "vaults" : step === 6 ? "agents" : "yield";
-
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
