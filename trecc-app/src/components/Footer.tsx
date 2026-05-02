@@ -44,23 +44,33 @@ export default function Footer({ active = true }: { active?: boolean }) {
             </div>
           </div>
 
-          {/* Right side Links Area (2 Columns) */}
-          <div className="grid grid-cols-2 gap-x-8 gap-y-6 md:gap-32 mt-1 md:mt-8 w-full md:w-auto">
-            {/* Company Column */}
+          {/* Right side Links Area (3 Columns) */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-8 md:gap-16 mt-1 md:mt-4 w-full md:w-auto">
+            
+            {/* Platforms Column */}
             <div className="flex flex-col gap-3 md:gap-4 text-sm">
-              <a href="#" className="hover:text-gray-900 font-medium transition-colors">About us</a>
-              <a href="#" className="hover:text-gray-900 font-medium transition-colors">Careers</a>
+              <h4 className="text-gray-900 font-semibold mb-1 md:mb-2 text-base">Platforms</h4>
+              <a href="#" className="hover:text-gray-900 font-medium transition-colors">Launch App</a>
+              <a href="#" className="hover:text-gray-900 font-medium transition-colors">Go to Docs</a>
+              <a href="#waitlist" className="hover:text-gray-900 font-medium transition-colors">Join Waitlist</a>
+            </div>
+
+            {/* Resources Column (NEW) */}
+            <div className="flex flex-col gap-3 md:gap-4 text-sm">
+              <h4 className="text-gray-900 font-semibold mb-1 md:mb-2 text-base">Resources</h4>
+              <a href="#" className="hover:text-gray-900 font-medium transition-colors">Help Center</a>
+              <a href="https://github.com/TRECC-eth/Trecc-synthesis" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 font-medium transition-colors">GitHub Repository</a>
               <a href="#" className="hover:text-gray-900 font-medium transition-colors">Security</a>
               <a href="#" className="hover:text-gray-900 font-medium transition-colors">Status</a>
             </div>
 
-            {/* Resources Column */}
-            <div className="flex flex-col gap-3 md:gap-4 text-sm">
-              <a href="#" className="hover:text-gray-900 font-medium transition-colors">Help center</a>
-              <a href="https://github.com/TRECC-eth" className="hover:text-gray-900 font-medium transition-colors">GitHub Repository</a>
-              <a href="#" className="hover:text-gray-900 font-medium transition-colors">Protocol Documentation</a>
-              <a href="#" className="hover:text-gray-900 font-medium transition-colors">Community</a>
+            {/* Legal Column */}
+            <div className="flex flex-col gap-3 md:gap-4 text-sm col-span-2 md:col-span-1">
+              <h4 className="text-gray-900 font-semibold mb-1 md:mb-2 text-base">Legal</h4>
+              <Link to="/privacy" className="hover:text-gray-900 font-medium transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-gray-900 font-medium transition-colors">Terms of Use</Link>
             </div>
+            
           </div>
         </div>
 
@@ -82,16 +92,12 @@ export default function Footer({ active = true }: { active?: boolean }) {
           <WaitlistForm />
         </div>
 
-        {/* Copyright & Legal */}
-        <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center text-[11px] md:text-xs text-gray-400 font-medium gap-3 md:gap-4">
-          <p>© {new Date().getFullYear()} TRECC</p>
-          <div className="flex gap-6 flex-wrap">
-            <Link to="/privacy" className="hover:text-gray-900 hover:underline transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-gray-900 hover:underline transition-colors">Terms of Service</Link>
-          </div>
+        {/* Copyright */}
+        <div className="w-full max-w-6xl mx-auto flex flex-col items-start justify-center text-[11px] md:text-xs text-gray-400 font-medium">
+          <p>© {new Date().getFullYear()} TRECC Finance. All rights reserved.</p>
         </div>
 
-      </div>{/* end z-index content wrapper */}
+      </div>
     </footer>
   );
 }
