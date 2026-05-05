@@ -250,9 +250,26 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
         {/* Mobile Text Panel */}
         <div className="md:hidden absolute left-4 right-4 top-[60%] sm:top-[62%] z-20">
           <AnimatePresence mode="wait">
-            {(step === 4 || step === 5) && (
+            {step === 4 && (
               <motion.div
-                key={`mobile-vaults-${step}`}
+                key="mobile-base"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 12 }}
+                transition={{ duration: 0.4 }}
+                className="rounded-2xl border border-white/10 bg-black/45 backdrop-blur-sm p-4"
+              >
+                <div className="inline-block px-3 py-1 mb-3 rounded-full border border-white/20 bg-white/5 text-[10px] font-mono text-white/70">LAYER 0</div>
+                <h3 className="text-xl text-white font-semibold mb-2">Protocol foundation</h3>
+                <p className="text-sm text-[#8A8D93] leading-relaxed">
+                  The TRECC Protocol base anchors settlement and shared execution context before vaults, registries, and engines come online.
+                </p>
+              </motion.div>
+            )}
+
+            {step === 5 && (
+              <motion.div
+                key="mobile-vaults"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 12 }}
@@ -260,13 +277,9 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 className="rounded-2xl border border-white/10 bg-black/45 backdrop-blur-sm p-4"
               >
                 <div className="inline-block px-3 py-1 mb-3 rounded-full border border-white/20 bg-white/5 text-[10px] font-mono text-white/70">LAYER 1</div>
-                <h3 className="text-xl text-white font-semibold mb-2">
-                  {step === 4 ? "Protocol foundation" : "On-Chain Core"}
-                </h3>
+                <h3 className="text-xl text-white font-semibold mb-2">On-Chain Core</h3>
                 <p className="text-sm text-[#8A8D93] leading-relaxed">
-                  {step === 4
-                    ? "The TRECC Protocol base anchors settlement and shared execution context before vaults, registries, and engines come online."
-                    : "Vaults pool lender capital while the Registry and Risk Engine manage soulbound agent identities and credit bonds natively."}
+                  Vaults pool lender capital while the Registry and Risk Engine manage soulbound agent identities and credit bonds natively.
                 </p>
               </motion.div>
             )}
