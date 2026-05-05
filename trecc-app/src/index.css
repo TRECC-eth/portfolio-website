@@ -8,6 +8,10 @@
 @tailwind utilities;
 
 @layer base {
+  html, body {
+    overscroll-behavior-y: contain;
+  }
+
   body {
     @apply antialiased selection:bg-white/20 overflow-x-hidden bg-background text-foreground;
     font-family: "Inter", sans-serif;
