@@ -1,10 +1,11 @@
 import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { Link } from "react-router-dom";
 import treccLogo from "../assets/favicon.png";
 import textImg from "../assets/text.png";
 import Threads from "./Threads";
 import WaitlistForm from "./WaitlistForm";
+
+const DOCS_URL = "https://docs.trecc.finance";
 
 export default function Footer({ active = true }: { active?: boolean }) {
   return (
@@ -60,15 +61,15 @@ export default function Footer({ active = true }: { active?: boolean }) {
               <div className="flex flex-col gap-4 text-sm">
                 <h4 className="text-gray-900 font-semibold mb-1 text-base">Platforms</h4>
                 <a href="#" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Launch App</a>
-                <a href="#" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Go to Docs</a>
+                <a href={DOCS_URL} className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Go to Docs</a>
                 <a href="#waitlist" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Join Waitlist</a>
               </div>
               
               {/* This Legal block only shows on mobile, stacked beautifully under Platforms */}
               <div className="flex md:hidden flex-col gap-4 text-sm">
                 <h4 className="text-gray-900 font-semibold mb-1 text-base">Legal</h4>
-                <Link to="/privacy" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Privacy Policy</Link>
-                <Link to="/terms" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Terms of Use</Link>
+                <a href={`${DOCS_URL}/legal/privacy-policy`} className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Privacy Policy</a>
+                <a href={`${DOCS_URL}/legal/terms-of-use`} className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Terms of Use</a>
               </div>
             </div>
 
@@ -84,8 +85,8 @@ export default function Footer({ active = true }: { active?: boolean }) {
             {/* Legal Column (Desktop Only) */}
             <div className="hidden md:flex flex-col gap-4 text-sm">
               <h4 className="text-gray-900 font-semibold mb-1 text-base">Legal</h4>
-              <Link to="/privacy" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Privacy Policy</Link>
-              <Link to="/terms" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Terms of Use</Link>
+              <a href={`${DOCS_URL}/legal/privacy-policy`} className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Privacy Policy</a>
+              <a href={`${DOCS_URL}/legal/terms-of-use`} className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Terms of Use</a>
             </div>
             
           </div>
