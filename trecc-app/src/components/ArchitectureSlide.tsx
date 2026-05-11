@@ -152,7 +152,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(215,215,182,0.05),transparent_70%)]" />
 
       <h2 className="absolute top-36 sm:top-40 md:top-32 text-chrome font-medium text-xl sm:text-2xl md:text-4xl tracking-tight z-30 text-center px-6 leading-tight">
-        The TRECC Stack
+        TRECC Core Architecture
       </h2>
 
       <div className="w-full max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 relative h-full">
