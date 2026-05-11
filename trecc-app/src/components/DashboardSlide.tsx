@@ -79,7 +79,7 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
 
   return (
     // Removed the solid background color so the Grainient shows through
-    <div className="h-screen w-full flex flex-col items-center justify-start pt-[5.5rem] md:pt-[120px] pb-4 md:pb-12 px-4 md:px-6 relative overflow-hidden box-border">
+    <div className="h-screen w-full flex flex-col items-center justify-start pt-[6.75rem] sm:pt-[6rem] md:pt-[120px] pb-6 md:pb-12 px-4 md:px-6 relative overflow-hidden box-border">
 
       {/* BACKGROUND LAYER: The React Bits Grainient */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
@@ -111,7 +111,7 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
       </div>
 
       {/* Narrative Headers - Kept z-30 so it sits way above the background */}
-      <div className="min-h-[3.25rem] md:min-h-[4.5rem] w-full flex items-center justify-center relative shrink-0 mb-4 md:mb-10 z-30 px-5 pt-1 md:px-4 md:pt-0">
+      <div className="min-h-[3rem] md:min-h-[4.5rem] w-full flex items-center justify-center relative shrink-0 mb-3 md:mb-10 z-30 px-5 pt-1 md:px-4 md:pt-0">
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: step === 1 ? 1 : 0, y: step === 1 ? 0 : -10 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="absolute max-w-4xl">
           <h2 className="text-chrome font-medium text-[1.45rem] sm:text-3xl md:text-5xl tracking-tight text-center leading-tight">
             The Capital-Starved Machine
@@ -134,7 +134,7 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
         initial={{ y: 60, opacity: 0 }}
         animate={{ y: isBase ? 0 : 60, opacity: isBase ? 1 : 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-[940px] md:max-w-[1080px] h-[58vh] sm:h-auto md:flex-1 min-h-[340px] sm:min-h-[430px] md:min-h-[520px] max-h-[58vh] sm:max-h-[calc(100vh-9rem)] md:max-h-[720px] flex flex-col shadow-[0_32px_90px_rgba(0,0,0,0.82),0_18px_36px_rgba(0,0,0,0.34),0_0_0_1px_rgba(255,255,255,0.035)] rounded-[1.25rem] relative z-10 border border-white/[0.09] bg-[#07080B]/96 backdrop-blur-sm overflow-hidden"
+        className="w-full max-w-[940px] md:max-w-[1080px] h-[64vh] sm:h-auto md:flex-1 min-h-[390px] sm:min-h-[430px] md:min-h-[520px] max-h-[64vh] sm:max-h-[calc(100vh-9rem)] md:max-h-[720px] flex flex-col shadow-[0_32px_90px_rgba(0,0,0,0.82),0_18px_36px_rgba(0,0,0,0.34),0_0_0_1px_rgba(255,255,255,0.035)] rounded-[1.25rem] relative z-10 border border-white/[0.09] bg-[#07080B]/96 backdrop-blur-sm overflow-hidden"
       >
         <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.075),transparent_30%),linear-gradient(135deg,rgba(255,255,255,0.035),transparent_38%,rgba(0,0,0,0.16))]" />
         <div className="pointer-events-none absolute inset-[1px] z-0 rounded-[1.18rem] border border-white/[0.035] shadow-[inset_1px_1px_0_rgba(255,255,255,0.1),inset_-1px_-1px_0_rgba(0,0,0,0.85)]" />
