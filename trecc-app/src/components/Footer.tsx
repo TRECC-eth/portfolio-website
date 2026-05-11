@@ -109,7 +109,7 @@ export default function Footer({ active = true }: { active?: boolean }) {
           </div>
 
           {/* Copyright */}
-          <div className="w-full flex items-center justify-between text-[13px] text-gray-400 font-medium">
+          <div className="w-full flex items-center justify-between pb-10 md:pb-0 text-[13px] text-gray-400 font-medium">
             <p>© {new Date().getFullYear()} TRECC Finance. All rights reserved.</p>
           </div>
         </div>
