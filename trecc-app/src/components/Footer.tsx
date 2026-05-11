@@ -9,7 +9,7 @@ const DOCS_URL = "https://docs.trecc.finance";
 
 export default function Footer({ active = true }: { active?: boolean }) {
   return (
-    <footer id="TRECC-footer" className="w-full min-h-[100dvh] bg-white text-gray-600 px-6 pb-6 md:px-16 md:pb-12 border-t border-gray-100 flex flex-col font-sans relative overflow-hidden">
+    <footer id="TRECC-footer" className="w-full min-h-[100dvh] bg-white text-gray-600 px-6 pb-[calc(2.5rem+env(safe-area-inset-bottom))] md:px-16 md:pb-12 border-t border-gray-100 flex flex-col font-sans relative overflow-hidden">
       
       {/* 
         Mobile renders the canvas wider than the viewport, then scales it down.

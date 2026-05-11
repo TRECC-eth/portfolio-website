@@ -197,7 +197,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
           {/* Scale wrapper */}
           <div className="relative z-10 transform-gpu scale-[0.75] sm:scale-[0.8] md:scale-[1] lg:scale-[1.2] xl:scale-[1.4] origin-center mt-0 sm:mt-[8px] md:mt-[180px] ml-0 md:ml-3">
             <motion.div
-              className="absolute left-1/2 top-1/2 z-0 h-[260px] w-[320px] -translate-x-1/2 -translate-y-[42%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(235,233,205,0.14),rgba(215,215,182,0.06)_36%,transparent_72%)] blur-xl md:h-[420px] md:w-[520px] md:bg-[radial-gradient(ellipse_at_center,rgba(235,233,205,0.34),rgba(215,215,182,0.16)_32%,rgba(215,215,182,0.055)_58%,transparent_76%)] md:blur-2xl"
+              className="absolute left-1/2 top-1/2 z-0 h-[260px] w-[320px] -translate-x-1/2 -translate-y-[42%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(235,233,205,0.14),rgba(215,215,182,0.06)_36%,transparent_72%)] blur-xl md:h-[420px] md:w-[520px] md:bg-[radial-gradient(ellipse_at_center,rgba(235,233,205,0.22),rgba(215,215,182,0.095)_32%,rgba(215,215,182,0.03)_58%,transparent_76%)] md:blur-2xl"
               animate={{ opacity: baseActive ? 1 : 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             />
