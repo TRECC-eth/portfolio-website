@@ -1,14 +1,19 @@
+import { useState } from "react";
 import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import treccLogo from "../assets/favicon.png";
 import textImg from "../assets/text.png";
 import Threads from "./Threads";
 import WaitlistForm from "./WaitlistForm";
+import WaitlistModal from "./WaitlistModal";
 
 const DOCS_URL = "https://docs.trecc.finance";
 
 export default function Footer({ active = true }: { active?: boolean }) {
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+
   return (
+    <>
     <footer id="TRECC-footer" className="w-full min-h-[100dvh] bg-white text-gray-600 px-6 pb-[calc(2.5rem+env(safe-area-inset-bottom))] md:px-16 md:pb-12 border-t border-gray-100 flex flex-col font-sans relative overflow-hidden">
       
       {/* 
@@ -62,7 +67,7 @@ export default function Footer({ active = true }: { active?: boolean }) {
                 <h4 className="text-gray-900 font-semibold mb-1 text-base">Platforms</h4>
                 <a href="#" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Launch App</a>
                 <a href={DOCS_URL} className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Go to Docs</a>
-                <a href="#waitlist" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Join Waitlist</a>
+                <button type="button" onClick={() => setIsWaitlistOpen(true)} className="text-left text-gray-500 hover:text-gray-900 font-medium transition-colors">Join Waitlist</button>
               </div>
               
               {/* This Legal block only shows on mobile, stacked beautifully under Platforms */}
@@ -116,5 +121,7 @@ export default function Footer({ active = true }: { active?: boolean }) {
 
       </div>
     </footer>
+    <WaitlistModal open={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
+    </>
   );
 }
