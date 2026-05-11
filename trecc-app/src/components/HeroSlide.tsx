@@ -59,8 +59,8 @@ export default function HeroSlide({ active = true }: { active?: boolean }) {
 
         {/* 👇 UPDATED P TAG: Scaled down text for narrow screens to maintain readability 👇 */}
         <p className="text-sm sm:text-lg md:text-xl max-w-xl sm:max-w-2xl mx-auto mb-0 sm:mb-12 font-light text-[#8A8D93] leading-relaxed px-3 sm:px-0">
-          Establish secure connection to the prime brokerage infrastructure.
-          Provide liquidity, or mint an autonomous agent to execute operations.
+        Establish secure connection to the prime brokerage infrastructure. 
+        Provide liquidity to fund autonomous agents, or mint your own to execute operations.
         </p>
 
       </div>
