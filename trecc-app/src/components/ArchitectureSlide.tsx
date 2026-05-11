@@ -194,8 +194,13 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
           }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
         >
+          <motion.div
+            className="absolute left-1/2 top-1/2 h-[420px] w-[520px] -translate-x-1/2 -translate-y-[38%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(235,233,205,0.34),rgba(215,215,182,0.16)_32%,rgba(215,215,182,0.055)_58%,transparent_76%)] blur-2xl"
+            animate={{ opacity: baseActive ? 1 : 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          />
           {/* Scale wrapper */}
-          <div className="transform-gpu scale-[0.75] sm:scale-[0.8] md:scale-[1] lg:scale-[1.2] xl:scale-[1.4] origin-center mt-0 sm:mt-[8px] md:mt-[180px] ml-0 md:ml-3">
+          <div className="relative z-10 transform-gpu scale-[0.75] sm:scale-[0.8] md:scale-[1] lg:scale-[1.2] xl:scale-[1.4] origin-center mt-0 sm:mt-[8px] md:mt-[180px] ml-0 md:ml-3">
             <div className="relative w-[320px] h-[320px]" style={{ transform: "rotateX(60deg) rotateZ(-45deg)", transformStyle: "preserve-3d" }}>
 
               {/* BASE LAYER */}

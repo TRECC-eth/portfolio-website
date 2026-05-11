@@ -72,8 +72,9 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
 
   const isNegative = vaultPnl.includes("-");
   const pnlColorHex = isNegative ? RED : GREEN;
-  const sidePanelClass = "p-3 rounded-xl border border-white/[0.07] bg-[#0D0E12] shadow-[0_16px_34px_rgba(0,0,0,0.38),inset_1px_1px_0_rgba(255,255,255,0.08),inset_-1px_-1px_0_rgba(0,0,0,0.8)] relative z-10 overflow-hidden [transform:translateZ(12px)] [transform-style:preserve-3d]";
-  const metricRowClass = "flex justify-between items-center text-[12px] gap-2 rounded-md border border-white/[0.045] bg-[#08090C] px-2 py-1.5 shadow-[inset_1px_1px_0_rgba(255,255,255,0.04),inset_-1px_-1px_0_rgba(0,0,0,0.65)]";
+  const sidePanelClass = "p-2.5 rounded-xl border border-white/[0.07] bg-[#0D0E12] shadow-[0_12px_28px_rgba(0,0,0,0.36),inset_1px_1px_0_rgba(255,255,255,0.08),inset_-1px_-1px_0_rgba(0,0,0,0.8)] relative z-10 overflow-hidden [transform:translateZ(12px)] [transform-style:preserve-3d] flex flex-col min-h-0";
+  const metricRowClass = "flex justify-between items-center text-[11px] gap-2 rounded-md border border-white/[0.045] bg-[#08090C] px-2 py-1 shadow-[inset_1px_1px_0_rgba(255,255,255,0.04),inset_-1px_-1px_0_rgba(0,0,0,0.65)] min-h-[27px]";
+  const splitMetricClass = "grid grid-cols-2 gap-2 text-[11px] rounded-md border border-white/[0.045] bg-[#08090C] px-2 py-1 shadow-[inset_1px_1px_0_rgba(255,255,255,0.04),inset_-1px_-1px_0_rgba(0,0,0,0.65)] min-h-[27px]";
   const metricLabelClass = "text-white/50";
 
   return (
@@ -164,23 +165,23 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
           <div className="flex flex-1 min-h-0 overflow-hidden relative [perspective:1200px]">
 
             {/* Sidebar */}
-            <div className="w-[18.5rem] border-r border-white/[0.07] p-4 hidden md:flex flex-col gap-2.5 bg-[#08090D] shrink-0 z-20 overflow-visible justify-center relative [transform-style:preserve-3d]">
+            <div className="w-[18.5rem] border-r border-white/[0.07] p-3 hidden md:flex flex-col gap-5 bg-[#08090D] shrink-0 z-20 overflow-hidden justify-center relative [transform-style:preserve-3d]">
               <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.025),rgba(0,0,0,0.28))] pointer-events-none" />
 
               {/* Block 1: Lending Pool */}
               <div className={sidePanelClass}>
                 <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(135deg,rgba(14,203,129,0.06),transparent_46%)]" />
-                <div className="flex items-center justify-between mb-3 relative z-10">
+                <div className="flex items-center justify-between mb-2 relative z-10 shrink-0">
                   <span className="text-[10px] text-white/60 font-bold uppercase tracking-widest">Lending Pool</span>
                   <motion.div
-                    animate={{ color: isBase ? GREEN : '#606468' }}
+                    animate={{ color: isBase ? '#FFFFFF' : '#606468' }}
                     className="flex items-center gap-1.5 text-[10px] font-mono font-medium tracking-wide border border-current/25 px-2 py-0.5 rounded-full bg-current/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-current shadow-[0_0_8px_currentColor]" />
+                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: isBase ? '#8A0303' : '#606468' }} />
                     {isBase ? "LIVE" : "IDLE"}
                   </motion.div>
                 </div>
-                <div className="space-y-2 relative z-10">
+                <div className="space-y-1.5 relative z-10 min-h-0">
                   <div className={metricRowClass}>
                     <span className={metricLabelClass}>TVL</span>
                     <AnimatePresence mode="popLayout">
@@ -189,17 +190,19 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
                       </motion.span>
                     </AnimatePresence>
                   </div>
-                  <div className={metricRowClass}>
-                    <span className={metricLabelClass}>Utilization</span>
-                    <motion.span animate={{ color: isHedging ? '#E2E8F0' : '#606468' }} className="font-mono tabular-nums font-medium">
-                      {isYielding ? "94%" : isHedging ? "100%" : "0%"}
-                    </motion.span>
-                  </div>
-                  <div className={metricRowClass}>
-                    <span className={metricLabelClass}>Lender APY</span>
-                    <motion.span animate={{ color: isYielding ? GREEN : isHedging ? '#C4C7CC' : '#606468' }} className="font-mono tabular-nums font-medium">
-                      {isYielding ? "18.7%" : isHedging ? "3.2%" : "—"}
-                    </motion.span>
+                  <div className={splitMetricClass}>
+                    <div className="flex items-center justify-between gap-1.5">
+                      <span className={metricLabelClass}>Util.</span>
+                      <motion.span animate={{ color: isHedging ? '#E2E8F0' : '#606468' }} className="font-mono tabular-nums font-medium">
+                        {isYielding ? "94%" : isHedging ? "100%" : "0%"}
+                      </motion.span>
+                    </div>
+                    <div className="flex items-center justify-between gap-1.5">
+                      <span className={metricLabelClass}>APY</span>
+                      <motion.span animate={{ color: isYielding ? GREEN : isHedging ? '#C4C7CC' : '#606468' }} className="font-mono tabular-nums font-medium">
+                        {isYielding ? "18.7%" : isHedging ? "3.2%" : "—"}
+                      </motion.span>
+                    </div>
                   </div>
                   <div className={metricRowClass}>
                     <span className={metricLabelClass}>Active loans</span>
@@ -213,32 +216,34 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
               {/* Block 2: ERC-8004 Agent Credit */}
               <div className={sidePanelClass}>
                 <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.045),transparent_45%)]" />
-                <div className="flex items-center justify-between mb-3 relative z-10">
+                <div className="flex items-center justify-between mb-2 relative z-10 shrink-0">
                   <span className="text-[10px] text-white/60 font-bold uppercase tracking-widest">ERC-8004 Agent</span>
                   <motion.span animate={{ opacity: isHedging ? 1 : 0.3 }} className="text-[9px] font-mono text-white/50 border border-white/[0.1] px-1.5 py-0.5 rounded-md bg-[#111319] shadow-[inset_1px_1px_0_rgba(255,255,255,0.06),inset_-1px_-1px_0_rgba(0,0,0,0.7)]">
                     Soulbound NFT
                   </motion.span>
                 </div>
-                <div className="space-y-2 relative z-10">
+                <div className="space-y-1.5 relative z-10 min-h-0">
                   <div className={metricRowClass}>
                     <span className={metricLabelClass}>ENS Identity</span>
                     <motion.span animate={{ color: isHedging ? '#E2E8F0' : '#606468' }} className="font-mono font-medium">
                       {isYielding ? "arb.trecc.eth" : isHedging ? "delta.trecc.eth" : "—"}
                     </motion.span>
                   </div>
-                  <div className={metricRowClass}>
-                    <span className={metricLabelClass}>Credit score</span>
-                    <AnimatePresence mode="popLayout">
-                      <motion.span key={isYielding ? "980" : isHedging ? "720" : "none"} initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0, color: isYielding ? GREEN : isHedging ? '#E2E8F0' : '#606468' }} exit={{ opacity: 0, y: 5 }} transition={{ duration: 0.4 }} className="font-mono tabular-nums font-medium">
-                        {isYielding ? "980" : isHedging ? "720" : "—"}
+                  <div className={splitMetricClass}>
+                    <div className="flex items-center justify-between gap-1.5">
+                      <span className={metricLabelClass}>Score</span>
+                      <AnimatePresence mode="popLayout">
+                        <motion.span key={isYielding ? "980" : isHedging ? "720" : "none"} initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0, color: isYielding ? GREEN : isHedging ? '#E2E8F0' : '#606468' }} exit={{ opacity: 0, y: 5 }} transition={{ duration: 0.4 }} className="font-mono tabular-nums font-medium">
+                          {isYielding ? "980" : isHedging ? "720" : "—"}
+                        </motion.span>
+                      </AnimatePresence>
+                    </div>
+                    <div className="flex items-center justify-between gap-1.5">
+                      <span className={metricLabelClass}>Tier</span>
+                      <motion.span animate={{ color: isYielding ? GREEN : isHedging ? '#E2E8F0' : '#606468' }} className="font-mono font-medium">
+                        {isYielding ? "T1" : isHedging ? "T2" : "—"}
                       </motion.span>
-                    </AnimatePresence>
-                  </div>
-                  <div className={metricRowClass}>
-                    <span className={metricLabelClass}>Tier</span>
-                    <motion.span animate={{ color: isYielding ? GREEN : isHedging ? '#E2E8F0' : '#606468' }} className="font-mono font-medium">
-                      {isYielding ? "Tier 1" : isHedging ? "Tier 2" : "—"}
-                    </motion.span>
+                    </div>
                   </div>
                   <div className={metricRowClass}>
                     <span className={metricLabelClass}>Borrows / slashed</span>
@@ -252,7 +257,7 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
               {/* Block 3: Collateral Exposure */}
               <div className={sidePanelClass}>
                 <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(135deg,rgba(246,70,93,0.055),transparent_46%)]" />
-                <div className="flex items-center justify-between mb-3 relative z-10">
+                <div className="flex items-center justify-between mb-2 relative z-10 shrink-0">
                   <span className="text-[10px] text-white/60 font-bold uppercase tracking-widest">Collateral</span>
                   <motion.span
                     animate={{ color: isHedging ? '#E2E8F0' : '#606468', opacity: isHedging ? 1 : 0.4 }}
@@ -261,12 +266,20 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
                     {isHedging ? "UNDERCOLLAT." : "—"}
                   </motion.span>
                 </div>
-                <div className="space-y-2 relative z-10">
-                  <div className={metricRowClass}>
-                    <span className={metricLabelClass}>ETH bond posted</span>
-                    <motion.span animate={{ color: isHedging ? '#E2E8F0' : '#606468' }} className="font-mono font-medium">
-                      {isHedging ? "0.01 ETH" : "—"}
-                    </motion.span>
+                <div className="space-y-1.5 relative z-10 min-h-0">
+                  <div className={splitMetricClass}>
+                    <div className="flex items-center justify-between gap-1.5">
+                      <span className={metricLabelClass}>Bond</span>
+                      <motion.span animate={{ color: isHedging ? '#E2E8F0' : '#606468' }} className="font-mono font-medium">
+                        {isHedging ? "0.01 ETH" : "—"}
+                      </motion.span>
+                    </div>
+                    <div className="flex items-center justify-between gap-1.5">
+                      <span className={metricLabelClass}>Ratio</span>
+                      <motion.span animate={{ color: isYielding ? RED : isHedging ? '#E2E8F0' : '#606468' }} className="font-mono tabular-nums font-medium">
+                        {isYielding ? "0.003%" : isHedging ? "0.03%" : "—"}
+                      </motion.span>
+                    </div>
                   </div>
                   <div className={metricRowClass}>
                     <span className={metricLabelClass}>Loan exposure</span>
@@ -275,12 +288,6 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
                         {isHedging ? activeCredit : "—"}
                       </motion.span>
                     </AnimatePresence>
-                  </div>
-                  <div className={metricRowClass}>
-                    <span className={metricLabelClass}>Collateral ratio</span>
-                    <motion.span animate={{ color: isYielding ? RED : isHedging ? '#E2E8F0' : '#606468' }} className="font-mono tabular-nums font-medium">
-                      {isYielding ? "0.003%" : isHedging ? "0.03%" : "—"}
-                    </motion.span>
                   </div>
                   <div className={metricRowClass}>
                     <span className={metricLabelClass}>Protection</span>
@@ -308,14 +315,14 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
                 {[...Array(6)].map((_, i) => <div key={`v-${i}`} className="h-full border-l border-white absolute" style={{ left: `${i * 20}%` }} />)}
               </div>
 
-              <div className="relative z-30 px-3 pt-3 pb-1 sm:px-6 sm:pt-5 md:px-7 md:pt-6 md:pb-2 flex items-start shrink-0">
+              <div className="absolute left-3 top-[5%] z-30 sm:left-6 md:left-7">
                 <div className="min-w-[13rem] sm:min-w-[17rem] rounded-xl border border-white/[0.07] bg-[#08090C]/95 px-3.5 py-3 sm:px-4 sm:py-3.5 shadow-[0_14px_32px_rgba(0,0,0,0.36),inset_1px_1px_0_rgba(255,255,255,0.06),inset_-1px_-1px_0_rgba(0,0,0,0.75)]">
                   <div className="flex items-center justify-between gap-4 mb-1.5">
                     <div className="text-white/42 text-[9px] sm:text-[10px] md:text-[11px] font-bold uppercase tracking-[0.18em]">
                       Vault net P&L
                     </div>
                     <div className="flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest" style={{ color: pnlColorHex }}>
-                      <span className="h-1.5 w-1.5 rounded-full bg-current shadow-[0_0_8px_currentColor]" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-current" />
                       {isNegative ? "Drawdown" : "Profit"}
                     </div>
                   </div>
