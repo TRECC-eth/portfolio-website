@@ -136,7 +136,7 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
         initial={{ y: 60, opacity: 0 }}
         animate={{ y: isBase ? 0 : 60, opacity: isBase ? 1 : 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-[940px] md:max-w-[1080px] h-[64vh] sm:h-auto md:flex-1 min-h-[390px] sm:min-h-[430px] md:min-h-[520px] max-h-[64vh] sm:max-h-[calc(100vh-9rem)] md:max-h-[720px] flex flex-col shadow-[0_32px_90px_rgba(0,0,0,0.82),0_18px_36px_rgba(0,0,0,0.34),0_0_0_1px_rgba(255,255,255,0.035)] rounded-[1.25rem] relative z-10 border border-white/[0.09] bg-[#07080B]/96 backdrop-blur-sm overflow-hidden"
+        className="w-full max-w-[22rem] lg:max-w-[1080px] h-[64vh] sm:h-auto md:flex-1 min-h-[390px] sm:min-h-[430px] md:min-h-[520px] max-h-[64vh] sm:max-h-[calc(100vh-9rem)] md:max-h-[720px] flex flex-col shadow-[0_32px_90px_rgba(0,0,0,0.82),0_18px_36px_rgba(0,0,0,0.34),0_0_0_1px_rgba(255,255,255,0.035)] rounded-[1.25rem] relative z-10 border border-white/[0.09] bg-[#07080B]/96 backdrop-blur-sm overflow-hidden"
       >
         <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.075),transparent_30%),linear-gradient(135deg,rgba(255,255,255,0.035),transparent_38%,rgba(0,0,0,0.16))]" />
         <div className="pointer-events-none absolute inset-[1px] z-0 rounded-[1.18rem] border border-white/[0.035] shadow-[inset_1px_1px_0_rgba(255,255,255,0.1),inset_-1px_-1px_0_rgba(0,0,0,0.85)]" />
@@ -167,7 +167,7 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
           <div className="flex flex-1 min-h-0 overflow-hidden relative [perspective:1200px]">
 
             {/* Sidebar */}
-            <div className="w-[clamp(18.75rem,29vw,21rem)] border-r border-white/[0.07] p-2.5 xl:p-3 hidden md:flex flex-col gap-4 xl:gap-5 bg-[#08090D] shrink-0 z-20 overflow-hidden justify-center relative [transform-style:preserve-3d]">
+            <div className="w-full lg:w-[clamp(18.75rem,29vw,21rem)] border-r-0 lg:border-r border-white/[0.07] p-2.5 xl:p-3 flex flex-col gap-4 xl:gap-5 bg-[#08090D] shrink-0 z-20 overflow-hidden justify-center relative [transform-style:preserve-3d]">
               <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.025),rgba(0,0,0,0.28))] pointer-events-none" />
 
               {/* Block 1: Lending Pool */}
@@ -302,7 +302,7 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
             </div>
 
             {/* Main Chart Area */}
-            <div className="flex-1 flex flex-col bg-[radial-gradient(circle_at_54%_0%,rgba(255,255,255,0.07),transparent_34%)] relative overflow-hidden">
+            <div className="hidden lg:flex flex-1 flex-col bg-[radial-gradient(circle_at_54%_0%,rgba(255,255,255,0.07),transparent_34%)] relative overflow-hidden">
 
               <div className="absolute right-0 top-0 bottom-7 sm:bottom-10 w-9 sm:w-16 flex flex-col justify-between py-3 md:py-8 text-[7px] sm:text-[10px] md:text-[11px] text-white/30 items-end pr-1.5 md:pr-4 z-10 font-mono tabular-nums shrink-0 font-medium">
                 <span>$45.0k</span><span>$40.0k</span><span>$35.0k</span><span>$30.0k</span><span>$25.0k</span>
