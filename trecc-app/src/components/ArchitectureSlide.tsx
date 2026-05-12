@@ -168,7 +168,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 0</div>
                 <h3 className="text-3xl text-white font-semibold mb-3">Protocol foundation</h3>
-                <p className="text-[#8A8D93] leading-relaxed">The TRECC Protocol base—where settlement and shared execution context are anchored before vaults, registries, and engines come online.</p>
+                <p className="text-[#8A8D93] leading-relaxed">The TRECC Protocol base, where settlement and shared execution context are anchored before vaults, registries, and engines come online.</p>
               </motion.div>
             )}
 
