@@ -1,14 +1,20 @@
+import { useState } from "react";
 import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { Link } from "react-router-dom";
 import treccLogo from "../assets/favicon.png";
 import textImg from "../assets/text.png";
 import Threads from "./Threads";
 import WaitlistForm from "./WaitlistForm";
+import WaitlistModal from "./WaitlistModal";
+
+const DOCS_URL = "https://docs.trecc.finance";
 
 export default function Footer({ active = true }: { active?: boolean }) {
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+
   return (
-    <footer id="TRECC-footer" className="w-full min-h-[100dvh] bg-white text-gray-600 px-6 pb-6 md:px-16 md:pb-12 border-t border-gray-100 flex flex-col font-sans relative overflow-hidden">
+    <>
+    <footer id="TRECC-footer" className="w-full min-h-[100dvh] bg-white text-gray-600 px-6 pb-[calc(2.5rem+env(safe-area-inset-bottom))] md:px-16 md:pb-12 border-t border-gray-100 flex flex-col font-sans relative overflow-hidden">
       
       {/* 
         Mobile renders the canvas wider than the viewport, then scales it down.
@@ -60,15 +66,15 @@ export default function Footer({ active = true }: { active?: boolean }) {
               <div className="flex flex-col gap-4 text-sm">
                 <h4 className="text-gray-900 font-semibold mb-1 text-base">Platforms</h4>
                 <a href="#" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Launch App</a>
-                <a href="#" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Go to Docs</a>
-                <a href="#waitlist" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Join Waitlist</a>
+                <a href={DOCS_URL} className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Go to Docs</a>
+                <button type="button" onClick={() => setIsWaitlistOpen(true)} className="text-left text-gray-500 hover:text-gray-900 font-medium transition-colors">Join Waitlist</button>
               </div>
               
               {/* This Legal block only shows on mobile, stacked beautifully under Platforms */}
               <div className="flex md:hidden flex-col gap-4 text-sm">
                 <h4 className="text-gray-900 font-semibold mb-1 text-base">Legal</h4>
-                <Link to="/privacy" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Privacy Policy</Link>
-                <Link to="/terms" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Terms of Use</Link>
+                <a href={`${DOCS_URL}/legal/privacy-policy`} className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Privacy Policy</a>
+                <a href={`${DOCS_URL}/legal/terms-of-use`} className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Terms of Use</a>
               </div>
             </div>
 
@@ -84,8 +90,8 @@ export default function Footer({ active = true }: { active?: boolean }) {
             {/* Legal Column (Desktop Only) */}
             <div className="hidden md:flex flex-col gap-4 text-sm">
               <h4 className="text-gray-900 font-semibold mb-1 text-base">Legal</h4>
-              <Link to="/privacy" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Privacy Policy</Link>
-              <Link to="/terms" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Terms of Use</Link>
+              <a href={`${DOCS_URL}/legal/privacy-policy`} className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Privacy Policy</a>
+              <a href={`${DOCS_URL}/legal/terms-of-use`} className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Terms of Use</a>
             </div>
             
           </div>
@@ -108,12 +114,14 @@ export default function Footer({ active = true }: { active?: boolean }) {
           </div>
 
           {/* Copyright */}
-          <div className="w-full flex items-center justify-between text-[13px] text-gray-400 font-medium">
+          <div className="w-full flex items-center justify-between pb-[calc(7rem+env(safe-area-inset-bottom))] md:pb-0 text-[13px] text-gray-400 font-medium">
             <p>© {new Date().getFullYear()} TRECC Finance. All rights reserved.</p>
           </div>
         </div>
 
       </div>
     </footer>
+    <WaitlistModal open={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
+    </>
   );
 }

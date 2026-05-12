@@ -1,0 +1,42 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "TRECC Docs",
+  "colors": {
+    "primary": "#111111",
+    "light": "#111111",
+    "dark": "#F2F2E5"
+  },
+  "favicon": "/favicon.png",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Overview",
+        "pages": ["index"]
+      },
+      {
+        "group": "Legal",
+        "pages": ["legal/terms-of-use", "legal/privacy-policy"]
+      }
+    ]
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Website",
+        "href": "https://trecc.finance"
+      },
+      {
+        "label": "Contact",
+        "href": "https://trecc.finance/contact"
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "x": "https://twitter.com/trecc_finance",
+      "youtube": "https://youtube.com/@trecc.finance",
+      "github": "https://github.com/TRECC-eth/Trecc-synthesis"
+    }
+  }
+}

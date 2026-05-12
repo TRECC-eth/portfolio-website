@@ -6,7 +6,7 @@
   </a>
 </p>
 
-## The Ideas
+## The Idea
 
 TRECC is an institutional grade DeFi credit and liquidity protocol built for the machine economy.
 

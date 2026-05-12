@@ -151,8 +151,8 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
     <div ref={containerRef} className="h-full w-full bg-[#030303] flex flex-col items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(215,215,182,0.05),transparent_70%)]" />
 
-      <h2 className="absolute top-32 sm:top-36 md:top-24 text-chrome font-medium text-xl sm:text-2xl md:text-4xl tracking-tight z-30 text-center px-6 leading-tight">
-        The TRECC Stack
+      <h2 className="absolute top-36 sm:top-40 md:top-32 text-chrome font-medium text-xl sm:text-2xl md:text-4xl tracking-tight z-30 text-center px-6 leading-tight">
+        TRECC Core Architecture
       </h2>
 
       <div className="w-full max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 relative h-full">
@@ -179,14 +179,14 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 className="absolute inset-0"
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 2</div>
-                <h3 className="text-3xl text-white font-semibold mb-3">Off-Chain</h3>
-                <p className="text-[#8A8D93] leading-relaxed">The secure execution environment. Off-chain Risk Sentinels and MPC Wallets seamlessly bridge autonomous AI logic to on-chain capabilities.</p>
+                <h3 className="text-3xl text-white font-semibold mb-3">Off-Chain Intelligence</h3>
+                <p className="text-[#8A8D93] leading-relaxed">The secure execution environment. Off-chain Risk Sentinels and Autonomous Agent Services seamlessly bridge autonomous AI logic to on-chain capabilities.</p>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
 
-        {/* CENTER 3D STACK - Isometric layout (horizontal shift per scroll step: vaults center, agents left, yield right) */}
+        {/* CENTER 3D STACK - Isometric layout */}
         <motion.div
           className="absolute top-[47%] md:top-1/2 -translate-x-1/2 -translate-y-1/2 md:-translate-y-[35%] pointer-events-none z-10"
           animate={{
@@ -194,26 +194,31 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
           }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Scale wrapper to prevent Tailwind classes from being overwritten by the inline transform string */}
-          <div className="transform-gpu scale-[0.75] sm:scale-[0.8] md:scale-[1] lg:scale-[1.2] xl:scale-[1.4] origin-center mt-0 sm:mt-[8px] md:mt-[180px] ml-0 md:ml-3">
-            <div className="relative w-[320px] h-[320px]" style={{ transform: "rotateX(60deg) rotateZ(-45deg)", transformStyle: "preserve-3d" }}>
+          {/* Scale wrapper */}
+          <div className="relative z-10 transform-gpu scale-[0.75] sm:scale-[0.8] md:scale-[1] lg:scale-[1.2] xl:scale-[1.4] origin-center mt-0 sm:mt-[8px] md:mt-[180px] ml-0 md:ml-3">
+            <motion.div
+              className="absolute left-1/2 top-1/2 z-0 h-[260px] w-[320px] -translate-x-1/2 -translate-y-[42%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(235,233,205,0.14),rgba(215,215,182,0.06)_36%,transparent_72%)] blur-xl md:h-[420px] md:w-[520px] md:bg-[radial-gradient(ellipse_at_center,rgba(235,233,205,0.22),rgba(215,215,182,0.095)_32%,rgba(215,215,182,0.03)_58%,transparent_76%)] md:blur-2xl"
+              animate={{ opacity: baseActive ? 1 : 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            />
+            <div className="relative z-10 w-[320px] h-[320px]" style={{ transform: "rotateX(60deg) rotateZ(-45deg)", transformStyle: "preserve-3d" }}>
 
               {/* BASE LAYER */}
               <Block className="rotate-90" x={0} y={0} z={0} w={320} h={320} depth={20} label="TRECC Protocol" active={baseActive} textFace="left" />
 
-              {/* VAULTS LAYER (Middle Base) — appear after base-only beat */}
+              {/* VAULTS LAYER (Middle Base) */}
               <Block x={20} y={20} z={30} w={120} h={120} depth={30} label="Liquidity Vault" active={platesActive} textFace="top" />
-              <Block x={20} y={160} z={30} w={120} h={140} depth={30} label="Identity Registry" active={platesActive} textFace="top" />
+              <Block x={20} y={160} z={30} w={120} h={140} depth={30} label="ERC-8004 Registry" active={platesActive} textFace="top" />
               <Block x={160} y={20} z={30} w={140} h={280} depth={30} label="Risk Engine" active={platesActive} textFace="top" />
 
               {/* AUTONOMOUS AGENTS (Pillars) */}
-              <Block x={40} y={180} z={70} w={50} h={70} depth={80} label="MPC Wallet" active={agentsActive} textFace="right" />
+              <Block x={40} y={180} z={70} w={50} h={70} depth={80} label="Agent Core" active={agentsActive} textFace="right" />
               <Block x={180} y={40} z={70} w={50} h={70} depth={100} label="Risk Sentinel" active={agentsActive} textFace="right" />
               <Block x={240} y={160} z={70} w={40} h={40} depth={70} label="AI Logic" active={agentsActive} textFace="left" />
 
               {/* YIELD / APPS (Highlight Pillars) */}
-              <Block x={40} y={40} z={70} w={60} h={60} depth={140} label="Agent UI" active={yieldActive} highlight={yieldActive} textFace="right" />
-              <Block x={180} y={180} z={70} w={60} h={60} depth={160} label="Lender UI" active={yieldActive} highlight={yieldActive} textFace="left" />
+              <Block x={40} y={40} z={70} w={60} h={60} depth={140} label="Agent Dashboard" active={yieldActive} highlight={yieldActive} textFace="right" />
+              <Block x={180} y={180} z={70} w={60} h={60} depth={160} label="Lender Dashboard" active={yieldActive} highlight={yieldActive} textFace="left" />
             </div>
           </div>
         </motion.div>
@@ -229,7 +234,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 1</div>
                 <h3 className="text-3xl text-white font-semibold mb-3">On-Chain Core</h3>
-                <p className="text-[#8A8D93] leading-relaxed">The foundational protocol layer. Vaults pool lender capital while the Registry and Risk Engine manage soulbound agent identities and credit bonds natively.</p>
+                <p className="text-[#8A8D93] leading-relaxed">The foundational protocol layer. Vaults pool lender capital while the ERC-8004 Registry and Risk Engine manage soulbound agent identities natively.</p>
               </motion.div>
             )}
 
@@ -241,7 +246,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-[#d7d7b6]/30 bg-[#d7d7b6]/10 text-xs font-mono text-[#d7d7b6]">LAYER 3</div>
                 <h3 className="text-3xl text-white font-semibold mb-3 drop-shadow-[0_0_15px_rgba(215,215,182,0.4)]">Application Interfaces</h3>
-                <p className="text-[#8A8D93] leading-relaxed">Purpose-built client gateways. Human capital providers earn yield via the Lender UI, while agents access credit operations through the Agent UI.</p>
+                <p className="text-[#8A8D93] leading-relaxed">Purpose-built client gateways. Capital providers earn transparent yield via the Lender Dashboard, while users mint autonomous agents through the Agent Builder.</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -279,7 +284,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 <div className="inline-block px-3 py-1 mb-3 rounded-full border border-white/20 bg-white/5 text-[10px] font-mono text-white/70">LAYER 1</div>
                 <h3 className="text-xl text-white font-semibold mb-2">On-Chain Core</h3>
                 <p className="text-sm text-[#8A8D93] leading-relaxed">
-                  Vaults pool lender capital while the Registry and Risk Engine manage soulbound agent identities and credit bonds natively.
+                  Vaults pool lender capital while the ERC-8004 Registry and Risk Engine manage soulbound agent identities and credit bonds natively.
                 </p>
               </motion.div>
             )}
@@ -294,9 +299,9 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 className="rounded-2xl border border-white/10 bg-black/45 backdrop-blur-sm p-4"
               >
                 <div className="inline-block px-3 py-1 mb-3 rounded-full border border-white/20 bg-white/5 text-[10px] font-mono text-white/70">LAYER 2</div>
-                <h3 className="text-xl text-white font-semibold mb-2">Off-Chain</h3>
+                <h3 className="text-xl text-white font-semibold mb-2">Off-Chain Intelligence</h3>
                 <p className="text-sm text-[#8A8D93] leading-relaxed">
-                  The secure execution environment. Risk Sentinels and MPC Wallets bridge autonomous AI logic to on-chain capabilities.
+                  The secure execution environment. Risk Sentinels and Autonomous Agent Services bridge autonomous AI logic to on-chain capabilities.
                 </p>
               </motion.div>
             )}
@@ -313,7 +318,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 <div className="inline-block px-3 py-1 mb-3 rounded-full border border-[#d7d7b6]/30 bg-[#d7d7b6]/10 text-[10px] font-mono text-[#d7d7b6]">LAYER 3</div>
                 <h3 className="text-xl text-white font-semibold mb-2 drop-shadow-[0_0_10px_rgba(215,215,182,0.35)]">Application Interfaces</h3>
                 <p className="text-sm text-[#8A8D93] leading-relaxed">
-                  Purpose-built client gateways where lenders earn yield through the Lender UI and agents access credit operations via the Agent UI.
+                  Purpose-built client gateways where capital providers earn yield through the Lender Dashboard and users mint AI via the Agent Builder.
                 </p>
               </motion.div>
             )}

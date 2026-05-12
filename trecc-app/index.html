@@ -1,44 +1,47 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
-    <link rel="manifest" href="/manifest.json" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-----
-    -->
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#030304" />
+
     <title>TRECC</title>
     <meta name="title" content="TRECC" />
+    <meta name="application-name" content="TRECC" />
     <meta name="description" content="TRECC is an institutional-grade DeFi credit and liquidity protocol built for the machine economy, connecting capital providers with verified, autonomous systems through programmable risk guardrails." />
     <meta name="author" content="Aakash Jaiswal, Rajdeepsinh Jadeja, Rakesh Kumawat" />
-    <meta name="keywords" content="TRECC Finance, Machine Economy, Autonomous Systems, DeFi, Prime Brokerage, ERC-8004, Algorithmic Trading, Base Sepolia" />
+    <meta name="keywords" content="TRECC Finance, TRECC, DeFi Credit, Machine Economy, Autonomous Agents, Autonomous Systems, Liquidity Vaults, Prime Brokerage, ERC-8004, Programmable Risk, Algorithmic Trading, Base Sepolia" />
 
+    <link rel="canonical" href="https://trecc.finance/" />
+    <link rel="icon" type="image/png" href="/search.png" />
+    <link rel="shortcut icon" type="image/png" href="/search.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/search.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/search.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/search.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://trecc.finance/" />
-    <meta property="og:site_name" content="TRECC" /> 
+    <meta property="og:site_name" content="TRECC Finance" />
     <meta property="og:title" content="TRECC" />
     <meta property="og:description" content="TRECC is an institutional-grade DeFi credit and liquidity protocol built for the machine economy, connecting capital providers with verified, autonomous systems through programmable risk guardrails." />
-    <meta property="og:image" content="https://trecc.finance/trecc-dmg.png" />
-    <meta property="og:image:secure_url" content="https://trecc.finance/trecc-dmg.png" />
+    <meta property="og:image" content="https://trecc.finance/search.png" />
+    <meta property="og:image:secure_url" content="https://trecc.finance/search.png" />
     <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1920" />
-    <meta property="og:image:height" content="1080" />
-    <meta property="og:image:alt" content="TRECC Finance social preview" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
+    <meta property="og:image:alt" content="TRECC Finance search and social preview" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@Trecc_eth" />
+    <meta name="twitter:creator" content="@Trecc_eth" />
     <meta name="twitter:url" content="https://trecc.finance/" />
     <meta name="twitter:title" content="TRECC" />
     <meta name="twitter:description" content="TRECC is an institutional-grade DeFi credit and liquidity protocol built for the machine economy, connecting capital providers with verified, autonomous systems through programmable risk guardrails." />
-    <meta name="twitter:image" content="https://trecc.finance/trecc-dmg.png" />
-    <meta name="twitter:image:alt" content="TRECC Finance social preview" />
-    <meta name="theme-color" content="#0A0A0A" />
-    <link rel="canonical" href="https://trecc.finance/" />
+    <meta name="twitter:image" content="https://trecc.finance/search.png" />
+    <meta name="twitter:image:alt" content="TRECC Finance search and social preview" />
 
     <script type="application/ld+json">
     {
@@ -46,56 +49,93 @@
       "@graph": [
         {
           "@type": "WebSite",
+          "@id": "https://trecc.finance/#website",
           "name": "TRECC Finance",
-          "url": "https://trecc.finance/"
+          "alternateName": ["TRECC", "TRECC Protocol", "TRECC Credit Layer"],
+          "url": "https://trecc.finance/",
+          "description": "Institutional-grade DeFi credit and liquidity infrastructure for autonomous agents and machine economies.",
+          "publisher": {
+            "@id": "https://trecc.finance/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://trecc.finance/#webpage",
+          "url": "https://trecc.finance/",
+          "name": "TRECC",
+          "isPartOf": {
+            "@id": "https://trecc.finance/#website"
+          },
+          "about": {
+            "@id": "https://trecc.finance/#organization"
+          },
+          "primaryImageOfPage": {
+            "@id": "https://trecc.finance/#primaryimage"
+          },
+          "thumbnailUrl": "https://trecc.finance/search.png",
+          "description": "TRECC is an institutional-grade DeFi credit and liquidity protocol built for the machine economy."
+        },
+        {
+          "@type": "ImageObject",
+          "@id": "https://trecc.finance/#primaryimage",
+          "url": "https://trecc.finance/search.png",
+          "contentUrl": "https://trecc.finance/search.png",
+          "width": 1024,
+          "height": 1024,
+          "caption": "TRECC Finance"
         },
         {
           "@type": "Organization",
+          "@id": "https://trecc.finance/#organization",
           "name": "TRECC Finance",
+          "alternateName": "TRECC",
           "url": "https://trecc.finance/",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://trecc.finance/trecc-dmg.png",
-            "width": 1920,
-            "height": 1080
+            "url": "https://trecc.finance/search.png",
+            "width": 1024,
+            "height": 1024
           },
-          "image": "https://trecc.finance/trecc-dmg.png",
-          "description": "The decentralized prime brokerage and DeFi credit layer for the machine economy.",
+          "image": "https://trecc.finance/search.png",
+          "description": "The decentralized prime brokerage and DeFi credit layer for autonomous agents and the machine economy.",
           "sameAs": [
             "https://x.com/Trecc_eth",
             "https://youtube.com/@trecc"
           ],
-          "founder": [
+          "founder": {
+            "@id": "https://trecc.finance/#aakash-jaiswal"
+          },
+          "founders": [
             {
-              "@type": "Person",
-              "name": "Aakash Jaiswal",
-              "jobTitle": "Founder & CEO",
-              "sameAs": [
-                "https://x.com/Aakash_jais03",
-                "https://github.com/jaiswalraj03014",
-                "https://www.linkedin.com/in/aakash-jaiswal-773bb9244/"
-              ]
-            },
-            {
-              "@type": "Person",
-              "name": "Rajdeepsinh Jadeja",
-              "jobTitle": "Co-Founder",
-              "sameAs": [
-                "https://x.com/therealrajdeep",
-                "https://github.com/therealrajdeep",
-                "https://linkedin.com/in/rajdeepjadeja2806"
-              ]
-            },
-            {
-              "@type": "Person",
-              "name": "Rakesh Kumawat",
-              "jobTitle": "Co-Founder",
-              "sameAs": [
-                "https://x.com/rakeshkumawattt",
-                "https://github.com/rakeshkumawat12",
-                "https://www.linkedin.com/in/kumawatrakesh"
-              ]
+              "@id": "https://trecc.finance/#aakash-jaiswal"
             }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://trecc.finance/#aakash-jaiswal",
+          "name": "Aakash Jaiswal",
+          "givenName": "Aakash",
+          "familyName": "Jaiswal",
+          "jobTitle": "Founder & CEO",
+          "worksFor": {
+            "@id": "https://trecc.finance/#organization"
+          },
+          "affiliation": {
+            "@id": "https://trecc.finance/#organization"
+          },
+          "url": "https://trecc.finance/",
+          "sameAs": [
+            "https://x.com/Aakash_jais03",
+            "https://github.com/jaiswalraj03014",
+            "https://www.linkedin.com/in/aakashjaiswal1610/"
+          ],
+          "knowsAbout": [
+            "DeFi",
+            "autonomous agents",
+            "machine economy",
+            "credit protocols",
+            "liquidity infrastructure"
           ]
         }
       ]

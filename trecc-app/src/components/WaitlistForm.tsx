@@ -18,9 +18,10 @@ export default function WaitlistForm({ variant = "footer" }: WaitlistFormProps) 
   const [errorMessage, setErrorMessage] = useState("");
 
   const isModal = variant === "modal";
+  const canJoin = Boolean(name && email && agreed && status !== "sending" && status !== "success");
 
   const handleJoin = async () => {
-    if (!name || !email || !agreed) return;
+    if (!canJoin) return;
 
     setErrorMessage("");
     setStatus("sending");
@@ -94,11 +95,13 @@ export default function WaitlistForm({ variant = "footer" }: WaitlistFormProps) 
           <button
             type="button"
             onClick={handleJoin}
-            disabled={!name || !email || !agreed || status === "sending" || status === "success"}
+            disabled={!canJoin}
             className={`w-full sm:w-auto px-6 py-3 text-sm font-medium rounded-xl transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed ${
               isModal
                 ? "bg-[#d7d7b6] text-black hover:brightness-105 border border-[#d7d7b6]/80"
-                : "bg-white text-gray-900 border border-gray-200 hover:bg-gray-50"
+                : canJoin
+                  ? "bg-black text-white border border-black hover:bg-gray-900"
+                  : "bg-white text-gray-900 border border-gray-200 hover:bg-gray-50"
             }`}
           >
             {status === "sending" ? "Joining..." : status === "success" ? "Joined!" : "Join"}
