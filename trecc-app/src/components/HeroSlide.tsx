@@ -32,7 +32,7 @@ export default function HeroSlide({ active = true }: { active?: boolean }) {
             scaleMobile: 0.85,
             color: 0xd7d7b6, // The silver topography lines
             backgroundColor: 0x0, // Pure black background
-            speed: isMobile ? 9.0 : 15.0 // Increased speed
+            speed: isMobile ? 15.0 : 25.0
           })
         );
       } catch (error) {
