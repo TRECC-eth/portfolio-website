@@ -173,13 +173,13 @@ export default function DashboardSlide({ step, active = true }: DashboardProps) 
                 <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(135deg,rgba(14,203,129,0.06),transparent_46%)]" />
                 <div className="flex items-center justify-between mb-2 relative z-10 shrink-0">
                   <span className="text-[10px] text-white/60 font-bold uppercase tracking-widest">Lending Pool</span>
-                  <motion.div
+                  {/* <motion.div
                     animate={{ color: isBase ? '#FFFFFF' : '#606468' }}
                     className="flex items-center gap-1.5 text-[10px] font-mono font-medium tracking-wide border border-current/25 px-2 py-0.5 rounded-full bg-current/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
                   >
                     <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: isBase ? '#8A0303' : '#606468' }} />
                     {isBase ? "LIVE" : "IDLE"}
-                  </motion.div>
+                  </motion.div> */}
                 </div>
                 <div className="space-y-1.5 relative z-10 min-h-0">
                   <div className={metricRowClass}>
