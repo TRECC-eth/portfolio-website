@@ -4,6 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        sans: ['"Plus Jakarta Sans"', "sans-serif"],
+        heading: ['"Inter"', "sans-serif"],
         mono: ["system-ui", "sans-serif"],
       },
       colors: {
