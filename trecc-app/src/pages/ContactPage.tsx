@@ -110,7 +110,7 @@ export default function ContactPage() {
                 </p>
                 <div className="flex items-center gap-3 mt-1">
                   <a
-                    href="https://twitter.com/trecc_eth"
+                    href="https://x.com/treccfinance"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 bg-white/5 border border-white/10 rounded-md hover:bg-white/10 hover:border-white/20 text-[#8A8D93] hover:text-white transition-all"

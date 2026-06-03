@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import treccLogo from "../assets/favicon.png";
@@ -43,7 +44,7 @@ export default function Footer({ active = true }: { active?: boolean }) {
               <img src={textImg} alt="Trecc Text" className="h-[3.2rem] md:h-[4rem] w-auto object-contain relative translate-y-0.5" />
             </div>
             <div className="flex items-center gap-3">
-              <a href="https://twitter.com/trecc_finance" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-all duration-200">
+              <a href="https://x.com/treccfinance" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-all duration-200">
                 <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
               </a>
               <a href="https://youtube.com/@trecc.finance" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 text-gray-500 transition-all duration-200">
@@ -82,6 +83,7 @@ export default function Footer({ active = true }: { active?: boolean }) {
             <div className="flex flex-col gap-4 text-sm">
               <h4 className="text-gray-900 font-semibold mb-1 text-base">Resources</h4>
               <a href="#" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Help Center</a>
+              <Link to="/careers" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Jobs / Careers</Link>
               <a href="https://github.com/TRECC-eth/Trecc-synthesis" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">GitHub Repository</a>
               <a href="#" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Security</a>
               <a href="#" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Status</a>
