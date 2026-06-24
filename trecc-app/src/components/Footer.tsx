@@ -84,7 +84,7 @@ export default function Footer({ active = true }: { active?: boolean }) {
               <h4 className="text-gray-900 font-semibold mb-1 text-base">Resources</h4>
               <a href="#" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Help Center</a>
               <Link to="/careers" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Jobs / Careers</Link>
-              <a href="https://github.com/TRECC-eth/Trecc-synthesis" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">GitHub Repository</a>
+              <a href="https://github.com/orgs/TRECC-eth" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">GitHub Repository</a>
               <a href="#" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Security</a>
               <a href="#" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Status</a>
             </div>
