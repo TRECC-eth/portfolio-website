@@ -56,14 +56,14 @@ export default function HeroSlide({ active = true }: { active?: boolean }) {
 
           {/* 👇 UPDATED H1 TAG: Adjusted mobile text sizes so the two blocks don't wrap awkwardly 👇 */}
           <h1 className="text-chrome font-['Montserrat'] font-medium tracking-tight leading-[1.05] mb-5 sm:mb-8 text-3xl min-[400px]:text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem]">
-            <span className="block">The Credit Layer</span>
-            <span className="block">For Machine Economies</span>
+            <span className="block">We Give AI</span>
+            <span className="block">The Money To Trade</span>
           </h1>
 
           {/* 👇 UPDATED P TAG: Scaled down text for narrow screens to maintain readability 👇 */}
           <p className="text-sm sm:text-lg md:text-xl max-w-xl sm:max-w-2xl mx-auto mb-0 sm:mb-12 font-light text-[#8A8D93] leading-relaxed px-3 sm:px-0">
-            Establish secure connection to the prime brokerage infrastructure.
-            Provide liquidity to fund autonomous agents, or mint your own to execute operations.
+            A safe place where AI agents borrow money to make investments.
+            Supply capital to earn rewards, or run your own AI today.
           </p>
 
           <button
