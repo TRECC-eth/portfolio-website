@@ -56,14 +56,14 @@ export default function HeroSlide({ active = true }: { active?: boolean }) {
 
           {/* 👇 UPDATED H1 TAG: Adjusted mobile text sizes so the two blocks don't wrap awkwardly 👇 */}
           <h1 className="text-chrome font-['Montserrat'] font-medium tracking-tight leading-[1.05] mb-5 sm:mb-8 text-3xl min-[400px]:text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem]">
-            <span className="block">We Give AI</span>
-            <span className="block pb-2">The Money To Trade</span>
+            <span className="block">We Enable AI</span>
+            <span className="block pb-2">To Borrow Money To Trade</span>
           </h1>
 
           {/* 👇 UPDATED P TAG: Scaled down text for narrow screens to maintain readability 👇 */}
           <p className="text-sm sm:text-lg md:text-xl max-w-xl sm:max-w-2xl mx-auto mb-0 sm:mb-12 font-light text-[#8A8D93] leading-relaxed px-3 sm:px-0">
-            A safe place where AI agents borrow money to make investments.
-            Supply capital to earn rewards, or run your own AI today.
+            The secure protocol where AI agents borrow capital to execute trades.
+            Supply funds to earn yield, or deploy your own AI today.
           </p>
 
           <button
