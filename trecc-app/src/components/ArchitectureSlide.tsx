@@ -152,7 +152,7 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(215,215,182,0.05),transparent_70%)]" />
 
       <h2 className="absolute top-36 sm:top-40 md:top-32 text-chrome font-medium text-xl sm:text-2xl md:text-4xl tracking-tight z-30 text-center px-6 leading-tight">
-        TRECC Core Architecture
+        How TRECC Works
       </h2>
 
       <div className="w-full max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 relative h-full">
@@ -167,8 +167,8 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 className="absolute inset-0"
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 0</div>
-                <h3 className="text-3xl text-white font-semibold mb-3">Protocol foundation</h3>
-                <p className="text-[#8A8D93] leading-relaxed">The TRECC Protocol base, where settlement and shared execution context are anchored before vaults, registries, and engines come online.</p>
+                <h3 className="text-3xl text-white font-semibold mb-3">The Base Network</h3>
+                <p className="text-[#8A8D93] leading-relaxed">The secure bedrock where all transactions are permanently recorded. Think of this as the unbreakable digital foundation that powers our entire economy.</p>
               </motion.div>
             )}
 
@@ -179,8 +179,8 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 className="absolute inset-0"
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 2</div>
-                <h3 className="text-3xl text-white font-semibold mb-3">Off-Chain Intelligence</h3>
-                <p className="text-[#8A8D93] leading-relaxed">The secure execution environment. Off-chain Risk Sentinels and Autonomous Agent Services seamlessly bridge autonomous AI logic to on-chain capabilities.</p>
+                <h3 className="text-3xl text-white font-semibold mb-3">The AI Brains & Bodyguards</h3>
+                <p className="text-[#8A8D93] leading-relaxed">This is where the smart AI agents make trading decisions. Before they can execute a trade, our "Risk Sentinels" (strict mathematical bodyguards) double-check everything to prevent mistakes.</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -204,21 +204,21 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
             <div className="relative z-10 w-[320px] h-[320px]" style={{ transform: "rotateX(60deg) rotateZ(-45deg)", transformStyle: "preserve-3d" }}>
 
               {/* BASE LAYER */}
-              <Block className="rotate-90" x={0} y={0} z={0} w={320} h={320} depth={20} label="TRECC Protocol" active={baseActive} textFace="left" />
+              <Block className="rotate-90" x={0} y={0} z={0} w={320} h={320} depth={20} label="Blockchain Network" active={baseActive} textFace="left" />
 
               {/* VAULTS LAYER (Middle Base) */}
-              <Block x={20} y={20} z={30} w={120} h={120} depth={30} label="Liquidity Vault" active={platesActive} textFace="top" />
-              <Block x={20} y={160} z={30} w={120} h={140} depth={30} label="ERC-8004 Registry" active={platesActive} textFace="top" />
-              <Block x={160} y={20} z={30} w={140} h={280} depth={30} label="Risk Engine" active={platesActive} textFace="top" />
+              <Block x={20} y={20} z={30} w={120} h={120} depth={30} label="Bank Vault" active={platesActive} textFace="top" />
+              <Block x={20} y={160} z={30} w={120} h={140} depth={30} label="ID Checker" active={platesActive} textFace="top" />
+              <Block x={160} y={20} z={30} w={140} h={280} depth={30} label="Security Engine" active={platesActive} textFace="top" />
 
               {/* AUTONOMOUS AGENTS (Pillars) */}
-              <Block x={40} y={180} z={70} w={50} h={70} depth={80} label="Agent Core" active={agentsActive} textFace="right" />
-              <Block x={180} y={40} z={70} w={50} h={70} depth={100} label="Risk Sentinel" active={agentsActive} textFace="right" />
-              <Block x={240} y={160} z={70} w={40} h={40} depth={70} label="AI Logic" active={agentsActive} textFace="left" />
+              <Block x={40} y={180} z={70} w={50} h={70} depth={80} label="AI Brain" active={agentsActive} textFace="right" />
+              <Block x={180} y={40} z={70} w={50} h={70} depth={100} label="Bodyguard" active={agentsActive} textFace="right" />
+              <Block x={240} y={160} z={70} w={40} h={40} depth={70} label="Trading Logic" active={agentsActive} textFace="left" />
 
               {/* YIELD / APPS (Highlight Pillars) */}
-              <Block x={40} y={40} z={70} w={60} h={60} depth={140} label="Agent Dashboard" active={yieldActive} highlight={yieldActive} textFace="right" />
-              <Block x={180} y={180} z={70} w={60} h={60} depth={160} label="Lender Dashboard" active={yieldActive} highlight={yieldActive} textFace="left" />
+              <Block x={40} y={40} z={70} w={60} h={60} depth={140} label="Trader App" active={yieldActive} highlight={yieldActive} textFace="right" />
+              <Block x={180} y={180} z={70} w={60} h={60} depth={160} label="Lender App" active={yieldActive} highlight={yieldActive} textFace="left" />
             </div>
           </div>
         </motion.div>
@@ -233,8 +233,8 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 className="absolute inset-0"
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-white/20 bg-white/5 text-xs font-mono text-white/70">LAYER 1</div>
-                <h3 className="text-3xl text-white font-semibold mb-3">On-Chain Core</h3>
-                <p className="text-[#8A8D93] leading-relaxed">The foundational protocol layer. Vaults pool lender capital while the ERC-8004 Registry and Risk Engine manage soulbound agent identities natively.</p>
+                <h3 className="text-3xl text-white font-semibold mb-3">The Bank Vault & Security</h3>
+                <p className="text-[#8A8D93] leading-relaxed">Where everyday lenders safely deposit their money. Our built-in security systems instantly verify the identity and safety rating of every AI agent before they can borrow a single cent.</p>
               </motion.div>
             )}
 
@@ -245,8 +245,8 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 className="absolute inset-0"
               >
                 <div className="inline-block px-3 py-1 mb-4 rounded-full border border-[#d7d7b6]/30 bg-[#d7d7b6]/10 text-xs font-mono text-[#d7d7b6]">LAYER 3</div>
-                <h3 className="text-3xl text-white font-semibold mb-3 drop-shadow-[0_0_15px_rgba(215,215,182,0.4)]">Application Interfaces</h3>
-                <p className="text-[#8A8D93] leading-relaxed">Purpose-built client gateways. Capital providers earn transparent yield via the Lender Dashboard, while users mint autonomous agents through the Agent Builder.</p>
+                <h3 className="text-3xl text-white font-semibold mb-3 drop-shadow-[0_0_15px_rgba(215,215,182,0.4)]">The Easy-to-Use Apps</h3>
+                <p className="text-[#8A8D93] leading-relaxed">Our simple dashboards for normal users. Deposit money to earn rewards safely in the Lender App, or launch your own automated trading bot in the Trader App.</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -265,9 +265,9 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 className="rounded-2xl border border-white/10 bg-black/45 backdrop-blur-sm p-4"
               >
                 <div className="inline-block px-3 py-1 mb-3 rounded-full border border-white/20 bg-white/5 text-[10px] font-mono text-white/70">LAYER 0</div>
-                <h3 className="text-xl text-white font-semibold mb-2">Protocol foundation</h3>
+                <h3 className="text-xl text-white font-semibold mb-2">The Base Network</h3>
                 <p className="text-sm text-[#8A8D93] leading-relaxed">
-                  The TRECC Protocol base anchors settlement and shared execution context before vaults, registries, and engines come online.
+                  The secure bedrock where all transactions are permanently recorded. Think of this as the unbreakable digital foundation.
                 </p>
               </motion.div>
             )}
@@ -282,9 +282,9 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 className="rounded-2xl border border-white/10 bg-black/45 backdrop-blur-sm p-4"
               >
                 <div className="inline-block px-3 py-1 mb-3 rounded-full border border-white/20 bg-white/5 text-[10px] font-mono text-white/70">LAYER 1</div>
-                <h3 className="text-xl text-white font-semibold mb-2">On-Chain Core</h3>
+                <h3 className="text-xl text-white font-semibold mb-2">The Bank Vault & Security</h3>
                 <p className="text-sm text-[#8A8D93] leading-relaxed">
-                  Vaults pool lender capital while the ERC-8004 Registry and Risk Engine manage soulbound agent identities and credit bonds natively.
+                  Where lenders safely deposit their money. Our security verifies every AI agent's identity before they can borrow a cent.
                 </p>
               </motion.div>
             )}
@@ -299,9 +299,9 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 className="rounded-2xl border border-white/10 bg-black/45 backdrop-blur-sm p-4"
               >
                 <div className="inline-block px-3 py-1 mb-3 rounded-full border border-white/20 bg-white/5 text-[10px] font-mono text-white/70">LAYER 2</div>
-                <h3 className="text-xl text-white font-semibold mb-2">Off-Chain Intelligence</h3>
+                <h3 className="text-xl text-white font-semibold mb-2">The AI Brains & Bodyguards</h3>
                 <p className="text-sm text-[#8A8D93] leading-relaxed">
-                  The secure execution environment. Risk Sentinels and Autonomous Agent Services bridge autonomous AI logic to on-chain capabilities.
+                  AI agents make trading decisions here, supervised by strict mathematical "bodyguards" that prevent mistakes before they happen.
                 </p>
               </motion.div>
             )}
@@ -316,9 +316,9 @@ export default function ArchitectureSlide({ step = 4 }: { step?: number }) {
                 className="rounded-2xl border border-[#d7d7b6]/30 bg-black/50 backdrop-blur-sm p-4"
               >
                 <div className="inline-block px-3 py-1 mb-3 rounded-full border border-[#d7d7b6]/30 bg-[#d7d7b6]/10 text-[10px] font-mono text-[#d7d7b6]">LAYER 3</div>
-                <h3 className="text-xl text-white font-semibold mb-2 drop-shadow-[0_0_10px_rgba(215,215,182,0.35)]">Application Interfaces</h3>
+                <h3 className="text-xl text-white font-semibold mb-2 drop-shadow-[0_0_10px_rgba(215,215,182,0.35)]">The Easy-to-Use Apps</h3>
                 <p className="text-sm text-[#8A8D93] leading-relaxed">
-                  Purpose-built client gateways where capital providers earn yield through the Lender Dashboard and users mint AI via the Agent Builder.
+                  Simple dashboards where users can deposit money to earn rewards safely, or launch their own automated trading bots.
                 </p>
               </motion.div>
             )}
