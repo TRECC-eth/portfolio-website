@@ -28,9 +28,9 @@ export default function Navbar({ isLightMode = false, hideWaitlist = false }: Na
             : "border-white/10 bg-transparent"
             }`}
         >
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center justify-between gap-4 md:grid md:grid-cols-[1fr_auto_1fr]">
             {/* Logo Area */}
-            <Link to="/" className="flex items-center gap-2 md:gap-3 min-w-0">
+            <Link to="/" className="flex items-center gap-2 md:gap-3 min-w-0 md:justify-self-start">
               <img
                 src={logoImg}
                 alt="TRECC"
@@ -43,23 +43,22 @@ export default function Navbar({ isLightMode = false, hideWaitlist = false }: Na
             </Link>
 
             {/* Center Links */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-8 md:justify-self-center">
               <a
                 href={MARKETS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Markets, live: open TRECC Pulse in a new tab"
-                className={`group inline-flex items-center gap-2 text-sm font-medium transition-colors duration-500 ${isLightMode ? "text-black" : "text-white"}`}
+                aria-label="Markets (live): open TRECC Pulse in a new tab"
+                className={`inline-flex items-center gap-2 text-sm font-medium transition-colors duration-500 ${isLightMode
+                  ? "text-black hover:text-gray-600"
+                  : "text-[#e4e5e7] hover:text-white"
+                  }`}
               >
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0ECB81] opacity-60 motion-reduce:hidden" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#0ECB81]" />
+                <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0ECB81] opacity-50 motion-reduce:hidden" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#0ECB81] shadow-[0_0_8px_rgba(14,203,129,0.7)]" />
                 </span>
-                <span className={`transition-opacity duration-300 ${isLightMode ? "group-hover:opacity-70" : "group-hover:opacity-80"}`}>Markets</span>
-                <span className={`rounded-full px-1.5 py-[1px] text-[9.5px] font-semibold uppercase tracking-[0.08em] transition-colors duration-300 ${isLightMode
-                  ? "bg-[#0ECB81]/15 text-[#067a4d] group-hover:bg-[#0ECB81]/25"
-                  : "bg-[#0ECB81]/15 text-[#5ee0a8] group-hover:bg-[#0ECB81]/25"
-                  }`}>Live</span>
+                Markets
               </a>
               <a
                 href="https://docs.trecc.finance"
@@ -84,7 +83,7 @@ export default function Navbar({ isLightMode = false, hideWaitlist = false }: Na
             </div>
 
             {/* Desktop CTA Button */}
-            <div className="hidden md:flex items-center gap-2.5 shrink-0">
+            <div className="hidden md:flex items-center gap-2.5 shrink-0 md:justify-self-end">
             <button
               type="button"
               onClick={() => setIsWaitlistOpen(true)}
@@ -141,9 +140,8 @@ export default function Navbar({ isLightMode = false, hideWaitlist = false }: Na
                 className={`inline-flex items-center gap-2 text-sm font-medium transition-colors duration-500 ${isLightMode ? "text-gray-700 hover:text-black" : "text-[#c1c4ca] hover:text-white"}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span className="h-2 w-2 rounded-full bg-[#0ECB81]" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[#0ECB81] shadow-[0_0_8px_rgba(14,203,129,0.7)]" aria-hidden="true" />
                 Markets
-                <span className={`rounded-full px-1.5 py-[1px] text-[9.5px] font-semibold uppercase tracking-[0.08em] bg-[#0ECB81]/15 ${isLightMode ? "text-[#067a4d]" : "text-[#5ee0a8]"}`}>Live</span>
               </a>
               <a
                 href="https://docs.trecc.finance"
