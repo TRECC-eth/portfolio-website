@@ -6,9 +6,13 @@ import WaitlistModal from "./WaitlistModal";
 
 interface NavbarProps {
   isLightMode?: boolean;
+  /** Hide the desktop Join Waitlist button, e.g. on the hero, which has its own in the centre */
+  hideWaitlist?: boolean;
 }
 
-export default function Navbar({ isLightMode = false }: NavbarProps) {
+const MARKETS_URL = "https://pulse.trecc.finance";
+
+export default function Navbar({ isLightMode = false, hideWaitlist = false }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
@@ -41,6 +45,21 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
             {/* Center Links */}
             <div className="hidden md:flex items-center gap-8">
               <a
+                href={MARKETS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors duration-500 ${isLightMode
+                  ? "border-black/15 text-gray-700 hover:text-black hover:border-black/40"
+                  : "border-white/15 text-[#c1c4ca] hover:text-white hover:border-white/40"
+                  }`}
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0ECB81] opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#0ECB81]" />
+                </span>
+                Markets
+              </a>
+              <a
                 href="https://docs.trecc.finance"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -66,7 +85,7 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
             <button
               type="button"
               onClick={() => setIsWaitlistOpen(true)}
-              className={`hidden md:inline-flex shrink-0 px-4 py-2 md:px-6 md:py-2 rounded-full text-sm font-semibold font-['system-ui'] transition-all duration-500 border ${isLightMode
+              className={`${hideWaitlist ? "hidden" : "hidden md:inline-flex"} shrink-0 px-4 py-2 md:px-6 md:py-2 rounded-full text-sm font-semibold font-['system-ui'] transition-all duration-500 border ${isLightMode
                 ? "bg-black text-white hover:bg-gray-800 border-black"
                 : "bg-steel text-black hover:brightness-125 border-white/50"
                 }`}
@@ -111,6 +130,16 @@ export default function Navbar({ isLightMode = false }: NavbarProps) {
             className="md:hidden overflow-hidden"
           >
             <div className={`flex flex-col gap-3 rounded-3xl border p-4 ${isLightMode ? "border-black/10 bg-white/85" : "border-white/10 bg-black/35"}`}>
+              <a
+                href={MARKETS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 text-sm font-medium transition-colors duration-500 ${isLightMode ? "text-gray-700 hover:text-black" : "text-[#c1c4ca] hover:text-white"}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span className="h-2 w-2 rounded-full bg-[#0ECB81]" />
+                Markets
+              </a>
               <a
                 href="https://docs.trecc.finance"
                 target="_blank"

@@ -91,7 +91,7 @@ export default function HomePage() {
 
   return (
     <div className="fixed inset-0 w-full h-screen bg-[#030303] text-white overflow-hidden font-sans">
-      <Navbar isLightMode={currentStep >= 8} />
+      <Navbar isLightMode={currentStep >= 8} hideWaitlist={currentStep === 0} />
 
       <motion.div
         className="w-full h-full flex flex-col"
