@@ -48,16 +48,12 @@ export default function Navbar({ isLightMode = false, hideWaitlist = false }: Na
                 href={MARKETS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Markets (live): open TRECC Pulse in a new tab"
-                className={`inline-flex items-center gap-2 text-sm font-medium transition-colors duration-500 ${isLightMode
-                  ? "text-black hover:text-gray-600"
-                  : "text-[#e4e5e7] hover:text-white"
+                aria-label="Markets: open TRECC Pulse in a new tab"
+                className={`-my-1.5 inline-flex items-center rounded-full border border-transparent px-3.5 py-1.5 text-sm font-medium transition-all duration-500 ${isLightMode
+                  ? "text-black [background:linear-gradient(#ffffff,#ffffff)_padding-box,linear-gradient(135deg,rgba(0,0,0,0.55),rgba(0,0,0,0.1)_50%,rgba(0,0,0,0.35))_border-box] hover:[background:linear-gradient(#f4f4f4,#f4f4f4)_padding-box,linear-gradient(135deg,rgba(0,0,0,0.8),rgba(0,0,0,0.2)_50%,rgba(0,0,0,0.5))_border-box]"
+                  : "text-white [background:linear-gradient(#0c0c0c,#0c0c0c)_padding-box,linear-gradient(135deg,rgba(255,255,255,0.85),rgba(255,255,255,0.12)_50%,rgba(215,215,182,0.6))_border-box] hover:[background:linear-gradient(#161616,#161616)_padding-box,linear-gradient(135deg,#ffffff,rgba(255,255,255,0.3)_50%,rgba(215,215,182,0.85))_border-box]"
                   }`}
               >
-                <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0ECB81] opacity-50 motion-reduce:hidden" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#0ECB81] shadow-[0_0_8px_rgba(14,203,129,0.7)]" />
-                </span>
                 Markets
               </a>
               <a
@@ -137,10 +133,12 @@ export default function Navbar({ isLightMode = false, hideWaitlist = false }: Na
                 href={MARKETS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 text-sm font-medium transition-colors duration-500 ${isLightMode ? "text-gray-700 hover:text-black" : "text-[#c1c4ca] hover:text-white"}`}
+                className={`inline-flex w-fit items-center rounded-full border border-transparent px-3.5 py-1.5 text-sm font-medium transition-all duration-500 ${isLightMode
+                  ? "text-black [background:linear-gradient(#ffffff,#ffffff)_padding-box,linear-gradient(135deg,rgba(0,0,0,0.55),rgba(0,0,0,0.1)_50%,rgba(0,0,0,0.35))_border-box] hover:[background:linear-gradient(#f4f4f4,#f4f4f4)_padding-box,linear-gradient(135deg,rgba(0,0,0,0.8),rgba(0,0,0,0.2)_50%,rgba(0,0,0,0.5))_border-box]"
+                  : "text-white [background:linear-gradient(#0c0c0c,#0c0c0c)_padding-box,linear-gradient(135deg,rgba(255,255,255,0.85),rgba(255,255,255,0.12)_50%,rgba(215,215,182,0.6))_border-box] hover:[background:linear-gradient(#161616,#161616)_padding-box,linear-gradient(135deg,#ffffff,rgba(255,255,255,0.3)_50%,rgba(215,215,182,0.85))_border-box]"
+                  }`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-[#0ECB81] shadow-[0_0_8px_rgba(14,203,129,0.7)]" aria-hidden="true" />
                 Markets
               </a>
               <a
