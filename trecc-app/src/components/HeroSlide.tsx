@@ -69,7 +69,7 @@ export default function HeroSlide({ active = true }: { active?: boolean }) {
           <button
             type="button"
             onClick={() => setIsWaitlistOpen(true)}
-            className="pointer-events-auto mt-7 inline-flex items-center justify-center rounded-lg border border-white/55 bg-[linear-gradient(135deg,#ffffff_0%,#d9dde2_22%,#8e969f_48%,#f6f7f8_68%,#aeb5bd_100%)] px-6 py-3 text-sm font-semibold text-black shadow-[inset_0_1px_0_rgba(255,255,255,0.85),inset_0_-1px_0_rgba(0,0,0,0.32),0_18px_44px_rgba(0,0,0,0.38)] transition-all duration-300 active:scale-[0.98] md:hidden"
+            className="pointer-events-auto mt-7 inline-flex items-center justify-center rounded-lg border border-white/55 bg-[linear-gradient(135deg,#ffffff_0%,#d9dde2_22%,#8e969f_48%,#f6f7f8_68%,#aeb5bd_100%)] px-6 py-3 text-sm font-semibold text-black shadow-[inset_0_1px_0_rgba(255,255,255,0.85),inset_0_-1px_0_rgba(0,0,0,0.32),0_18px_44px_rgba(0,0,0,0.38)] transition-all duration-300 hover:brightness-110 active:scale-[0.98] md:mt-0 md:px-8 md:py-3.5 md:text-base"
           >
             Join Waitlist
           </button>
