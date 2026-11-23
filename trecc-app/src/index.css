@@ -150,3 +150,56 @@
     @apply bg-[#0A0A0A] border-chrome rounded-2xl transition-all duration-300 hover:border-white/20;
   }
 }
+/* Markets pill in the navbar: a thin silver edge with a glint that travels round it */
+@property --markets-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.markets-pill {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#0c0c0c, #0c0c0c) padding-box,
+    conic-gradient(from var(--markets-angle),
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0.95) 10%,
+      rgba(215, 215, 182, 0.75) 16%,
+      rgba(255, 255, 255, 0.14) 30%,
+      rgba(255, 255, 255, 0.14) 55%,
+      rgba(255, 255, 255, 0.7) 65%,
+      rgba(255, 255, 255, 0.14) 78%,
+      rgba(255, 255, 255, 0.14) 100%) border-box;
+  animation: markets-glint 4s linear infinite;
+}
+.markets-pill:hover {
+  background:
+    linear-gradient(#161616, #161616) padding-box,
+    conic-gradient(from var(--markets-angle),
+      rgba(255, 255, 255, 0.3) 0%,
+      #ffffff 10%,
+      rgba(215, 215, 182, 0.9) 16%,
+      rgba(255, 255, 255, 0.3) 30%,
+      rgba(255, 255, 255, 0.3) 55%,
+      rgba(255, 255, 255, 0.9) 65%,
+      rgba(255, 255, 255, 0.3) 78%,
+      rgba(255, 255, 255, 0.3) 100%) border-box;
+}
+.markets-pill.is-light {
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    conic-gradient(from var(--markets-angle),
+      rgba(0, 0, 0, 0.12) 0%,
+      rgba(0, 0, 0, 0.8) 10%,
+      rgba(0, 0, 0, 0.45) 16%,
+      rgba(0, 0, 0, 0.12) 30%,
+      rgba(0, 0, 0, 0.12) 55%,
+      rgba(0, 0, 0, 0.6) 65%,
+      rgba(0, 0, 0, 0.12) 78%,
+      rgba(0, 0, 0, 0.12) 100%) border-box;
+}
+@keyframes markets-glint {
+  to { --markets-angle: 360deg; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .markets-pill { animation: none; }
+}

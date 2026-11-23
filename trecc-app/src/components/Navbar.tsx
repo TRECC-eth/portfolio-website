@@ -49,10 +49,7 @@ export default function Navbar({ isLightMode = false, hideWaitlist = false }: Na
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Markets: open TRECC Pulse in a new tab"
-                className={`-my-1.5 inline-flex items-center rounded-full border border-transparent px-3.5 py-1.5 text-sm font-medium transition-all duration-500 ${isLightMode
-                  ? "text-black [background:linear-gradient(#ffffff,#ffffff)_padding-box,linear-gradient(135deg,rgba(0,0,0,0.55),rgba(0,0,0,0.1)_50%,rgba(0,0,0,0.35))_border-box] hover:[background:linear-gradient(#f4f4f4,#f4f4f4)_padding-box,linear-gradient(135deg,rgba(0,0,0,0.8),rgba(0,0,0,0.2)_50%,rgba(0,0,0,0.5))_border-box]"
-                  : "text-white [background:linear-gradient(#0c0c0c,#0c0c0c)_padding-box,linear-gradient(135deg,rgba(255,255,255,0.85),rgba(255,255,255,0.12)_50%,rgba(215,215,182,0.6))_border-box] hover:[background:linear-gradient(#161616,#161616)_padding-box,linear-gradient(135deg,#ffffff,rgba(255,255,255,0.3)_50%,rgba(215,215,182,0.85))_border-box]"
-                  }`}
+                className={`-my-1.5 inline-flex items-center rounded-full markets-pill px-3.5 py-1.5 text-sm font-medium transition-all duration-500 ${isLightMode ? "is-light text-black" : "text-white"}`}
               >
                 Markets
               </a>
@@ -133,10 +130,7 @@ export default function Navbar({ isLightMode = false, hideWaitlist = false }: Na
                 href={MARKETS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex w-fit items-center rounded-full border border-transparent px-3.5 py-1.5 text-sm font-medium transition-all duration-500 ${isLightMode
-                  ? "text-black [background:linear-gradient(#ffffff,#ffffff)_padding-box,linear-gradient(135deg,rgba(0,0,0,0.55),rgba(0,0,0,0.1)_50%,rgba(0,0,0,0.35))_border-box] hover:[background:linear-gradient(#f4f4f4,#f4f4f4)_padding-box,linear-gradient(135deg,rgba(0,0,0,0.8),rgba(0,0,0,0.2)_50%,rgba(0,0,0,0.5))_border-box]"
-                  : "text-white [background:linear-gradient(#0c0c0c,#0c0c0c)_padding-box,linear-gradient(135deg,rgba(255,255,255,0.85),rgba(255,255,255,0.12)_50%,rgba(215,215,182,0.6))_border-box] hover:[background:linear-gradient(#161616,#161616)_padding-box,linear-gradient(135deg,#ffffff,rgba(255,255,255,0.3)_50%,rgba(215,215,182,0.85))_border-box]"
-                  }`}
+                className={`inline-flex w-fit items-center rounded-full markets-pill px-3.5 py-1.5 text-sm font-medium transition-all duration-500 ${isLightMode ? "is-light text-black" : "text-white"}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Markets
