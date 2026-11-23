@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 import logoImg from "../assets/trecc-logo.png";
 import WaitlistModal from "./WaitlistModal";
 
@@ -45,21 +46,6 @@ export default function Navbar({ isLightMode = false, hideWaitlist = false }: Na
             {/* Center Links */}
             <div className="hidden md:flex items-center gap-8">
               <a
-                href={MARKETS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors duration-500 ${isLightMode
-                  ? "border-black/15 text-gray-700 hover:text-black hover:border-black/40"
-                  : "border-white/15 text-[#c1c4ca] hover:text-white hover:border-white/40"
-                  }`}
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0ECB81] opacity-60" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#0ECB81]" />
-                </span>
-                Markets
-              </a>
-              <a
                 href="https://docs.trecc.finance"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -81,17 +67,36 @@ export default function Navbar({ isLightMode = false, hideWaitlist = false }: Na
               </Link>
             </div>
 
-            {/* Desktop CTA Button */}
+            {/* Desktop buttons: Markets (opens TRECC Pulse) and Join Waitlist */}
+            <div className="hidden md:flex items-center gap-2.5 shrink-0">
+            <a
+              href={MARKETS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Markets: open TRECC Pulse in a new tab"
+              className={`group inline-flex items-center gap-2 rounded-full border border-transparent px-5 py-2 text-sm font-semibold font-['system-ui'] transition-all duration-500 ${isLightMode
+                ? "text-black bg-[linear-gradient(#ffffff,#ffffff)_padding-box,linear-gradient(135deg,rgba(0,0,0,0.35),rgba(0,0,0,0.08))_border-box] hover:bg-[linear-gradient(#f4f4f4,#f4f4f4)_padding-box,linear-gradient(135deg,rgba(0,0,0,0.6),rgba(0,0,0,0.2))_border-box]"
+                : "text-white bg-[linear-gradient(rgba(18,18,18,0.92),rgba(18,18,18,0.92))_padding-box,linear-gradient(135deg,rgba(255,255,255,0.9),rgba(255,255,255,0.28)_50%,rgba(215,215,182,0.7))_border-box] shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_0_18px_rgba(14,203,129,0.12)] hover:bg-[linear-gradient(rgba(34,34,34,0.95),rgba(34,34,34,0.95))_padding-box,linear-gradient(135deg,#ffffff,rgba(255,255,255,0.45)_50%,rgba(215,215,182,0.9))_border-box] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_0_22px_rgba(14,203,129,0.2)]"
+                }`}
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0ECB81] opacity-60 motion-reduce:hidden" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#0ECB81]" />
+              </span>
+              Markets
+              <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5 opacity-70 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+            </a>
             <button
               type="button"
               onClick={() => setIsWaitlistOpen(true)}
-              className={`${hideWaitlist ? "hidden" : "hidden md:inline-flex"} shrink-0 px-4 py-2 md:px-6 md:py-2 rounded-full text-sm font-semibold font-['system-ui'] transition-all duration-500 border ${isLightMode
+              className={`${hideWaitlist ? "hidden" : "inline-flex"} shrink-0 px-4 py-2 md:px-6 md:py-2 rounded-full text-sm font-semibold font-['system-ui'] transition-all duration-500 border ${isLightMode
                 ? "bg-black text-white hover:bg-gray-800 border-black"
                 : "bg-steel text-black hover:brightness-125 border-white/50"
                 }`}
             >
               Join Waitlist
             </button>
+            </div>
 
             {/* Mobile Menu Button */}
             <button
