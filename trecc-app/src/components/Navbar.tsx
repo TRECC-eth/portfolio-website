@@ -48,16 +48,18 @@ export default function Navbar({ isLightMode = false, hideWaitlist = false }: Na
                 href={MARKETS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors duration-500 ${isLightMode
-                  ? "border-black/15 text-gray-700 hover:text-black hover:border-black/40"
-                  : "border-white/15 text-[#c1c4ca] hover:text-white hover:border-white/40"
-                  }`}
+                aria-label="Markets, live: open TRECC Pulse in a new tab"
+                className={`group inline-flex items-center gap-2 text-sm font-medium transition-colors duration-500 ${isLightMode ? "text-black" : "text-white"}`}
               >
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0ECB81] opacity-60" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0ECB81] opacity-60 motion-reduce:hidden" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-[#0ECB81]" />
                 </span>
-                Markets
+                <span className={`transition-opacity duration-300 ${isLightMode ? "group-hover:opacity-70" : "group-hover:opacity-80"}`}>Markets</span>
+                <span className={`rounded-full px-1.5 py-[1px] text-[9.5px] font-semibold uppercase tracking-[0.08em] transition-colors duration-300 ${isLightMode
+                  ? "bg-[#0ECB81]/15 text-[#067a4d] group-hover:bg-[#0ECB81]/25"
+                  : "bg-[#0ECB81]/15 text-[#5ee0a8] group-hover:bg-[#0ECB81]/25"
+                  }`}>Live</span>
               </a>
               <a
                 href="https://docs.trecc.finance"
@@ -82,16 +84,18 @@ export default function Navbar({ isLightMode = false, hideWaitlist = false }: Na
             </div>
 
             {/* Desktop CTA Button */}
+            <div className="hidden md:flex items-center gap-2.5 shrink-0">
             <button
               type="button"
               onClick={() => setIsWaitlistOpen(true)}
-              className={`${hideWaitlist ? "hidden" : "hidden md:inline-flex"} shrink-0 px-4 py-2 md:px-6 md:py-2 rounded-full text-sm font-semibold font-['system-ui'] transition-all duration-500 border ${isLightMode
+              className={`${hideWaitlist ? "hidden" : "inline-flex"} shrink-0 px-4 py-2 md:px-6 md:py-2 rounded-full text-sm font-semibold font-['system-ui'] transition-all duration-500 border ${isLightMode
                 ? "bg-black text-white hover:bg-gray-800 border-black"
                 : "bg-steel text-black hover:brightness-125 border-white/50"
                 }`}
             >
               Join Waitlist
             </button>
+            </div>
 
             {/* Mobile Menu Button */}
             <button
@@ -139,6 +143,7 @@ export default function Navbar({ isLightMode = false, hideWaitlist = false }: Na
               >
                 <span className="h-2 w-2 rounded-full bg-[#0ECB81]" />
                 Markets
+                <span className={`rounded-full px-1.5 py-[1px] text-[9.5px] font-semibold uppercase tracking-[0.08em] bg-[#0ECB81]/15 ${isLightMode ? "text-[#067a4d]" : "text-[#5ee0a8]"}`}>Live</span>
               </a>
               <a
                 href="https://docs.trecc.finance"
